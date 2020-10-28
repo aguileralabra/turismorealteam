@@ -60,12 +60,6 @@ urlpatterns = [
         'inicio/',
          views.InicioclienteView.as_view(),
          name='inicio'), 
-         
-    path(
-        'resultadotarjeta/',
-         views.ResultadoTarjetaView.as_view(),
-          name='tarjetaingresada'
-          ), 
     path(
         'reserva/',
          views.CrearReservaView.as_view(),
@@ -112,31 +106,14 @@ urlpatterns = [
          views.PagosView.as_view()
          ), 
     path(
-        'lista_tarjeta/<pk>/',
-         views.ListTarjeta.as_view(),
-          name='listadotarjeta'), 
-    path(
         'lista_acompañante/',
          views.ListAcompañante.as_view(),
           name='listadoacompañante'), 
-    path(
-        'detail_tarjeta/<pk>/',
-         views.TarjetaDetailView.as_view()
-         ),
-    path(
-        'tarjetacredito/',
-         views.CrearTarjetaView.as_view()
-         ),  
     path(
         'registroacom/',
          views.CrearAcompañanteView.as_view(),
           name='registroacom'
           ), 
-     path(
-         'edit/<pk>/',
-          views.TarjetaUpdate.as_view(),
-           name='edit'
-           ), 
      path(
          'editacom/<pk>/',
           views.AcompañanteUpdate.as_view(),
@@ -146,11 +123,6 @@ urlpatterns = [
          'deleteacomp/<pk>/',
           views.AcompañanteDelete.as_view(),
            name='deleteacomp'
-           ), 
-     path(
-         'deletetarjeta/<pk>/',
-          views.TarjetaDelete.as_view(),
-           name='deletetarjeta'
            ), 
      path(
          'cancelarreserva/<pk>/',

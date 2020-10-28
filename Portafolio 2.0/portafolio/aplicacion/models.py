@@ -40,23 +40,6 @@ class Acompañante(models.Model):
     def __str__ (self):
         return self.acom_rut
 
-class Banco(models.Model):
-    descrip_banco=models.CharField('Nombre Banco', max_length=30, default="")
-
-    def __str__ (self):
-        return self.descrip_banco
-
-class TarjetaCredito(models.Model):
-    nro_tarjeta=models.CharField('Numero Tarjeta',max_length=30, unique=True)
-    fecha_vencimiento=models.DateField('Fecha Vencimiento')
-    codigo_seguridad=models.IntegerField('Codigo Seguridad',default="")
-    contraseña_tarjeta=models.IntegerField('Contraseña', default="")
-    banco=models.ForeignKey(Banco, null=True, blank=True, on_delete=models.CASCADE)
-    clientes=models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__ (self):
-        return self.nro_tarjeta
-
 class Inventario(models.Model):
     reparacion= models.CharField(max_length=100, default="")
     mejoramiento= models.CharField(max_length=100, default="")

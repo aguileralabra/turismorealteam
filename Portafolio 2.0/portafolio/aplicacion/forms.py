@@ -96,11 +96,6 @@ class UpdatePasswordForm(forms.Form):
         )
     )
 
-class TarjetaCreditoForm(ModelForm):
-    class Meta:
-        model = TarjetaCredito
-        fields = ['nro_tarjeta', 'fecha_vencimiento','codigo_seguridad','contraseña_tarjeta', 'banco', 'clientes']
-
 class ReservaForm(ModelForm):
     class Meta:
         model = Reserva

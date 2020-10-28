@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import  TarjetaCreditoForm, AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -147,9 +147,6 @@ Cliente------------------------------------------------------
 #listando las tarjetas de credito
 ''' TEMPLATEVIEW-------------------------------------------- '''
 
-class ResultadoTarjetaView(LoginRequiredMixin, TemplateView):
-    template_name = "resultadotarjeta.html"
-    login_url = reverse_lazy('cliente_app:logeo')
 
 class InicioclienteView(LoginRequiredMixin, TemplateView):
     template_name = "inicio.html"
@@ -164,29 +161,18 @@ class ListCliente(LoginRequiredMixin, ListView):
     context_object_name = 'reservita'
     login_url = reverse_lazy('cliente_app:logeo')
 
-
-class ListTarjeta(LoginRequiredMixin, ListView):
-    template_name = 'lista_tarjeta.html'
-    paginate_by = 10
-    model = TarjetaCredito
-    context_object_name = 'lista'
-    login_url = reverse_lazy('cliente_app:logeo')
-
-    def get_queryset(self):
-        #identificar cliente
-        id = self.kwargs['pk']
-        #filtrar tarjetas
-        lista = TarjetaCredito.objects.filter(
-            clientes=id
-        )
+ #   def get_queryset(self):
+  #      #identificar cliente
+   #     id = self.kwargs['pk']
+    #    #filtrar tarjetas
+     #   lista = TarjetaCredito.objects.filter(
+      #      clientes=id
+       # )
         #devolver resultado
-        return lista
+        #return lista
 
-class ListPerfil(LoginRequiredMixin, ListView):
+class ListPerfil(LoginRequiredMixin, TemplateView):
     template_name = 'perfil.html'
-    model = TarjetaCredito
-    paginate_by = 1
-    context_object_name = 'lista'
     login_url = reverse_lazy('cliente_app:logeo')
 
 
@@ -203,8 +189,6 @@ class ListReservaListView(LoginRequiredMixin, ListView):
     paginate_by = 1
     context_object_name = 'reservitapdf'
     login_url = reverse_lazy('cliente_app:logeo')
-
-
     
 
 class ListReservaPdf( View):
@@ -229,10 +213,10 @@ class ListReservaPdf( View):
 
 ''' ----------------------------DETAILVIEW-------------------'''
 
-class TarjetaDetailView(LoginRequiredMixin, DetailView):
-    model = TarjetaCredito
-    template_name = "detail_tarjeta.html"
-    login_url = reverse_lazy('cliente_app:logeo')
+#class TarjetaDetailView(LoginRequiredMixin, DetailView):
+ #   model = TarjetaCredito
+  #  template_name = "detail_tarjeta.html"
+   # login_url = reverse_lazy('cliente_app:logeo')
 
 ''' -----------------------------CreateVIEW-------------------- '''
 
@@ -242,12 +226,6 @@ class ContactCreateView(LoginRequiredMixin, CreateView):
     success_url = '.'
     login_url = reverse_lazy('cliente_app:logeo')
 
-class CrearTarjetaView(LoginRequiredMixin, CreateView):
-    template_name = "tarjetacredito.html"
-    model = TarjetaCredito
-    fields = ('__all__')
-    success_url =  reverse_lazy('cliente_app:tarjetaingresada' )
-    login_url = reverse_lazy('cliente_app:logeo')
 
 class CrearAcompañanteView(LoginRequiredMixin, CreateView):
     template_name = "registroacom.html"
@@ -265,13 +243,6 @@ class CrearReservaView(LoginRequiredMixin, CreateView):
 
 ''' -----------------------------UPDATEVIEW--------------------- '''
 
-class TarjetaUpdate(LoginRequiredMixin, UpdateView):
-    template_name = "edit.html"
-    model = TarjetaCredito
-    fields = ('__all__')
-    success_url =  reverse_lazy('cliente_app:perfil')
-    login_url = reverse_lazy('cliente_app:logeo')
-
 class AcompañanteUpdate(LoginRequiredMixin, UpdateView):
     template_name = "editacom.html"
     model = Acompañante
@@ -281,17 +252,10 @@ class AcompañanteUpdate(LoginRequiredMixin, UpdateView):
 
 ''' -----------------------------DELETEVIEW--------------------- '''
 
-
 class AcompañanteDelete(LoginRequiredMixin, DeleteView):
     template_name = "deleteacomp.html"
     model = Acompañante
     success_url =  reverse_lazy('cliente_app:listadoacompañante')
-    login_url = reverse_lazy('cliente_app:logeo')
-
-class TarjetaDelete(LoginRequiredMixin, DeleteView):
-    template_name = "deletetarjeta.html"
-    model = TarjetaCredito
-    success_url =  reverse_lazy('cliente_app:perfil')
     login_url = reverse_lazy('cliente_app:logeo')
 
 class ReservaDelete(LoginRequiredMixin, DeleteView):

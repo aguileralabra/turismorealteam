@@ -4,8 +4,6 @@ from aplicacion.models import *
 
 admin.site.register(User)
 admin.site.register(Acompañante)
-admin.site.register(Banco)
-admin.site.register(TarjetaCredito)
 admin.site.register(Inventario)
 admin.site.register(Gasto)
 admin.site.register(Ciudad)
