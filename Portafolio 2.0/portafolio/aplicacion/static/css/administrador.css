@@ -1,0 +1,172 @@
+.inicio-adm {
+    margin: 0;
+    padding: 5%;
+    background: rgb(250, 91, 17);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inicio-adm-titulo{
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.inicio-adm-opciones{
+    background: rgb(241, 129, 0);
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 5px;
+    padding-bottom: 7%;
+    padding-top: 7%;
+    border-radius: 5px;
+}
+
+.inicio-adm-opciones-botones1{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+
+.inicio-adm-opciones-botones2{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones3{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones4{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones5{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones6{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones7{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+.inicio-adm-opciones-botones8{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 24%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
+
+
+.inicio-adm-opciones-botones1:hover{
+    background: rgb(71, 71, 71);
+    padding: 4px;
+}
+
+.inicio-adm-opciones-botones2:hover{
+    background: rgb(71, 71, 71);
+    padding: 4px;
+}
+
+.inicio-adm-opciones-botones3:hover{
+    background: rgb(71, 71, 71);
+    padding: 4px;
+}
+
+.inicio-adm-opciones-botones4:hover{
+    background: rgb(71, 71, 71);
+    padding: 4px;
+}
+
+.inicio-adm-opciones-botones5:hover{
+    background: rgb(71, 71, 71);
+    padding: 4px;
+}
+
+.inicio-adm-opciones-botones6:hover{
+    background: rgb(71, 71, 71);
+    padding: 4px;
+}
+
+.inicio-adm-opciones-botones7:hover{
+    background: rgb(71, 71, 71);
+    padding: 4px;
+}
+
+.inicio-adm-opciones-botones8:hover{
+    background: rgb(71, 71, 71);
+    padding: 4px;
+}

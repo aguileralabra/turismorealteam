@@ -1,0 +1,48 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+<div class="listadoreserva">
+<div class="container">
+    <h1>Listado de Reservas</h1>
+    <div style="height:50px"></div>
+    <p class="lead">
+    <p>Aqui podra encontrar a todas tus reservas hechas a lo largo del tiempo</p>
+    <hr>
+    <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+    <br>
+    <br>
+    <table class="table table-bordered order-table ">
+      <thead>
+      <div class="nombrestr">
+        <tr>
+          <th>Codigo</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Termino</th>
+          <th>Cliente</th>
+          <th>Departamento</th>
+          <th>Servicio</th>
+          <th>Cancelar</th>
+        </tr>
+      </thead>
+    </div>
+    {% for reservita in reservita %}
+      <tr>
+        <td>{{ reservita.id}}</td>
+        <td>{{ reservita.Fecha_Reserva_Inicio}}</td>
+        <td>{{ reservita.Fecha_Reserva_Termino}}</td>
+        <td>{{ reservita.cliente}}</td>
+        <td>{{ reservita.departamento}}</td>
+        <td>{{ reservita.servicioextra}}</td>
+        <td><a href="/cancelarreserva/{{ reservita.id }}">
+            Cancerlar
+        </a></td>
+    </tr>
+      </tr>
+    {% endfor %}
+    </table>
+    <p>Si desea registrar una Reserva haga click en el siguiente link <a href="">Haga click aqui para Reserva</a></p>
+    </div>
+</div>
+
+{% endblock %}

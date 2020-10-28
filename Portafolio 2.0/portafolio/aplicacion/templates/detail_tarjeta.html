@@ -1,0 +1,15 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="detail"> 
+<h1>Detalle de Tarjeta</h1>
+<p>Numero Tarjeta: {{ tarjetacredito.nro_tarjeta }}</p>
+<p>Fecha Vencimiento: {{ tarjetacredito.fecha_vencimiento }}</p>
+<p>Codigo Seguridad: {{ tarjetacredito.codigo_seguridad }}</p>
+<p>Contraseña: {{ tarjetacredito.contraseña_tarjeta }}</p>
+<p>Banco: {{ tarjetacredito.banco }}</p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% block content %}
+
+
+<h1 align="center">Turismo Real te da la bienvenida y te damos aqui el PDF de tu reserva</h1>
+<hr>
+<br>
+<br>
+<h2>Nosotros somos una compañia sumamente responsable con los tiempos y el orden, por lo que, te sugerimos 
+    traer este informe de manera impresa para agilizar el movimiento.</h2>
+<br>
+<br>
+<h3>Te damos la bienvenida a una experiencia inigualable, de la cual, no dudaras en comentarlas con tus cercanos,
+     somos un servicio catalogado a nivel mundial como uno de 7 extrellas, calidad y diversion entregamos.
+</h3>
+
+
+  <table class="table table-bordered order-table " border="1">
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Termino</th>
+        <th>Cliente</th>
+        <th>Departamento</th>
+        <th>Servicio</th>
+      </tr>
+    </thead>
+  </div>
+  {% for reservitapdf in reservitapdf %}
+    <tr>
+      <td>{{ reservitapdf.id}}</td>
+      <td>{{ reservitapdf.Fecha_Reserva_Inicio}}</td>
+      <td>{{ reservitapdf.Fecha_Reserva_Termino}}</td>
+      <td>{{ reservitapdf.cliente}}</td>
+      <td>{{ reservitapdf.departamento}}</td>
+      <td>{{ reservitapdf.servicioextra}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+<hr>
+<br>
+
+<h3>favor de imprimir esta reserva.
+</h3>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<p align="center">Derechos Reservados de Turismo real</p>
+
+
+
+{% endblock %}

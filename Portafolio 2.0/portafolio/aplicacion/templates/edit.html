@@ -1,0 +1,39 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+<br>  
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+           Editar Tarjeta
+          </h3>
+      </div>
+      <div class="panel-body">
+        <form method="POST" accept-charset="UTF-8" role="form" >
+          {% csrf_token %}
+          <fieldset>
+            <div class="escritura">
+                <label>Tarjeta Perteneciente a</label>
+                <div class="escrituraline">{{ form.clientes}}</div><br>
+                <label>Numero de Tarjeta</label>
+                <div class="escrituraline">{{ form.nro_tarjeta}}</div><br>
+                <label>Fecha de Vencimiento</label>
+                <div class="escrituraline">{{ form.fecha_vencimiento}}</div><br>
+                <label>Codigo de Seguridad</label>
+                <div class="escrituraline">{{ form.codigo_seguridad}}</div><br>
+                <label>Contraseña de Tarjeta</label>
+                <div class="escrituraline">{{ form.contraseña_tarjeta}}</div><br>
+                <label>Banco de Tarjeta</label>
+                <div class="escrituraline">{{ form.banco}}</div><br>
+              </div>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Editar">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+{% block content %}
+<script languaje="javascript">
+    function habilita(form)
+    {
+    form.intereses[0].disabled = false;
+    form.intereses[1].disabled = false;
+    form.intereses[2].disabled = false;
+    }  
+    function deshabilita(form)
+    {
+    form.intereses[0].disabled = true;
+    form.intereses[1].disabled = true;
+    form.intereses[2].disabled = true;
+    }
+</script>
+<script languaje="javascript">
+    function verificarCasilla(form)
+    {
+        if (form.acepto.checked == false)
+        {
+        alert("Debes aceptar los términos del contrato antes de continuar");
+        form.acepto.focus(); return true;
+        }
+    form.submit()
+    }
+</script>
+<script language="javascript">
+    function agregarOpciones(form)
+    {
+    var selec = form.tipos.options;
+    var combo = form.estilo.options;
+    combo.length = null;
+        if (selec[0].selected == true)
+        {
+        var seleccionar = new Option("<-- esperando selección","","","");
+        combo[0] = seleccionar;
+        }
+        if (selec[1].selected == true)
+        {
+        var popular1 = new Option("Banco Estado","","","");
+        combo[0] = popular1;
+        }
+        if (selec[2].selected == true)
+        {
+        var academica1 = new Option("Banco Estado","","");
+        var academica2 = new Option("Banco Falabella","","","");
+        var academica3 = new Option("Banco Ripley","","","");
+        var academica4 = new Option("Banco Santander","","","");
+        var academica5 = new Option("Banco Chile","","","");
+        combo[0] = academica1;
+        combo[1] = academica2;
+        combo[2] = academica3;
+        combo[3] = academica4;
+        combo[4] = academica5;
+        }
+    }
+    </script>
+<div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title">R<span>eserva</span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Aqui podras hacer tu reserva para obtener un arriendo, ademas podras tener 
+                la posibilidad de obtener nuestro servicios extra con las 3B.
+
+                Se advierte que se debe abonar un 50% del total para concretar la reserva, si no, sera rechazado.
+            </p>
+        </div>
+
+        <!--
+        <label for="nombre" class="form-label"> Servicios Extras</label>
+            <p>¿Desea algun servicio extra?</p> <br>  
+            <input type="radio" name="boletin" value="si" checked onClick="habilita(this.form)"> SI, quiero suscribirme.
+            <input type="radio" name="boletin" value="no" onClick="deshabilita(this.form)"> No, gracias.
+            <br><br>
+            <p>Seleccione que desea :</p><br>
+            <input type="checkbox" name="intereses" value="Turismo"> Turismo<br>
+            <input type="checkbox" name="intereses" value="Transporte">Transporte<br>
+            <br><br>
+        <hr>
+        -->
+        <!--
+        <label for="nombre" class="form-label"> Dato Acompañante</label>
+        <input type="text" id="nombre" class="form-input" placeholder="Nombres" required>
+        <input type="text" id="apellido" class="form-input" placeholder="Apellidos" required>
+        <input type="text" id="nacionalidad" class="form-input" placeholder="Nacionalidad" required>
+        <input type="email" id="correo" class="form-input" placeholder="Correo Electronico" required>
+        <input type="text" id="celular" class="form-input" placeholder="Numero Celular" required>
+        <input type="text" id="edad" class="form-input" placeholder="Edad" required>
+        <hr>
+        -->
+        <!--<label for="nombre" class="form-label"> Fecha de Ingreso y Salida</label>
+        <br>
+        <p>Fecha de ingreso</p>
+        <input type="date" id="ingreso" class="form-input"  name="Fecha_Reserva_Inicio" required>-->
+        {{ form.Fecha_Reserva_Inicio }}<br>
+        {{ form.Fecha_Reserva_Termino }}<br>
+
+
+        <!--<p>Fecha de salida</p>
+        <input type="date" id="salida" class="form-input" name="Fecha_Reserva_Termino" required>-->
+        <!--    
+        <label for="nombre" class="form-label"> Selección Pago</label>
+        <p>Recuerde que debe abonar el 50% para obtener la reserva.</p>
+        <select name="tipos" onChange="agregarOpciones(this.form)">
+        <option value="">[seleccione una opción]</option>
+        <option value="debito">Debito</option>
+        <option value="credito">Credito</option>
+        </select>
+        <select name="estilo">
+            <option value=""><-- esperando selección</option> 
+            </select>
+        <br><br>
+        -->
+        {{ form.departamento }}<br>
+
+        {{ form.Estado_Reserva }}<br>
+
+        {{ form.cliente }}<br>
+
+        <input type="checkbox" name="acepto"> Acepto los términos del contrato de suscripción
+        <br><br>
+        {% csrf_token %}
+        <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
+        <input type="reset" class="form-submit" value="Limpiar Formulario">
+        </form>
+    </div>
+</div>
+{% endblock %}
