@@ -98,8 +98,7 @@
         <br>
         <p>Fecha de ingreso</p>
         <input type="date" id="ingreso" class="form-input"  name="Fecha_Reserva_Inicio" required>-->
-        {{ form.Fecha_Reserva_Inicio }}<br>
-        {{ form.Fecha_Reserva_Termino }}<br>
+        
 
 
         <!--<p>Fecha de salida</p>
@@ -117,11 +116,7 @@
             </select>
         <br><br>
         -->
-        {{ form.departamento }}<br>
-
-        {{ form.Estado_Reserva }}<br>
-
-        {{ form.cliente }}<br>
+        {{ form.as_p }}
 
         <input type="checkbox" name="acepto"> Acepto los términos del contrato de suscripción
         <br><br>

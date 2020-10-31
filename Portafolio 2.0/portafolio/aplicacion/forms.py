@@ -100,6 +100,31 @@ class ReservaForm(ModelForm):
     class Meta:
         model = Reserva
         fields = ('__all__')
+        label = {
+            'Fecha_Reserva_Inicio':'Fecha de reserva inicio',
+            'Fecha_Reserva_Termino':'Fecha de reserva termino',
+            'Estado_Reserva':'Estado de la Reserva',
+            'cliente':'Cliente asignado a la reserva',
+            'departamento':'Departamento a reservar',
+            'servicioextra':'Servicio a usar'
+        }
+        widgets = {
+            'Fecha_Reserva_Inicio': forms.SelectDateWidget(
+                attrs = {
+                    'class': 'form-control'
+                }
+            ),
+            'Fecha_Reserva_Termino': forms.SelectDateWidget(
+                attrs = {
+                    'class': 'form-control'
+                }
+            ),
+            'Estado_Reserva': forms.CheckboxSelectMultiple(
+                attrs = {
+                    'class': 'form-control'
+                }
+            )                
+        }
 
 class AcompañanteForm(ModelForm):
     class Meta:
