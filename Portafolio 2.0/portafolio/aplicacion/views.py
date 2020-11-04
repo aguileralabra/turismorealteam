@@ -310,15 +310,12 @@ class MantenerClienteView(LoginRequiredMixin, View):
         return self.model.objects.filter(is_staff = False)
 
     def get_context_data(self, **kwargs):
-        context = {}
-        context['usuario'] = self.get_queryset()
-        context['form'] = self.form_class
-        return context
+        contexto = {}
+        contexto['usuario'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
 
     def get(self,request,*args,**kwargs):
-        context = {
-            'usuario':self.get_queryset()
-        }
         return render(request,self.template_name, self.get_context_data())
 
     def post(self, request, *args, **kwargs):
@@ -335,9 +332,9 @@ class UsuarioUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('cliente_app:logeo')
 
     def get_context_data(self, **kwargs):
-        contexto = super().get_context_data(**kwargs)
-        contexto['usuario'] = User.objects.filter(is_staff = False)
-        return contexto
+        context = super().get_context_data(**kwargs)
+        context['usuario'] = User.objects.filter(is_staff = False)
+        return context
 
 class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "deleteuser.html"
