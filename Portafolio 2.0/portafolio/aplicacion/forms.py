@@ -96,44 +96,6 @@ class UpdatePasswordForm(forms.Form):
         )
     )
 
-class ReservaForm(forms.ModelForm):
-    class Meta:
-        model = Reserva
-        fields = ('Fecha_Reserva_Inicio',
-                  'Fecha_Reserva_Termino',
-                  'Estado_Reserva',
-                  'cliente',
-                  'departamento',
-                  'servicioextra',
-        )
-
-        label = {
-            'Fecha_Reserva_Inicio':'Fecha de reserva inicio',
-            'Fecha_Reserva_Termino':'Fecha de reserva termino',
-            'Estado_Reserva':'Estado de la Reserva',
-            'cliente':'Cliente asignado a la reserva',
-            'departamento':'Departamento a reservar',
-            'servicioextra':'Servicio a usar',
-        }
-        widgets = {
-            'Fecha_Reserva_Inicio': forms.DateInput(
-                attrs = {
-                    'type' : 'date',
-                    'class': 'form-control'
-                }
-            ),
-            'Fecha_Reserva_Termino': forms.SelectDateWidget(
-                attrs = {
-                    'class': 'form-control'
-                }
-            ),
-            'Estado_Reserva': forms.CheckboxSelectMultiple(
-                attrs = {
-                    'class': 'form-control'
-                }
-            ),                
-        }
-
 class AcompañanteForm(ModelForm):
     class Meta:
         model = Acompañante
@@ -148,7 +110,7 @@ class AcompañanteForm(ModelForm):
 class ReservaForm(ModelForm):
     class Meta:
         model = Reserva
-        fields = ['Fecha_Reserva_Inicio','Fecha_Reserva_Termino','Estado_Reserva','cliente','departamento','servicioextra']
+        fields = ['Fecha_Reserva_Inicio','Fecha_Reserva_Termino','Estado_Reserva','departamento','servicioextra']
 
 class VerificationForm(forms.Form):
     codregistro = forms.CharField(required=True)

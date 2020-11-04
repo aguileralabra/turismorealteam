@@ -247,6 +247,13 @@ class CrearReservaView(LoginRequiredMixin, CreateView):
     success_url =  reverse_lazy('cliente_app:informepdf')
     login_url = reverse_lazy('cliente_app:logeo')
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super(CrearReservaView, self).form_valid(form)
+
+
 ''' -----------------------------UPDATEVIEW--------------------- '''
 
 class AcompañanteUpdate(LoginRequiredMixin, UpdateView):

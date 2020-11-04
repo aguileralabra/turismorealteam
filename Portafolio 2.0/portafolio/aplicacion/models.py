@@ -197,7 +197,7 @@ class Reserva(models.Model):
     Fecha_Reserva_Inicio = models.DateField(blank=True)   
     Fecha_Reserva_Termino = models.DateField(blank=True)  
     Estado_Reserva = models.CharField(max_length=100, default="", choices=ESTADORESERVA_CHOICES)
-    cliente=models.ForeignKey(User, on_delete=models.CASCADE, default="")
+    user=models.ForeignKey(User, on_delete=models.CASCADE, default="")
     departamento=models.ForeignKey(Departamento, on_delete=models.CASCADE, default="")
     servicioextra=models.ManyToManyField(ServicioExtra, null=True, blank=True, default="None")
 
