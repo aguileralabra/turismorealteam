@@ -126,18 +126,18 @@ urlpatterns = [
            name='cancelarreserva'
            ), 
     path(
-        'mantener_servicios',
-         views.mantener_servicios ,
+        'mantener_servicios/',
+         views.ServiciosView.as_view(),
           name='mantener_servicios'
-          ),
+          ), 
     path(
-        'generar_estadistica',
-         views.generar_estadistica ,
+        'generar_estadistica/',
+         views.EstadisticaView.as_view(),
           name='generar_estadistica'
           ), 
     path(
-        'generar_informe',
-         views.generar_informe ,
+        'generar_informe/',
+         views.InformeView.as_view(),
           name='generar_informe'
           ), 
 ]

@@ -270,33 +270,41 @@ termina aqui Cliente------------------------------------------------------
 
 '''
 
-class FuncionarioView(TemplateView):
+class FuncionarioView(LoginRequiredMixin,TemplateView):
     template_name = 'funcionario.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
-class PerfilFuncionarioView(TemplateView):
+class PerfilFuncionarioView(LoginRequiredMixin,TemplateView):
     template_name = 'perfil_funcionario.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
-class CrearlistadoView(TemplateView):
+class CrearlistadoView(LoginRequiredMixin,TemplateView):
     template_name = 'crear_listado.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
-class MantenerClienteView(TemplateView):
+class MantenerClienteView(LoginRequiredMixin,TemplateView):
     template_name = 'mantener_cliente.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
-class MantenerDepartamentoView(TemplateView):
+class MantenerDepartamentoView(LoginRequiredMixin,TemplateView):
     template_name = 'mantener_departamento.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
-class PagosView(TemplateView):
+class PagosView(LoginRequiredMixin,TemplateView):
     template_name = 'pagos_adm.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
+class ServiciosView(LoginRequiredMixin,TemplateView):
+    template_name = 'mantener_servicios.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
-def mantener_servicios(request):
-    return render (request, 'mantener_servicios.html')
-    
-def generar_estadistica(request):
-    return render (request, 'generar_estadistica.html')
+class EstadisticaView(LoginRequiredMixin, TemplateView):
+    template_name = 'generar_estadistica.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
-def generar_informe(request):
-    return render (request, 'generar_informe.html')
+class InformeView(LoginRequiredMixin,TemplateView):
+    template_name = 'generar_informe.html'
+    login_url = reverse_lazy('cliente_app:logeo')
 
 def resultado(request):
     return render (request, 'resultado.html')
