@@ -269,8 +269,6 @@ class ReservaDelete(LoginRequiredMixin, DeleteView):
 termina aqui Cliente------------------------------------------------------
 
 '''
-class AdministradorView(TemplateView):
-    template_name = 'administrador.html'
 
 class FuncionarioView(TemplateView):
     template_name = 'funcionario.html'

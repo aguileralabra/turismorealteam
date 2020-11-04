@@ -69,10 +69,6 @@ urlpatterns = [
          views.ContactCreateView.as_view(),
          name='addcontacto'), 
     path(
-        'administrador/',
-         views.AdministradorView.as_view()
-         ), 
-    path(
         'funcionario/',
          views.FuncionarioView.as_view()
          ), 

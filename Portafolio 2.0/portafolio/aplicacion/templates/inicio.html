@@ -5,6 +5,7 @@
 {% block content %}
 
 
+{% if not request.user.is_staff %}
 
 
 
@@ -152,6 +153,8 @@
         </div>
       </div>
 </div> 
+
+{% endif %}
 
 
 {% endblock %}
