@@ -14,14 +14,14 @@ apoyo
 https://www.youtube.com/watch?v=j5EHL2K8TY0&ab_channel=Neunapp
 
 
-
+https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Authentication
 
 --Mercado Pago = Implementar pago (Pruebas)
 
 
 https://www.youtube.com/watch?v=zTrWdVFNX8k&ab_channel=CursosDesarrolloWeb
 
-
+https://www.youtube.com/c/Developerpe/videos
 
 
 
