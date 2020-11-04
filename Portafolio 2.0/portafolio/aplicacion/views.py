@@ -206,7 +206,7 @@ class ListReservaPdf( View):
         id = self.kwargs['pk']
         #filtrar tarjetas
         reservitapdf = Reserva.objects.filter(
-            cliente=id
+            user=id
         )
         #devolver resultado
         return reservitapdf

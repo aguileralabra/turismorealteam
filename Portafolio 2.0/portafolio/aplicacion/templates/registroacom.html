@@ -17,8 +17,6 @@
                 {% csrf_token %}
                 <fieldset>
                   <div class="escritura">
-                      <label>Responde a :</label>
-                      <div class="escrituraline">{{ form.cli_cliente}}</div><br>
                       <label>Rut</label>
                       <div class="escrituraline">{{ form.acom_rut}}</div><br>
                       <label>Nombre</label>
@@ -41,7 +39,5 @@
           </div>
         </div>
       </div>
-
-
 {% endblock %}
       
