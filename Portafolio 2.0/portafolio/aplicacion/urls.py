@@ -60,6 +60,7 @@ urlpatterns = [
         'inicio/',
          views.InicioclienteView.as_view(),
          name='inicio'), 
+          #logeandose terminandose----------------------------------------------------
     path(
         'reserva/',
          views.CrearReservaView.as_view(),
@@ -82,7 +83,8 @@ urlpatterns = [
          ), 
     path(
         'mantener_cliente/',
-         views.MantenerClienteView.as_view()
+         views.MantenerClienteView.as_view(),
+         name='mantener_cliente'
          ), 
     path(
         'mantener_departamento/',
@@ -125,17 +127,27 @@ urlpatterns = [
           views.ReservaDelete.as_view(),
            name='cancelarreserva'
            ), 
-    path(
+     path(
+         'deleteuser/<pk>/',
+          views.UsuarioDeleteView.as_view(),
+           name='deleteuser'
+           ), 
+     path(
+         'editarusuario/<pk>/',
+          views.UsuarioUpdate.as_view(),
+           name='editarusuario'
+           ), 
+     path(
         'mantener_servicios/',
          views.ServiciosView.as_view(),
           name='mantener_servicios'
           ), 
-    path(
+     path(
         'generar_estadistica/',
          views.EstadisticaView.as_view(),
           name='generar_estadistica'
           ), 
-    path(
+     path(
         'generar_informe/',
          views.InformeView.as_view(),
           name='generar_informe'

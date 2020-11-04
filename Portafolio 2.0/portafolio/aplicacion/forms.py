@@ -96,21 +96,29 @@ class UpdatePasswordForm(forms.Form):
         )
     )
 
-class ReservaForm(ModelForm):
+class ReservaForm(forms.ModelForm):
     class Meta:
         model = Reserva
-        fields = ('__all__')
+        fields = ('Fecha_Reserva_Inicio',
+                  'Fecha_Reserva_Termino',
+                  'Estado_Reserva',
+                  'cliente',
+                  'departamento',
+                  'servicioextra',
+        )
+
         label = {
             'Fecha_Reserva_Inicio':'Fecha de reserva inicio',
             'Fecha_Reserva_Termino':'Fecha de reserva termino',
             'Estado_Reserva':'Estado de la Reserva',
             'cliente':'Cliente asignado a la reserva',
             'departamento':'Departamento a reservar',
-            'servicioextra':'Servicio a usar'
+            'servicioextra':'Servicio a usar',
         }
         widgets = {
-            'Fecha_Reserva_Inicio': forms.SelectDateWidget(
+            'Fecha_Reserva_Inicio': forms.DateInput(
                 attrs = {
+                    'type' : 'date',
                     'class': 'form-control'
                 }
             ),
@@ -123,7 +131,7 @@ class ReservaForm(ModelForm):
                 attrs = {
                     'class': 'form-control'
                 }
-            )                
+            ),                
         }
 
 class AcompañanteForm(ModelForm):

@@ -270,6 +270,13 @@ termina aqui Cliente------------------------------------------------------
 
 '''
 
+'''
+
+Empieza Funcionario------------------------------------------------------
+
+'''
+
+
 class FuncionarioView(LoginRequiredMixin,TemplateView):
     template_name = 'funcionario.html'
     login_url = reverse_lazy('cliente_app:logeo')
@@ -282,9 +289,63 @@ class CrearlistadoView(LoginRequiredMixin,TemplateView):
     template_name = 'crear_listado.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-class MantenerClienteView(LoginRequiredMixin,TemplateView):
+'''
+
+termina aqui Funcionario------------------------------------------------------
+
+'''
+'''
+
+Empieza Administrador------------------------------------------------------
+
+'''
+
+class MantenerClienteView(LoginRequiredMixin, View):
+    model = User
+    form_class = UserRegisterForm
     template_name = 'mantener_cliente.html'
     login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self):
+        return self.model.objects.filter(is_staff = False)
+
+    def get_context_data(self, **kwargs):
+        context = {}
+        context['usuario'] = self.get_queryset()
+        context['form'] = self.form_class
+        return context
+
+    def get(self,request,*args,**kwargs):
+        context = {
+            'usuario':self.get_queryset()
+        }
+        return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:mantener_cliente')
+
+class UsuarioUpdate(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserRegisterForm
+    template_name = "mantener_cliente.html"
+    success_url =  reverse_lazy('cliente_app:mantener_cliente')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_context_data(self, **kwargs):
+        contexto = super().get_context_data(**kwargs)
+        contexto['usuario'] = User.objects.filter(is_staff = False)
+        return contexto
+
+class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
+    template_name = "deleteuser.html"
+    model = User
+    success_url =  reverse_lazy('cliente_app:mantener_cliente')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+'''hasta aqui mantenedor cliente ------------------------------------------------------'''
 
 class MantenerDepartamentoView(LoginRequiredMixin,TemplateView):
     template_name = 'mantener_departamento.html'
@@ -305,6 +366,12 @@ class EstadisticaView(LoginRequiredMixin, TemplateView):
 class InformeView(LoginRequiredMixin,TemplateView):
     template_name = 'generar_informe.html'
     login_url = reverse_lazy('cliente_app:logeo')
+
+'''
+
+termina aqui Administrador------------------------------------------------------
+
+'''
 
 def resultado(request):
     return render (request, 'resultado.html')
