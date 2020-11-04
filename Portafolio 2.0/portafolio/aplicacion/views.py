@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -344,10 +344,15 @@ class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
 
 '''hasta aqui mantenedor cliente ------------------------------------------------------'''
 
-class MantenerDepartamentoView(LoginRequiredMixin,TemplateView):
+class MantenerDepartamentoView(LoginRequiredMixin,View):
+    model = Departamento
+    form_class = DepartamentoForm
     template_name = 'mantener_departamento.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+        
 class PagosView(LoginRequiredMixin,TemplateView):
     template_name = 'pagos_adm.html'
     login_url = reverse_lazy('cliente_app:logeo')
