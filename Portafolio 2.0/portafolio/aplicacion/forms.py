@@ -137,7 +137,7 @@ class ReservaForm(forms.ModelForm):
 class AcompañanteForm(ModelForm):
     class Meta:
         model = Acompañante
-        fields = ['acom_rut','acom_nombre','acom_apellidos', 'acom_edad','acom_nacionalidad', 'acom_email', 'acom_telefono','cli_cliente']
+        fields = ['acom_rut','acom_nombre','acom_apellidos', 'acom_edad','acom_nacionalidad', 'acom_email', 'acom_telefono']
 
     def clean_acomedad(self):
         acomedad = self.cleaned_data['acom_edad']

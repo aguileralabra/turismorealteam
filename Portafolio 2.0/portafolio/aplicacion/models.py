@@ -35,7 +35,7 @@ class Acompañante(models.Model):
     acom_nacionalidad=models.CharField('Nacionalidad',max_length=30)
     acom_email= models.EmailField('Correo')
     acom_telefono=models.CharField('Telefono',max_length=12)
-    cli_cliente=models.ForeignKey(User, on_delete=models.CASCADE)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__ (self):
         return self.acom_rut

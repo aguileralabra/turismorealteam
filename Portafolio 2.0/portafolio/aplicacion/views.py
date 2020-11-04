@@ -234,6 +234,12 @@ class CrearAcompañanteView(LoginRequiredMixin, CreateView):
     success_url =  reverse_lazy('cliente_app:listadoacompañante')
     login_url = reverse_lazy('cliente_app:logeo')
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super(CrearAcompañanteView, self).form_valid(form)
+
 class CrearReservaView(LoginRequiredMixin, CreateView):
     template_name = "reserva.html"
     model = Reserva
@@ -352,7 +358,7 @@ class MantenerDepartamentoView(LoginRequiredMixin,View):
 
     def get(self,request,*args,**kwargs):
         return render(request,self.template_name, self.get_context_data())
-        
+
 class PagosView(LoginRequiredMixin,TemplateView):
     template_name = 'pagos_adm.html'
     login_url = reverse_lazy('cliente_app:logeo')
