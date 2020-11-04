@@ -182,7 +182,6 @@ class ListAcompañante(LoginRequiredMixin, ListView):
     context_object_name = 'acompañante'
     login_url = reverse_lazy('cliente_app:logeo')
 
-
 class ListReservaListView(LoginRequiredMixin, ListView):
     template_name = 'informepdf.html'
     model = Reserva
