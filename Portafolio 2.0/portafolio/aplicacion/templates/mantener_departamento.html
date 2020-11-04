@@ -3,4 +3,141 @@
 
 {% block content %}
 
+<div class="listadoreserva">
+    <div class="container">
+        <h1>Departamento de Turismo Real</h1>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Nombre</th>
+              <th>Comuna</th>
+              <th>Direccion</th>
+              <th>Internet</th>
+              <th>Amoblado</th>
+              <th>Television</th>
+              <th>Disponible</th>
+              <th>Precio</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+        </div>
+          <tr>
+            {% for departamento in departamento %}
+            <td>{{ departamento.Nombre_Departamento}}</td>
+            <td>{{ departamento.comuna}}</td>
+            <td>{{ departamento.Direccion_departamento}}</td>
+            <td>{{ departamento.Internet}}</td>
+            <td>{{ departamento.Amoblado}}</td>
+            <td>{{ departamento.Televicion}}</td>
+            <td>{{ departamento.Disponible}}</td>
+            <td>${{ departamento.Valor_Diario}}</td>
+            <td><a href="/editacom/{{ departamento.id }}">Editar</a>
+            </td>
+            <td><a href="/deleteacomp/{{ departamento.id }}" 
+                onClick="return confirm('¿Seguro que quieres eliminar a tu acompañante: {{acompañante.acom_rut}}?');">
+                  Borrar
+              </a></td>
+          </tr>
+          {% endfor %}
+        </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="contacto">
+    <div class="contacto-contenido">
+        <div class="titulo-contacto">
+            <h2>Agregar Departamento</h2>
+        </div>
+        <div class="escritura-contacto">
+            <h4>Ante problemas tecnico {{ request.user }}, envies un correo o llamar. </h4>
+            <hr>
+            <p>Jonathan cabrera</p>
+            <i class="fa fa-phone fa-fw text-primary"></i> +569 4353 1445
+            <br>
+            <br>
+            <p>Ezequiel Riquelme</p>
+            <i class="fa fa-phone fa-fw text-primary"></i> +569 5776 2043
+            <br>
+        </div>
+        <div class="formulario-contacto">
+
+            <h4>Formulario Departamento </h4>
+            <hr>
+            <form class="form-contac" method="POST" action="" >
+                <p>Nombre departamento</p>
+                <input type="text" id="celular" class="form-input" name="asunto" required>
+                
+                <p>Ubicacion del departamento</p>
+                <input type="email" id="celular" class="form-input" name="correoaenviar" required>
+
+                <p>Valor departamento diariamente</p>
+                <textarea id="w3review" name="descripcioncontacto" rows="2" cols="22,5" >
+                </textarea>
+                {% csrf_token %}
+                <input type="submit" class="submit" value="Añadir Departamento">
+            </form> 
+        </div>
+    </div>
+</div>
+
+
+
+
+{% if departamento %}
+<div id="content">
+    <div class="showcase block block-border-bottom-grey">
+      <div class="container">
+        <h2 class="block-title">
+            Departamentos 
+          </h2>
+          <p style="color:rgb(12, 12, 12); text-align: center;">
+            Como se visualiza los departamento para los clientes.
+        </p>
+        <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+        {% for departamento in departamento %}
+          <div class="item">
+            <a href="#" class="overlay-wrapper">
+                <img src="{{ departamento.Imagen_Recinto.url}}" alt="Villaricon" class="img-responsive underlay">
+                <span class="overlay">
+                  <span class="overlay-content"> <span class="h4">Descripcion: {{ departamento.Descripcion_departamento}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Cantidad Baños: {{ departamento.Baños}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Calefacción: {{ departamento.Calefaccion}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Internet: {{ departamento.Internet}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Amoblado: {{ departamento.Amoblado}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Televisión: {{ departamento.Televicion}}</span> </span>
+                  <span class="overlay-content"> <span class="h4">Disponible: {{ departamento.Disponible}}</span> </span>
+                </span>
+              </a>
+            <div class="item-details bg-noise">
+              <h4 class="item-title">
+                  <a href="#">Nombre departamento: {{ departamento.Nombre_Departamento}}</a>
+                </h4>
+                <h4 class="item-title">
+                    <a href="#">Numero de Propiedad: {{ departamento.Numero_propiedad}}</a>
+                  </h4>
+                <h4 class="item-title">
+                    <a href="#">Direccion: {{ departamento.Direccion_departamento}}</a>
+                  </h4>
+                <h4 class="item-title">
+                    <a href="#">Internet: {{ departamento.Internet}}</a>
+                  </h4>
+                <h4 class="item-title">
+                    <a href="#">Valor: ${{ departamento.Valor_Diario}}</a>
+                  </h4>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% else %}
+    <h1>No existe registro de Clientes<h1>
+{% endif %}
+
 {% endblock %}

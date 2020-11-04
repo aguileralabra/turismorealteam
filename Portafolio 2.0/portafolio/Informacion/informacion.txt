@@ -17,6 +17,8 @@ https://www.apsl.net/blog/2012/05/11/guardar-el-usuario-que-crea-un-objeto-desde
 
 https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Authentication
 
+https://www.youtube.com/watch?v=KSFCQud4avc&ab_channel=moisessepulveda
+
 --Mercado Pago = Implementar pago (Pruebas)
 
 

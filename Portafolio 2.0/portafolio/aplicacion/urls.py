@@ -88,7 +88,8 @@ urlpatterns = [
          ), 
     path(
         'mantener_departamento/',
-         views.MantenerDepartamentoView.as_view()
+         views.MantenerDepartamentoView.as_view(),
+         name='mantener_departamento'
          ), 
     path(
         'informepdf/',

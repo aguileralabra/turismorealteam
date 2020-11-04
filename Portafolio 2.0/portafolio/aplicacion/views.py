@@ -362,8 +362,26 @@ class MantenerDepartamentoView(LoginRequiredMixin,View):
     template_name = 'mantener_departamento.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['departamento'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+
     def get(self,request,*args,**kwargs):
         return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:mantener_departamento')
+
+'''hasta aqui Mantenedor Departamento ------------------------------------------------------'''
+
 
 class PagosView(LoginRequiredMixin,TemplateView):
     template_name = 'pagos_adm.html'
