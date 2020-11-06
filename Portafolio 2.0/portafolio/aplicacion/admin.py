@@ -1,8 +1,11 @@
 from django.contrib import admin
 from aplicacion.models import *
 
+class UserAdmin(admin.ModelAdmin):
+    search_fields = ('cli_Rut','cli_Nombre','username')
+    list_display = ('cli_Rut','cli_Nombre','username', 'is_staff','is_active','is_superuser')
 
-admin.site.register(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(Acompañante)
 admin.site.register(Inventario)
 admin.site.register(Gasto)
