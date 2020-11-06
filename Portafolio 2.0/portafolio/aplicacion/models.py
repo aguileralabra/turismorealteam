@@ -3,6 +3,7 @@ from django.contrib.auth.models import  AbstractBaseUser, PermissionsMixin
 from .managers import UserManager
 from django.conf import settings
 from datetime import datetime
+from django.db.models.signals import post_save
 
 class User(AbstractBaseUser, PermissionsMixin):
     cli_Rut=models.CharField('Rut',max_length=30, unique=True)
@@ -39,6 +40,14 @@ class Acompañante(models.Model):
 
     def __str__ (self):
         return self.acom_rut
+
+def quitar_relacion_user_acompañante(sender, instance, **kwargs):
+    usuario = instance.id
+    acompañantes = Acompañante.objects.filter(user_id=usuario)
+    for acompañantte in acompañantes:
+        acompañantt.user_id.remove(usuario)
+
+post_save.connect(quitar_relacion_user_acompañante, sender = User)
 
 class Inventario(models.Model):
     reparacion= models.CharField(max_length=100, default="")
