@@ -18,7 +18,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .functions import code_generator, render_to_pdf
 from django.core.mail import send_mail
 from django.template import context
-
+from .mixins import SuperUsuarioMixin
 
 
 class InicioView(TemplateView):
@@ -312,7 +312,7 @@ Empieza Administrador------------------------------------------------------
 
 '''
 
-class MantenerClienteView(LoginRequiredMixin, View):
+class MantenerClienteView(LoginRequiredMixin, SuperUsuarioMixin, View):
     model = User
     form_class = UserRegisterForm
     template_name = 'mantener_cliente.html'
@@ -356,7 +356,7 @@ class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
 
 '''hasta aqui mantenedor cliente ------------------------------------------------------'''
 
-class MantenerDepartamentoView(LoginRequiredMixin,View):
+class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, View):
     model = Departamento
     form_class = DepartamentoForm
     template_name = 'mantener_departamento.html'
@@ -368,34 +368,33 @@ class MantenerDepartamentoView(LoginRequiredMixin,View):
     def get_context_data(self, **kwargs):
         contexto = {}
         contexto['departamento'] = self.get_queryset()
-        contexto['form'] = self.form_class
+        contexto['departform'] = self.form_class
         return contexto
 
     def get(self,request,*args,**kwargs):
         return render(request,self.template_name, self.get_context_data())
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            form.save()
+        departform = self.form_class(request.POST)
+        if departform.is_valid():
+            departform.save()
         return redirect('cliente_app:mantener_departamento')
 
 '''hasta aqui Mantenedor Departamento ------------------------------------------------------'''
 
-
-class PagosView(LoginRequiredMixin,TemplateView):
+class PagosView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'pagos_adm.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-class ServiciosView(LoginRequiredMixin,TemplateView):
+class ServiciosView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'mantener_servicios.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-class EstadisticaView(LoginRequiredMixin, TemplateView):
+class EstadisticaView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'generar_estadistica.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-class InformeView(LoginRequiredMixin,TemplateView):
+class InformeView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'generar_informe.html'
     login_url = reverse_lazy('cliente_app:logeo')
 

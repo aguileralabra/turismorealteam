@@ -67,24 +67,24 @@ class Comuna(models.Model):
 class Departamento(models.Model):
 
     CALE_CHOICES = (
-        ('0', 'Si'),
-        ('1', 'No'),
+        ('Si', 'Si'),
+        ('No', 'No'),
     )
     INTERNET_CHOICES = (
-        ('0', 'Si'),
-        ('1', 'No'),
+        ('Si', 'Si'),
+        ('No', 'No'),
     )
     AMOBLADO_CHOICES = (
-        ('0', 'Si'),
-        ('1', 'No'),
+        ('Si', 'Si'),
+        ('No', 'No'),
     )
     TELEVICION_CHOICES = (
-        ('0', 'Si'),
-        ('1', 'No'),
+        ('Si', 'Si'),
+        ('No', 'No'),
     )
     DISPONIBILIDADDEPART_CHOICES = (
-        ('0', 'Si'),
-        ('1', 'No'),
+        ('Si', 'Si'),
+        ('No', 'No'),
     )
     Nombre_Departamento = models.CharField(max_length=30)
     Numero_propiedad = models.IntegerField(null=True)
@@ -100,8 +100,6 @@ class Departamento(models.Model):
     Imagen_Entorno = models.ImageField( default="", blank=True, null=True)
     Valor_Diario = models.IntegerField()
     Disponible = models.CharField(max_length=2, choices=DISPONIBILIDADDEPART_CHOICES)
-    Check_in = models.CharField(max_length=200, default="")
-    Check_out= models.CharField(max_length=200, default="")
     comuna=models.ForeignKey(Comuna, on_delete=models.CASCADE, default="")
     inventario = models.OneToOneField(Inventario, unique=True, on_delete=models.CASCADE, default="")
     gasto = models.OneToOneField(Gasto, unique=True, on_delete=models.CASCADE, default="")

@@ -75,53 +75,47 @@
 
                 <p>Numero de Baños</p>
                 <input type="number" id="celular" class="form-input" name="Baños" required>
-                
+
+                <p>Valor departamento diariamente</p>
+                <input type="number" id="celular" class="form-input" name="Valor_Diario" required>
+                <hr>
                 <p>Calefacción</p>
-                <select name="Calefaccion">
-                  <option>Si</option>
-                  <option>No</option>
-                </select>
+                {{ departform.Calefaccion }}
 
                 <p>Internet</p>
-                <select name="Internet">
-                  <option>Si</option>
-                  <option>No</option>
-                </select>
+                {{ departform.Internet }}
+
 
                 <p>Amoblado</p>
-                <select name="Amoblado">
-                  <option>Si</option>
-                  <option>No</option>
-                </select>
+                {{ departform.Amoblado }}
+
 
                 <p>Televisión</p>
-                <select name="Televicion">
-                  <option>Si</option>
-                  <option>No</option>
-                </select>
+                {{ departform.Televicion }}
+
 
                 <p>Disponibilidad</p>
-                <select name="Disponible">
-                  <option>Si</option>
-                  <option>No</option>
-                </select>
+                {{ departform.Disponible }}
 
+                <hr>
                 <p>Imagenes del Recinto</p>
                 <input type="file" id="celular" class="form-input" name="Imagen_Recinto" required>
 
                 <p>Imagenes del Entorno</p>
                 <input type="file" id="celular" class="form-input" name="Imagen_Entorno" required>
 
-                <p>Valor departamento diariamente</p>
-                <input type="number" id="celular" class="form-input" name="Valor_Diario" required>
+                <hr>
+                <p>Comuna del Departamento</p>
+                {{ departform.comuna }}
 
-                {{ form.comuna }}
+                <p>Inventario adjudicado</p>
+                {{ departform.inventario }}
 
-                {{ form.inventario }}
-
-                {{ form.gasto }}
+                <p>Gasto del Departamento</p>
+                {{ departform.gasto }}
 
                 {% csrf_token %}
+                <br><br>
                 <input type="submit" class="submit" value="Añadir Departamento">
             </form> 
             

@@ -52,6 +52,11 @@
     color: #fff;
 }
 
+.form-contac select{
+    color: black;
+}
+
+
 .form-contac .form-submit{
 width: 90%;
 outline: none;
