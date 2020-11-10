@@ -13,7 +13,7 @@ class DepartamentoAdmin(admin.ModelAdmin):
     search_fields = ('Nombre_Departamento','Valor_Diario','Disponible')
     list_display = ('Nombre_Departamento','Numero_propiedad','Descripcion_departamento', 'Valor_Diario','Disponible','Direccion_departamento')
 
-class DepartamentoAdmin(admin.ModelAdmin):
+class ContactoAdmin(admin.ModelAdmin):
     search_fields = ('asunto','descripcioncontacto','correoaenviar')
     list_display = ('asunto','descripcioncontacto','correoaenviar')
 
@@ -32,4 +32,4 @@ admin.site.register(ServicioExtra)
 admin.site.register(Transporte)
 admin.site.register(Tour)
 admin.site.register(Reserva, ReservaAdmin)
-admin.site.register(Contact)
+admin.site.register(Contact, ContactoAdmin)

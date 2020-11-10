@@ -336,17 +336,12 @@ class MantenerClienteView(LoginRequiredMixin, SuperUsuarioMixin, View):
             form.save()
         return redirect('cliente_app:mantener_cliente')
 
-class UsuarioUpdate(LoginRequiredMixin, UpdateView):
+class UsuarioUpdate(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
     model = User
     form_class = UserRegisterForm
-    template_name = "mantener_cliente.html"
+    template_name = "actualizaruser.html"
     success_url =  reverse_lazy('cliente_app:mantener_cliente')
     login_url = reverse_lazy('cliente_app:logeo')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['usuario'] = User.objects.filter(is_staff = False)
-        return context
 
 class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "deleteuser.html"
