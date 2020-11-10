@@ -255,10 +255,10 @@ class CrearReservaView(LoginRequiredMixin, CreateView):
 
 ''' -----------------------------UPDATEVIEW--------------------- '''
 
-class AcompañanteUpdate(LoginRequiredMixin, UpdateView):
+class AcompañanteUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "editacom.html"
     model = Acompañante
-    fields = ('__all__')
+    form_class = AcompañanteForm
     success_url =  reverse_lazy('cliente_app:listadoacompañante')
     login_url = reverse_lazy('cliente_app:logeo')
 
@@ -336,13 +336,6 @@ class MantenerClienteView(LoginRequiredMixin, SuperUsuarioMixin, View):
             form.save()
         return redirect('cliente_app:mantener_cliente')
 
-class UsuarioUpdate(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
-    model = User
-    form_class = UserRegisterForm
-    template_name = "actualizaruser.html"
-    success_url =  reverse_lazy('cliente_app:mantener_cliente')
-    login_url = reverse_lazy('cliente_app:logeo')
-
 class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "deleteuser.html"
     model = User
@@ -357,23 +350,6 @@ class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, View):
     template_name = 'mantener_departamento.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-    def get_queryset(self):
-        return self.model.objects.all()
-
-    def get_context_data(self, **kwargs):
-        contexto = {}
-        contexto['departamento'] = self.get_queryset()
-        contexto['departform'] = self.form_class
-        return contexto
-
-    def get(self,request,*args,**kwargs):
-        return render(request,self.template_name, self.get_context_data())
-
-    def post(self, request, *args, **kwargs):
-        departform = self.form_class(request.POST)
-        if departform.is_valid():
-            departform.save()
-        return redirect('cliente_app:mantener_departamento')
 
 '''hasta aqui Mantenedor Departamento ------------------------------------------------------'''
 

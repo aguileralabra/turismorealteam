@@ -115,7 +115,7 @@ urlpatterns = [
           ), 
      path(
          'editacom/<pk>/',
-          views.AcompañanteUpdate.as_view(),
+          views.AcompañanteUpdateView.as_view(),
            name='editacom'
            ), 
      path(
@@ -132,11 +132,6 @@ urlpatterns = [
          'deleteuser/<pk>/',
           views.UsuarioDeleteView.as_view(),
            name='deleteuser'
-           ), 
-     path(
-         'editarusuario/<pk>/',
-          views.UsuarioUpdate.as_view(),
-           name='editarusuario'
            ), 
      path(
         'mantener_servicios/',

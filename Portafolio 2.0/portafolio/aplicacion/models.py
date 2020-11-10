@@ -41,13 +41,13 @@ class Acompañante(models.Model):
     def __str__ (self):
         return self.acom_rut
 
-def quitar_relacion_user_acompañante(sender, instance, **kwargs):
-    usuario = instance.id
-    acompañantes = Acompañante.objects.filter(user_id=usuario)
-    for acompañantte in acompañantes:
-        acompañantt.user_id.remove(usuario)
+#def quitar_relacion_user_acompañante(sender, instance, **kwargs):
+#    usuario = instance.id
+#    acompañantes = Acompañante.objects.filter(user_id=usuario)
+#    for acompañantt in acompañantes:
+#        acompañantt.user_id.remove(usuario)
 
-post_save.connect(quitar_relacion_user_acompañante, sender = User)
+#post_save.connect(quitar_relacion_user_acompañante, sender = User)
 
 class Inventario(models.Model):
     reparacion= models.CharField(max_length=100, default="")
