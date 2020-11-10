@@ -175,12 +175,14 @@ class ListPerfil(LoginRequiredMixin, TemplateView):
     template_name = 'perfil.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-
 class ListAcompañante(LoginRequiredMixin, ListView):
     template_name = 'lista_acompañante.html'
     model = Acompañante
     context_object_name = 'acompañante'
     login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self, *args, **kwargs):
+        return Acompañante.objects.filter(user=self.request.user)
 
 class ListReservaListView(LoginRequiredMixin, ListView):
     template_name = 'informepdf.html'
@@ -188,7 +190,9 @@ class ListReservaListView(LoginRequiredMixin, ListView):
     paginate_by = 1
     context_object_name = 'reservitapdf'
     login_url = reverse_lazy('cliente_app:logeo')
-    
+
+    def get_queryset(self, *args, **kwargs):
+        return Reserva.objects.filter(user=self.request.user)
 
 class ListReservaPdf( View):
 
