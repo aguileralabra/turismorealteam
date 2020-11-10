@@ -161,6 +161,8 @@ class ListCliente(LoginRequiredMixin, ListView):
     context_object_name = 'reservita'
     login_url = reverse_lazy('cliente_app:logeo')
 
+    def get_queryset(self, *args, **kwargs):
+        return Reserva.objects.filter(user=self.request.user)
  #   def get_queryset(self):
   #      #identificar cliente
    #     id = self.kwargs['pk']
@@ -194,7 +196,7 @@ class ListReservaListView(LoginRequiredMixin, ListView):
     def get_queryset(self, *args, **kwargs):
         return Reserva.objects.filter(user=self.request.user)
 
-class ListReservaPdf( View):
+class ListReservaPdf(View):
 
     def get(self, request, *args, **kwargs):
         reservitapdf = Reserva.objects.last()
