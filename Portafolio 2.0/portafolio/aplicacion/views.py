@@ -193,7 +193,7 @@ class ListReservaListView(LoginRequiredMixin, ListView):
 class ListReservaPdf( View):
 
     def get(self, request, *args, **kwargs):
-        reservitapdf = Reserva.objects.all()
+        reservitapdf = Reserva.objects.last()
         data = {
             'reservitapdf' : reservitapdf
         }
