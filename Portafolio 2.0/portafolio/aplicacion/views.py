@@ -254,7 +254,6 @@ class CrearReservaView(LoginRequiredMixin, CreateView):
         self.object.save()
         return super(CrearReservaView, self).form_valid(form)
 
-
 ''' -----------------------------UPDATEVIEW--------------------- '''
 
 class AcompañanteUpdateView(LoginRequiredMixin, UpdateView):
@@ -283,7 +282,6 @@ class ReservaDelete(LoginRequiredMixin, DeleteView):
 termina aqui Cliente------------------------------------------------------
 
 '''
-
 '''
 
 Empieza Funcionario------------------------------------------------------

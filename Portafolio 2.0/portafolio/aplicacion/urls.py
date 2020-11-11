@@ -70,7 +70,8 @@ urlpatterns = [
          ), 
     path(
         'perfil_funcionario/',
-         views.PerfilFuncionarioView.as_view()
+         views.PerfilFuncionarioView.as_view(),
+         name='perfil_funcionario'
          ), 
     path(
         'crear_listado/',
