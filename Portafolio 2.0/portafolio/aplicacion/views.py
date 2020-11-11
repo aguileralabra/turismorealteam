@@ -130,10 +130,6 @@ class CodeVerificationView(FormView):
         )
         return super(CodeVerificationView, self).form_valid(form)
 
-class RecuperarContraseñaView(TemplateView):
-    template_name = "recuperarcontraseña.html"
-
-
 '''
 
 Aqui terminar login---------------------------------------------------------
@@ -196,7 +192,7 @@ class ListReservaListView(LoginRequiredMixin, ListView):
     def get_queryset(self, *args, **kwargs):
         return Reserva.objects.filter(user=self.request.user)
 
-class ListReservaPdf(View):
+class ListReservaPdf(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         reservitapdf = Reserva.objects.last()

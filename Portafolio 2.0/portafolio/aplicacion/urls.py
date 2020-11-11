@@ -43,11 +43,6 @@ urlpatterns = [
           name='cliente'
           ),
     path(
-        'recuperarcontraseña',
-         views.RecuperarContraseñaView.as_view(),
-         name='recuperarcontraseña'
-          ), 
-    path(
         'resultado',
          views.resultado ,
           name='resultado'

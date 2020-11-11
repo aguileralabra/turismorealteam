@@ -15,6 +15,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     cli_Telefono=models.CharField('Telefono',max_length=15, blank=True)
     username = models.CharField(max_length=10, unique=True)
     codregistro = models.CharField(max_length=6, blank=True, default='000000')
+    funcionario = models.BooleanField(default=False)
     #
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False) 
