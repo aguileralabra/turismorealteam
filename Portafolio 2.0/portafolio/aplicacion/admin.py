@@ -3,7 +3,7 @@ from aplicacion.models import *
 
 class UserAdmin(admin.ModelAdmin):
     search_fields = ('cli_Rut','cli_Nombre','username')
-    list_display = ('cli_Rut','cli_Nombre','username', 'is_staff','is_active','is_superuser')
+    list_display = ('cli_Rut','cli_Nombre','username', 'is_staff','is_active','is_superuser', 'funcionario')
 
 class ReservaAdmin(admin.ModelAdmin):
     search_fields = ('id','Fecha_Reserva_Inicio','Estado_Reserva')
