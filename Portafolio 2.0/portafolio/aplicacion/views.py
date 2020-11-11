@@ -18,7 +18,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .functions import code_generator, render_to_pdf
 from django.core.mail import send_mail
 from django.template import context
-from .mixins import SuperUsuarioMixin
+from .mixins import SuperUsuarioMixin, FuncionarioUsuarioMixin
 
 
 class InicioView(TemplateView):
@@ -293,7 +293,7 @@ class FuncionarioView(LoginRequiredMixin,TemplateView):
     template_name = 'funcionario.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-class PerfilFuncionarioView(LoginRequiredMixin,TemplateView):
+class PerfilFuncionarioView(LoginRequiredMixin, FuncionarioUsuarioMixin,TemplateView):
     template_name = 'perfil_funcionario.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
