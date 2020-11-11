@@ -144,12 +144,12 @@ class Conductor(models.Model):
     
 class Vehiculo(models.Model):
     AIRE_CHOICES = (
-        ('0', 'Si'),
-        ('1', 'No'),
+        ('Si', 'Si'),
+        ('No', 'No'),
     )
     DISPONIBILIDADVEHICULO_CHOICES = (
-        ('0', 'Si'),
-        ('1', 'No'),
+        ('Si', 'Si'),
+        ('No', 'No'),
     )
     patente=models.CharField('Patente',max_length=14, unique=True)
     color_vehiculo=models.CharField('Color Vehiculo',max_length=30)
@@ -199,8 +199,8 @@ class Tour(models.Model):
 
 class Reserva(models.Model):
     ESTADORESERVA_CHOICES = (
-        ('0', 'VIGENTE'),
-        ('1', 'CONCRETADA'),
+        ('VIGENTE', 'VIGENTE'),
+        ('CONCRETADA', 'CONCRETADA'),
     )
     Fecha_Reserva_Inicio = models.DateField(blank=True)   
     Fecha_Reserva_Termino = models.DateField(blank=True)  

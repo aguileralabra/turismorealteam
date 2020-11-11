@@ -22,6 +22,7 @@
         <thead>
         <div class="nombrestr">
           <tr>
+            {}
             <th>Codigo</th>
             <th>Nombre</th>
             <th>Departamento</th>
@@ -34,28 +35,19 @@
           </tr>
         </thead>
       </div>
+      {% for reserva in reserva %}
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><center><button>Listado</button></center></td>
-          <td><center><button>Listado</button></center></td>
+          <td>{{ reserva.id}}</td>
+          <td>{{ reserva.user.cli_Nombre}}</td>
+          <td>{{ reserva.departamento.Nombre_Departamento}}</td>
+          <td>{{ reserva.Fecha_Reserva_Inicio}}</td>
+          <td>{{ reserva.servicioextra}}</td>
+          <td>${{ reserva.departamento.Valor_Diario}}</td>
+          <td>{{ reserva.Estado_Reserva}}</td>
+          <td><a href="/editacom/{{ acompañante.id }}">Check In</a></td>
+          <td><a href="/editacom/{{ acompañante.id }}">Check Out</a></td>
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><center><button>Listado</button></center></td>
-          <td><center><button>Listado</button></center></td>
-        </tr>
+      {% endfor %}
       </table>
       <p>Si desea registrar un listado haga click en el siguiente link <a href="#"> Realizar un listado</a></p>
       </div>

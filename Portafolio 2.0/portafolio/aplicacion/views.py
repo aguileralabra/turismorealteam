@@ -144,10 +144,22 @@ Cliente------------------------------------------------------
 ''' TEMPLATEVIEW-------------------------------------------- '''
 
 
-class InicioclienteView(LoginRequiredMixin, TemplateView):
+class InicioclienteView(LoginRequiredMixin, View):
     template_name = "inicio.html"
     login_url = reverse_lazy('cliente_app:logeo')
+    model = Reserva
+    form_class = ReservaForm
 
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['reserva'] = self.get_queryset()
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
 
 ''' ----------------------------LISTVIEW--------------------- '''
 
