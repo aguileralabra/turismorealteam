@@ -151,6 +151,7 @@
         {% for departamento in departamento %}
           <div class="item">
             <a href="#" class="overlay-wrapper">
+              <img src="{{ departamento.Imagen_Recinto.url }}" alt="Villaricon" class="img-responsive underlay">
                 <span class="overlay">
                   <span class="overlay-content"> <span class="h4">Descripcion: {{ departamento.Descripcion_departamento}}</span> </span>
                   <span class="overlay-content"> <span class="h4">Cantidad Baños: {{ departamento.Baños}}</span> </span>

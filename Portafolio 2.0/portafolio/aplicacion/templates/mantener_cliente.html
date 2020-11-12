@@ -21,7 +21,6 @@
             <thead>
             <div class="nombrestr">
                 <tr>
-                <th>ID</th>
                 <th>Rut</th>
                 <th>Nombre</th>
                 <th>Correo</th>
@@ -35,7 +34,6 @@
             </div>
             {% for usuario in usuario %}
             <tr>
-                <td>{{ usuario.id}}</td>
                 <td>{{ usuario.cli_Rut}}</td>
                 <td>{{ usuario.cli_Nombre}} {{ usuario.cli_Apellidos}}</td>
                 <td>{{ usuario.email}}</td>

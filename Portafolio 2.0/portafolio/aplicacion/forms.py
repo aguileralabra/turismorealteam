@@ -147,4 +147,3 @@ class AdminUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['cli_Rut','cli_Nombre','cli_Apellidos', 'cli_Edad','cli_Nacionalidad', 'email','cli_Telefono','username','funcionario','is_active']
-
