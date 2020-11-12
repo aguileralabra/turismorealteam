@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForm, AdminUserForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -347,6 +347,13 @@ class MantenerClienteView(LoginRequiredMixin, SuperUsuarioMixin, View):
         if form.is_valid():
             form.save()
         return redirect('cliente_app:mantener_cliente')
+
+class ClienteUpdateView(LoginRequiredMixin, UpdateView):
+    template_name = "actualizaruser.html"
+    model = User
+    form_class = AdminUserForm
+    success_url =  reverse_lazy('cliente_app:mantener_cliente')
+    login_url = reverse_lazy('cliente_app:logeo')
 
 class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "deleteuser.html"

@@ -1,0 +1,51 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<br>  
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+            Actualizar Cliente
+          </h3>
+      </div>
+      <div class="panel-body">
+        <form method="POST" accept-charset="UTF-8" role="form" >
+          <fieldset>
+            <div class="escritura">
+                <label>Rut</label>
+                <div class="escrituraline">{{ form.cli_Rut }}</div><br>
+                <label>Nombre</label>
+                <div class="escrituraline">{{ form.cli_Nombre}}</div><br>
+                <label>Apellidos</label>
+                <div class="escrituraline">{{ form.cli_Apellidos}}</div><br>
+                <label>Edad</label>
+                <div class="escrituraline">{{ form.cli_Edad}}</div><br>
+                <label>Nacionalidad</label>
+                <div class="escrituraline">{{ form.cli_Nacionalidad}}</div><br>
+                <label>Email</label>
+                <div class="escrituraline">{{ form.email}}</div><br>
+                <label>Telefono</label>
+                <div class="escrituraline">{{ form.cli_Telefono}}</div><br>
+                <label>Nombre de Usuario</label>
+                <div class="escrituraline">{{ form.username}}</div><br>
+                <label>Activar/Desactivar Usuario</label>
+                <div class="escrituraline">{{ form.is_active}}</div><br>
+                <label>Activar/Desactivar MODO: Funcionario</label>
+                <div class="escrituraline">{{ form.funcionario}}</div><br>
+                {% csrf_token %}
+              </div>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Editar">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

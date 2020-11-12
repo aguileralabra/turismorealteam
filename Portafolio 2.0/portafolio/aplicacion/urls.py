@@ -83,6 +83,11 @@ urlpatterns = [
          name='mantener_cliente'
          ), 
     path(
+        'actualizaruser/<pk>/',
+         views.ClienteUpdateView.as_view(),
+         name='actualizaruser'
+         ), 
+    path(
         'mantener_departamento/',
          views.MantenerDepartamentoView.as_view(),
          name='mantener_departamento'
