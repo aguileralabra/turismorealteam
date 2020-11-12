@@ -93,6 +93,11 @@ urlpatterns = [
          name='mantener_departamento'
          ), 
     path(
+        'deletedepartamento/<pk>/',
+         views.DepartamentoDeleteView.as_view(),
+         name='deletedepartamento'
+         ), 
+    path(
         'informepdf/',
          views.ListReservaListView.as_view(),
          name='informepdf'), 

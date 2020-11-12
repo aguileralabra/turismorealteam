@@ -1,0 +1,30 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<form method="POST">
+</form>
+<br>  
+<div class="row">
+ <div class="col-sm-6 col-sm-offset-3">
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       <h3 class="panel-title">
+           Eliminar Departamento
+         </h3>
+     </div>
+     <div class="panel-body">
+       <form method="POST" accept-charset="UTF-8" role="form" >
+             {% csrf_token %}
+             <p>confirme que desea eliminar</p>
+
+           <input class="btn btn-lg btn-primary btn-block" type="submit" value="Eliminar">
+         </fieldset>
+       </form>
+     </div>
+   </div>
+ </div>
+</div>
+{% endblock %}

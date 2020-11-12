@@ -14,13 +14,10 @@
               <th>Nombre</th>
               <th>Comuna</th>
               <th>Direccion</th>
-              <th>Internet</th>
-              <th>Amoblado</th>
-              <th>Television</th>
               <th>Disponible</th>
               <th>Precio</th>
               <th>Editar</th>
-              <th>Eliminar</th>
+              <th>Borrar</th>
             </tr>
           </thead>
         </div>
@@ -29,15 +26,12 @@
             <td>{{ departamento.Nombre_Departamento}}</td>
             <td>{{ departamento.comuna}}</td>
             <td>{{ departamento.Direccion_departamento}}</td>
-            <td>{{ departamento.Internet}}</td>
-            <td>{{ departamento.Amoblado}}</td>
-            <td>{{ departamento.Televicion}}</td>
             <td>{{ departamento.Disponible}}</td>
             <td>${{ departamento.Valor_Diario}}</td>
             <td><a href="/editacom/{{ departamento.id }}">Editar</a>
             </td>
-            <td><a href="/deleteacomp/{{ departamento.id }}" 
-                onClick="return confirm('¿Seguro que quieres eliminar a tu acompañante: {{acompañante.acom_rut}}?');">
+            <td><a href="/deletedepartamento/{{ departamento.id }}" 
+                onClick="return confirm('¿Seguro que quieres eliminar al departamento: {{departamento.Nombre_Departamento}}?');">
                   Borrar
               </a></td>
           </tr>
@@ -56,7 +50,7 @@
         <div class="formulario-contacto">
             <h4>Formulario Departamento </h4>
             <hr>
-            <form class="form-contac" method="POST" action="" enctype="multipart/form-data">
+            <form class="form-contac" method="POST"  enctype="multipart/form-data">
                 <p>Nombre Departamento</p>
                 <input type="text" id="celular" class="form-input" name="Nombre_Departamento" required>
                 
@@ -80,22 +74,22 @@
                 <input type="number" id="celular" class="form-input" name="Valor_Diario" required>
                 <hr>
                 <p>Calefacción</p>
-                {{ departform.Calefaccion }}
+                {{ form.Calefaccion }}
 
                 <p>Internet</p>
-                {{ departform.Internet }}
+                {{ form.Internet }}
 
 
                 <p>Amoblado</p>
-                {{ departform.Amoblado }}
+                {{ form.Amoblado }}
 
 
                 <p>Televisión</p>
-                {{ departform.Televicion }}
+                {{ form.Televicion }}
 
 
                 <p>Disponibilidad</p>
-                {{ departform.Disponible }}
+                {{ form.Disponible }}
 
                 <hr>
                 <p>Imagenes del Recinto</p>
@@ -106,13 +100,13 @@
 
                 <hr>
                 <p>Comuna del Departamento</p>
-                {{ departform.comuna }}
+                {{ form.comuna }}
 
                 <p>Inventario adjudicado</p>
-                {{ departform.inventario }}
+                {{ form.inventario }}
 
                 <p>Gasto del Departamento</p>
-                {{ departform.gasto }}
+                {{ form.gasto }}
 
                 {% csrf_token %}
                 <br><br>

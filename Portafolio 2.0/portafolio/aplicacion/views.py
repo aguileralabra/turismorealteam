@@ -348,14 +348,14 @@ class MantenerClienteView(LoginRequiredMixin, SuperUsuarioMixin, View):
             form.save()
         return redirect('cliente_app:mantener_cliente')
 
-class ClienteUpdateView(LoginRequiredMixin, UpdateView):
+class ClienteUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
     template_name = "actualizaruser.html"
     model = User
     form_class = AdminUserForm
     success_url =  reverse_lazy('cliente_app:mantener_cliente')
     login_url = reverse_lazy('cliente_app:logeo')
 
-class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
+class UsuarioDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     template_name = "deleteuser.html"
     model = User
     success_url =  reverse_lazy('cliente_app:mantener_cliente')
@@ -387,7 +387,11 @@ class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, ListView):
             form.save()
         return redirect('cliente_app:mantener_departamento')
 
-
+class DepartamentoDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
+    template_name = "deletedepartamento.html"
+    model = Departamento
+    success_url =  reverse_lazy('cliente_app:mantener_departamento')
+    login_url = reverse_lazy('cliente_app:logeo')
 
 '''hasta aqui Mantenedor Departamento ------------------------------------------------------'''
 
