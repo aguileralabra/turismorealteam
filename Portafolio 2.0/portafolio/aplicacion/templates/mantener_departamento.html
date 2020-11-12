@@ -28,7 +28,7 @@
             <td>{{ departamento.Direccion_departamento}}</td>
             <td>{{ departamento.Disponible}}</td>
             <td>${{ departamento.Valor_Diario}}</td>
-            <td><a href="/editacom/{{ departamento.id }}">Editar</a>
+            <td><a href="/actualizardepartamento/{{ departamento.id }}">Editar</a>
             </td>
             <td><a href="/deletedepartamento/{{ departamento.id }}" 
                 onClick="return confirm('¿Seguro que quieres eliminar al departamento: {{departamento.Nombre_Departamento}}?');">

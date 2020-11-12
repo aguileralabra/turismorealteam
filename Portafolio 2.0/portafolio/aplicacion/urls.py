@@ -77,6 +77,7 @@ urlpatterns = [
         'crear_listado/',
          views.CrearlistadoView.as_view()
          ), 
+        #Mantener Cliente-------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'mantener_cliente/',
          views.MantenerClienteView.as_view(),
@@ -87,6 +88,12 @@ urlpatterns = [
          views.ClienteUpdateView.as_view(),
          name='actualizaruser'
          ), 
+     path(
+         'deleteuser/<pk>/',
+         views.UsuarioDeleteView.as_view(),
+         name='deleteuser'
+        ), 
+        #Mantener Departamento-------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'mantener_departamento/',
          views.MantenerDepartamentoView.as_view(),
@@ -96,7 +103,13 @@ urlpatterns = [
         'deletedepartamento/<pk>/',
          views.DepartamentoDeleteView.as_view(),
          name='deletedepartamento'
+         ),
+    path(
+        'actualizardepartamento/<pk>/',
+         views.DepartamentoUpdateView.as_view(),
+         name='actualizardepartamento'
          ), 
+        #Mantener Reservas-------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'informepdf/',
          views.ListReservaListView.as_view(),
@@ -133,11 +146,6 @@ urlpatterns = [
          'cancelarreserva/<pk>/',
           views.ReservaDelete.as_view(),
            name='cancelarreserva'
-           ), 
-     path(
-         'deleteuser/<pk>/',
-          views.UsuarioDeleteView.as_view(),
-           name='deleteuser'
            ), 
      path(
         'mantener_servicios/',

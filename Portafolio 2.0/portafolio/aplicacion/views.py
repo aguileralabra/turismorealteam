@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForm, AdminUserForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -365,7 +365,7 @@ class UsuarioDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
 
 class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, ListView):
     model = Departamento
-    form_class = DepartamentoForm
+    form_class = DepartamentoForms
     template_name = 'mantener_departamento.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
@@ -386,6 +386,13 @@ class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, ListView):
         if form.is_valid():
             form.save()
         return redirect('cliente_app:mantener_departamento')
+
+class DepartamentoUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
+    template_name = "actualizardepartamento.html"
+    model = Departamento
+    form_class = DepartamentoForms
+    success_url =  reverse_lazy('cliente_app:mantener_departamento')
+    login_url = reverse_lazy('cliente_app:logeo')
 
 class DepartamentoDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     template_name = "deletedepartamento.html"

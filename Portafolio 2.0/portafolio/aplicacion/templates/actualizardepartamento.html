@@ -1,0 +1,78 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+<br>  
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+            Actualizar Departamento
+          </h3>
+      </div>
+      <div class="panel-body">
+        <form method="POST" accept-charset="UTF-8" role="form">
+            <fieldset>
+            <div class="escritura">
+                <label>Nombre Departamento</label>
+                <div class="escrituraline">{{ form.Nombre_Departamento }}</div><br>
+
+                <label>Numero de Propiedad</label>
+                <div class="escrituraline">{{ form.Numero_propiedad}}</div><br>
+
+                <label>Descripcion del Departamento</label>
+                <div class="escrituraline">{{ form.Descripcion_departamento}}</div><br>
+
+                <label>Comuna</label>
+                <div class="escrituraline">{{ form.comuna}}</div><br>
+
+                <label>Direccion </label>
+                <div class="escrituraline">{{ form.Direccion_departamento}}</div><br>
+
+                <label>Cantidad de Habitaciones</label>
+                <div class="escrituraline">{{ form.habitaciones}}</div><br>
+
+                <label>Cantidad de Baños</label>
+                <div class="escrituraline">{{ form.Baños}}</div><br>
+
+                <label>Calefacción</label>
+                <div class="escrituraline">{{ form.Calefaccion}}</div><br>
+
+                <label>Internet</label>
+                <div class="escrituraline">{{ form.Internet}}</div><br>
+
+                <label>Amoblado</label>
+                <div class="escrituraline">{{ form.Amoblado}}</div><br>
+
+                <label>Imagen del Recinto</label>
+                <div class="escrituraline">{{ form.Imagen_Recinto}}</div><br>
+
+                <label>Imagen del Entorno</label>
+                <div class="escrituraline">{{ form.Imagen_Entorno}}</div><br>
+
+                <label>Valor por dia</label>
+                <div class="escrituraline">{{ form.Valor_Diario}}</div><br>
+
+                <label>Disponibilidad</label>
+                <div class="escrituraline">{{ form.Disponible}}</div><br>
+
+                <label>Inventario</label>
+                <div class="escrituraline">{{ form.inventario}}</div><br>
+
+                <label>Gasto del Departamento</label>
+                <div class="escrituraline">{{ form.gasto}}</div><br>
+                {% csrf_token %}
+              </div>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Modificar">
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -138,10 +138,27 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ('__all__')
 
-class DepartamentoForm(forms.ModelForm):
+class DepartamentoForms(forms.ModelForm):
     class Meta:
         model = Departamento
-        fields = ('__all__')
+        fields = [
+            'Nombre_Departamento',
+            'Numero_propiedad',
+            'Descripcion_departamento', 
+            'Direccion_departamento',
+            'habitaciones', 
+            'Baños',
+            'Calefaccion',
+            'Internet',
+            'Amoblado',
+            'Televicion', 
+            'Imagen_Recinto',
+            'Imagen_Entorno', 
+            'Valor_Diario',
+            'Disponible',
+            'comuna',
+            'inventario',
+            'gasto']
 
 class AdminUserForm(forms.ModelForm):
     class Meta:
