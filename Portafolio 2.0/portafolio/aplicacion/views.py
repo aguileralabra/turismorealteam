@@ -363,7 +363,7 @@ class UsuarioDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
 
 '''hasta aqui mantenedor cliente ------------------------------------------------------'''
 
-class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, ListView):
+class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, View):
     model = Departamento
     form_class = DepartamentoForms
     template_name = 'mantener_departamento.html'
@@ -400,7 +400,32 @@ class DepartamentoDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     success_url =  reverse_lazy('cliente_app:mantener_departamento')
     login_url = reverse_lazy('cliente_app:logeo')
 
-'''hasta aqui Mantenedor Departamento ------------------------------------------------------'''
+'''hasta aqui Mantenedor Reserva ------------------------------------------------------'''
+class MantenerReservaView(LoginRequiredMixin, SuperUsuarioMixin, View):
+    model = Reserva
+    form_class = ReservaForm
+    template_name = 'mantener_reserva.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['reserva'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:mantener_reserva')
+
+'''Pago ----------------------------------------------------------------------------------------------------------------------------------------------'''
 
 class PagosView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'pagos_adm.html'

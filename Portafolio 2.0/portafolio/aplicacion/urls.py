@@ -111,6 +111,11 @@ urlpatterns = [
          ), 
         #Mantener Reservas-------------------------------------------------------------------------------------------------------------------------------------------------
     path(
+        'mantener_reserva/',
+         views.MantenerReservaView.as_view(),
+         name='mantener_reserva'
+         ), 
+    path(
         'informepdf/',
          views.ListReservaListView.as_view(),
          name='informepdf'), 
