@@ -4,6 +4,10 @@ from .managers import UserManager
 from django.conf import settings
 from datetime import datetime
 from django.db.models.signals import post_save
+import random
+
+def random_string():
+    return str(random.randint(10000, 99999))
 
 class User(AbstractBaseUser, PermissionsMixin):
     cli_Rut=models.CharField('Rut',max_length=30, unique=True)
@@ -198,6 +202,7 @@ class Tour(models.Model):
         return self.categoria
 
 class Reserva(models.Model):
+    Codigo_Reserva = models.CharField(max_length=5, default = random_string)
     Fecha_Reserva_Inicio = models.DateField(blank=True)   
     Fecha_Reserva_Termino = models.DateField(blank=True)  
     Estado_Reserva = models.BooleanField(default=False)
@@ -206,7 +211,9 @@ class Reserva(models.Model):
     servicioextra=models.ManyToManyField(ServicioExtra, null=True, blank=True)
 
     def __str__ (self):
-        return self.Estado_Reserva
+        return self.Codigo_Reserva
+
+
  
 
 class Contact(models.Model):

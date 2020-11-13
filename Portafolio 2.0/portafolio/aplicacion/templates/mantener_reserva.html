@@ -6,5 +6,133 @@
 
 {% block content %}
 
+{% if reserva %}
+    <div class="listadoreserva">
+        <div class="container">
+        <h1>Listado de Reservas</h1>
+        <div style="height:50px"></div>
+        <p class="lead">
+        <p>Aqui podra encontrar a todas tus reservas hechas a lo largo del tiempo</p>
+        <hr>
+        <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+        <br>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Codigo</th>
+              <th>Fecha Inicio</th>
+              <th>Fecha Termino</th>
+              <th>Cliente</th>
+              <th>Departamento</th>
+              <th>Servicio</th>
+              <th>Cancelar</th>
+            </tr>
+          </thead>
+        </div>
+        {% for reserva in reserva %}
+          <tr>
+            <td>{{ reserva.Codigo_Reserva}}</td>
+            <td>{{ reserva.Fecha_Reserva_Inicio}}</td>
+            <td>{{ reserva.Fecha_Reserva_Termino}}</td>
+            <td>{{ reserva.user}}</td>
+            <td>{{ reserva.departamento}}</td>
+            <td>{{ reserva.servicioextra}}</td>
+            <td><a href="/cancelarreserva/{{ reserva.id }}">
+                Cancerlar
+            </a></td>
+        </tr>
+          </tr>
+        {% endfor %}
+        </table>
+        <p>Si desea registrar una Reserva haga click en el siguiente link <a href="">Haga click aqui para Reserva</a></p>
+        </div>
+    </div>
+    
+{% else %}
+    <h1>No existe registro de Reservas<h1>
+{% endif %}
+
+   <br>  
+   <div class="row">
+     <div class="col-sm-6 col-sm-offset-3">
+       <div class="panel panel-default">
+         <div class="panel-heading">
+           <h3 class="panel-title">
+               Registro Cliente
+             </h3>
+         </div>
+         <div class="panel-body">
+           <form method="POST" accept-charset="UTF-8" role="form" enctype="multipart/form-data">
+             <fieldset>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                   <input type="text" class="form-control" name="cli_Rut" placeholder="Rut">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                   <input type="text" class="form-control" name="cli_Nombre" placeholder="Nombre">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                   <input type="text" class="form-control" name="cli_Apellidos" placeholder="Apellidos">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                   <input type="number" class="form-control" name="cli_Edad" placeholder="Edad">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                   <input type="text" class="form-control" name="cli_Nacionalidad" placeholder="Nacionalidad">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                   <input type="text" class="form-control" name="email" placeholder="Correo Electronico">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                   <input type="text" class="form-control" name="cli_Telefono" placeholder="Telefono">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
+                   <input type="text" class="form-control" name="username" placeholder="Nombre de Usuario">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+                   <input type="password" class="form-control" name="password1" placeholder="Contraseña">
+                 </div>
+               </div>
+               <div class="form-group">
+                 <div class="input-group input-group-lg">
+                   <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+                   <input type="password" class="form-control" name="password2" placeholder="Repita Contraseña">
+                 </div>
+               </div>
+                 {% csrf_token %}
+               <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
+             </fieldset>
+           </form>
+         </div>
+       </div>
+     </div>
+   </div>
 
 {% endblock %}
