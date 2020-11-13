@@ -116,7 +116,14 @@
             </select>
         <br><br>
         -->
-                {{ form.as_p }}
+        <label>Fecha de Ingreso</label><br>
+        {{ form.Fecha_Reserva_Inicio }}<hr><br>
+        <label>Fecha de Salida</label><br>
+        {{ form.Fecha_Reserva_Termino }}<hr><br>
+        <label>Departamento a Elegir</label><br>
+        {{ form.departamento }}<hr><br>
+        <label>Servicios Extras</label><br>
+        {{ form.servicioextra }}<hr><br>
 
 
         <input type="checkbox" name="acepto"> Acepto los términos del contrato de suscripción

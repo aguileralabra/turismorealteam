@@ -39,7 +39,7 @@ class Acompañante(models.Model):
     acom_apellidos=models.CharField('Apellidos',max_length=30)
     acom_edad= models.IntegerField('Edad',null=True)
     acom_nacionalidad=models.CharField('Nacionalidad',max_length=30)
-    acom_email= models.EmailField('Correo')
+    acom_email= models.EmailField('Correo', unique=True)
     acom_telefono=models.CharField('Telefono',max_length=12)
     user=models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -185,6 +185,7 @@ class Transporte(models.Model):
         return self.fecha_llegada
 
 class Tour(models.Model):
+    
     CATEGORIATOUR_CHOICES = (
         ('0', 'Tour City'),
         ('1', 'Turismo Aventura'),
@@ -202,7 +203,7 @@ class Tour(models.Model):
         return self.categoria
 
 class Reserva(models.Model):
-    Codigo_Reserva = models.CharField(max_length=5, default = random_string)
+    Codigo_Reserva = models.CharField(max_length=5, default = random_string, unique=True)
     Fecha_Reserva_Inicio = models.DateField(blank=True)   
     Fecha_Reserva_Termino = models.DateField(blank=True)  
     Estado_Reserva = models.BooleanField(default=False)

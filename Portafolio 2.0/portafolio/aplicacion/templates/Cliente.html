@@ -18,7 +18,7 @@
       <thead>
       <div class="nombrestr">
         <tr>
-          <th>Codigo</th>
+          <th>Codigo de Reserva</th>
           <th>Fecha Inicio</th>
           <th>Fecha Termino</th>
           <th>Cliente</th>
@@ -30,7 +30,7 @@
     </div>
     {% for reservita in reservita %}
       <tr>
-        <td>{{ reservita.id}}</td>
+        <td>{{ reservita.Codigo_Reserva}}</td>
         <td>{{ reservita.Fecha_Reserva_Inicio}}</td>
         <td>{{ reservita.Fecha_Reserva_Termino}}</td>
         <td>{{ reservita.user}}</td>
