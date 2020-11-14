@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -403,7 +403,7 @@ class DepartamentoDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
 '''hasta aqui Mantenedor Reserva ------------------------------------------------------'''
 class MantenerReservaView(LoginRequiredMixin, SuperUsuarioMixin, View):
     model = Reserva
-    form_class = ReservaForm
+    form_class = ReservaAdminForm
     template_name = 'mantener_reserva.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
@@ -424,6 +424,19 @@ class MantenerReservaView(LoginRequiredMixin, SuperUsuarioMixin, View):
         if form.is_valid():
             form.save()
         return redirect('cliente_app:mantener_reserva')
+
+class ActualizarReservaUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
+    template_name = "actualizarreserva.html"
+    model = Reserva
+    form_class = ReservaAdminForm
+    success_url =  reverse_lazy('cliente_app:mantener_reserva')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+class ReservaAdminDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
+    template_name = "deletereserva.html"
+    model = Reserva
+    success_url =  reverse_lazy('cliente_app:mantener_reserva')
+    login_url = reverse_lazy('cliente_app:logeo')
 
 '''Pago ----------------------------------------------------------------------------------------------------------------------------------------------'''
 

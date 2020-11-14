@@ -26,7 +26,9 @@
               <th>Fecha Termino</th>
               <th>Cliente</th>
               <th>Departamento</th>
+              <th>Costo</th>
               <th>Servicio</th>
+              <th>Modificar</th>
               <th>Cancelar</th>
             </tr>
           </thead>
@@ -38,8 +40,10 @@
             <td>{{ reserva.Fecha_Reserva_Termino}}</td>
             <td>{{ reserva.user}}</td>
             <td>{{ reserva.departamento}}</td>
-            <td>{{ reserva.servicioextra}}</td>
-            <td><a href="/cancelarreserva/{{ reserva.id }}">
+            <td>{{ reserva.departamento.Valor_Diario}}</td>
+            <td>{{ reserva.servicioextra}}</td>}
+            <td><a href="/actualizarreserva/{{ reserva.id }}">Modificar
+            <td><a href="/deletereserva/{{ reserva.id }}">
                 Cancerlar
             </a></td>
         </tr>
@@ -60,72 +64,22 @@
        <div class="panel panel-default">
          <div class="panel-heading">
            <h3 class="panel-title">
-               Registro Cliente
+               Registro Reserva
              </h3>
          </div>
          <div class="panel-body">
            <form method="POST" accept-charset="UTF-8" role="form" enctype="multipart/form-data">
              <fieldset>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                   <input type="text" class="form-control" name="cli_Rut" placeholder="Rut">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                   <input type="text" class="form-control" name="cli_Nombre" placeholder="Nombre">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                   <input type="text" class="form-control" name="cli_Apellidos" placeholder="Apellidos">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                   <input type="number" class="form-control" name="cli_Edad" placeholder="Edad">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                   <input type="text" class="form-control" name="cli_Nacionalidad" placeholder="Nacionalidad">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                   <input type="text" class="form-control" name="email" placeholder="Correo Electronico">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                   <input type="text" class="form-control" name="cli_Telefono" placeholder="Telefono">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                   <input type="text" class="form-control" name="username" placeholder="Nombre de Usuario">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
-                   <input type="password" class="form-control" name="password1" placeholder="Contraseña">
-                 </div>
-               </div>
-               <div class="form-group">
-                 <div class="input-group input-group-lg">
-                   <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
-                   <input type="password" class="form-control" name="password2" placeholder="Repita Contraseña">
-                 </div>
-               </div>
+              <label>Fecha de Ingreso</label><br>
+              {{ form.Fecha_Reserva_Inicio }}<hr><br>
+              <label>Fecha de Salida</label><br>
+              {{ form.Fecha_Reserva_Termino }}<hr><br>
+              <label>Departamento a Elegir</label><br>
+              {{ form.departamento }}<hr><br>
+              <label>Servicios Extras</label><br>
+              {{ form.servicioextra }}<hr><br>  
+              <label>Usuario</label><br>   
+              {{ form.user }}<hr><br>       
                  {% csrf_token %}
                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
              </fieldset>

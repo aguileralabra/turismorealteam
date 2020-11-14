@@ -112,6 +112,11 @@ class ReservaForm(ModelForm):
         model = Reserva
         fields = ['Fecha_Reserva_Inicio','Fecha_Reserva_Termino','Estado_Reserva','departamento','servicioextra']
 
+class ReservaAdminForm(ModelForm):
+    class Meta:
+        model = Reserva
+        fields = ['Fecha_Reserva_Inicio','Fecha_Reserva_Termino','Estado_Reserva','departamento','servicioextra','user']
+
 class VerificationForm(forms.Form):
     codregistro = forms.CharField(required=True)
 

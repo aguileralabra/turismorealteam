@@ -114,7 +114,18 @@ urlpatterns = [
         'mantener_reserva/',
          views.MantenerReservaView.as_view(),
          name='mantener_reserva'
+         ),
+    path(
+        'actualizarreserva/<pk>/',
+         views.ActualizarReservaUpdateView.as_view(),
+         name='actualizarreserva'
+         ),
+    path(
+        'deletereserva/<pk>/',
+         views.ReservaAdminDeleteView.as_view(),
+         name='deletereserva'
          ), 
+        #Pago--------------------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'informepdf/',
          views.ListReservaListView.as_view(),
