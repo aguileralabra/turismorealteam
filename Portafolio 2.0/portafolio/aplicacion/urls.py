@@ -125,6 +125,12 @@ urlpatterns = [
          views.ReservaAdminDeleteView.as_view(),
          name='deletereserva'
          ), 
+        #Mantener Servicios--------------------------------------------------------------------------------------------------------------------------------------------------
+    path(
+        'mantener_servicio/',
+         views.MantenerServicioView.as_view(),
+         name='mantener_servicio'
+         ),
         #Pago--------------------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'informepdf/',
