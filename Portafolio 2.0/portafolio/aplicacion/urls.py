@@ -131,6 +131,16 @@ urlpatterns = [
          views.MantenerServicioView.as_view(),
          name='mantener_servicio'
          ),
+    path(
+        'actualizarservicio/<pk>/',
+         views.ServicioUpdateView.as_view(),
+         name='actualizarservicio'
+         ),
+    path(
+        'deleteservicio/<pk>/',
+         views.ServicioAdminDeleteView.as_view(),
+         name='deleteservicio'
+         ), 
         #Pago--------------------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'informepdf/',

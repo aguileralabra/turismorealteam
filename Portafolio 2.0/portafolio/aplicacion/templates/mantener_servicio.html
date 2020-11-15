@@ -37,9 +37,9 @@
             <td>{{ servicio.direccion_reunion}}</td>
             <td>{{ servicio.direccion_destino}}</td>
             <td>{{ servicio.fecha_encuentro}}</td>
-            <td>{{ servicio.valor_servicio}}</td>
-            <td><a href="/actualizarreserva/{{ reserva.id }}">Modificar
-            <td><a href="/deletereserva/{{ reserva.id }}">
+            <td>${{ servicio.valor_servicio}}</td>
+            <td><a href="/actualizarservicio/{{ servicio.id }}">Modificar
+            <td><a href="/deleteservicio/{{ servicio.id }}">
                 Cancerlar
             </a></td>
         </tr>
@@ -85,25 +85,25 @@
             <hr>
             <p>Mantener Tour</p>
             <br>
-            <a href="/actualizarreserva"> Tour
+            <a href="/mantener_tour"> Tour
             <br>
             <br>
             <br>
             <p>Mantener Transporte</p>
             <br>
-            <a href="/actualizarreserva"> Transporte
+            <a href="/mantener_transporte"> Transporte
             <br>
             <br>
             <br>
             <p>Mantener Chofer</p>
             <br>
-            <a href="/actualizarreserva"> Chofer
+            <a href="/mantener_chofer"> Chofer
             <br>
             <br>
             <br>
             <p>Mantener Vehiculo</p>
             <br>
-            <a href="/actualizarreserva"> Vehiculo
+            <a href="/mantener_vehiculo"> Vehiculo
               <br>
               <br>
               <br>

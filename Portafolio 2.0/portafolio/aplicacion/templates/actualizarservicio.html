@@ -1,0 +1,38 @@
+{% extends "cliente_generic.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+
+<br>  
+<div class="contacto">
+ <div class="contacto-contenido">
+     <div class="titulo-contacto">
+         <h2>Agregar Servicio</h2>
+     </div>
+     <div class="formulario-contacto">
+         <h4>Formulario Servicio </h4>
+         <hr>
+         <form class="form-contac" method="POST"  enctype="multipart/form-data">
+          <fieldset>
+           <label>Descripcion del Servicio</label><br>
+           {{ form.descrip_servicio }}<hr><br>
+           <label>Direccion de Reunion</label><br>
+           {{ form.direccion_reunion }}<hr><br>
+           <label>Direccion de Destino</label><br>
+           {{ form.direccion_destino }}<hr><br>
+           <label>Fecha de encuentro</label><br>
+           {{ form.fecha_encuentro }}<hr><br>  
+           <label>Valor del servicio</label><br>   
+           {{ form.valor_servicio }}<hr><br>       
+           {% csrf_token %}
+           <input type="submit" class="submit" value="Añadir Servicio">
+          </fieldset>
+        </form>
+       </div>
+   </div>
+</div>
+
+{% endblock %}

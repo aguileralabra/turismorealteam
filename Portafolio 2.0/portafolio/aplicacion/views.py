@@ -464,6 +464,19 @@ class MantenerServicioView(LoginRequiredMixin, SuperUsuarioMixin, View):
             form.save()
         return redirect('cliente_app:mantener_servicio')
 
+class ServicioUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
+    template_name = "actualizarservicio.html"
+    model = ServicioExtra
+    form_class = ServicioExtraForm
+    success_url =  reverse_lazy('cliente_app:mantener_servicio')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+class ServicioAdminDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
+    template_name = "deleteservicio.html"
+    model = ServicioExtra
+    success_url =  reverse_lazy('cliente_app:mantener_servicio')
+    login_url = reverse_lazy('cliente_app:logeo')
+
 '''Pago ----------------------------------------------------------------------------------------------------------------------------------------------'''
 
 class PagosView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
