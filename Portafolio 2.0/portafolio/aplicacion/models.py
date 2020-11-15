@@ -134,14 +134,7 @@ class Modelo(models.Model):
     def __str__ (self):
         return self.descrip_comuna
 
-class Conductor(models.Model):
-    cond_rut=models.CharField('Rut',max_length=14, unique=True)
-    cond_nombre=models.CharField('Nombre',max_length=30)
-    cond_apellidos=models.CharField('Apellidos',max_length=30)
-    cond_edad= models.IntegerField('Edad')
-    cond_nacionalidad=models.CharField('Nacionalidad',max_length=30)
-    cond_email= models.EmailField('Correo',blank=True)
-    cond_telefono=models.CharField('Telefono',max_length=12)
+
 
     def __str__ (self):
         return self.cond_rut
@@ -161,28 +154,26 @@ class Vehiculo(models.Model):
     aire_acondicionado=models.CharField('Color Vehiculo',max_length=30, choices=AIRE_CHOICES)
     cant_asiento=models.IntegerField('Asiento',null=True)
     disponibilidad_vehi=models.CharField('Color Vehiculo',max_length=30, choices=DISPONIBILIDADVEHICULO_CHOICES)
-    conductor=models.ManyToManyField(Conductor)
-    comuna=models.ForeignKey(Comuna, on_delete=models.CASCADE)
+    imagen_vehiculo = models.ImageField( default="", blank=True, null=True)
 
     def __str__ (self):
-        return self.patente    
+        return self.patente  
 
-class ServicioExtra(models.Model):
-    descrip_servicio=models.CharField('Descripcion Servicios',max_length=20)
-    direccion_reunion=models.CharField('Reunion',max_length=50)
-    direccion_destino=models.CharField('Desatino',max_length=50)
-    fecha_encuentro=models.DateField('Fecha encuentro')
-    valor_servicio=models.IntegerField('Valor')
-
-    def __str__ (self):
-        return self.descrip_servicio      
+class Conductor(models.Model):
+    cond_rut=models.CharField('Rut',max_length=14, unique=True)
+    cond_nombre=models.CharField('Nombre',max_length=30)
+    cond_apellidos=models.CharField('Apellidos',max_length=30)
+    cond_edad= models.IntegerField('Edad')
+    cond_nacionalidad=models.CharField('Nacionalidad',max_length=30)
+    cond_email= models.EmailField('Correo',blank=True)
+    cond_telefono=models.CharField('Telefono',max_length=12)
+    vehiculo=models.ManyToManyField(Vehiculo)
 
 class Transporte(models.Model):
-    fecha_llegada=models.CharField(max_length=100, default="")
-    servicioextras=models.ForeignKey(ServicioExtra, on_delete=models.CASCADE)
+    conductor=models.ForeignKey(Conductor, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__ (self):
-        return self.fecha_llegada
+        return self.conductor
 
 class Tour(models.Model):
     
@@ -194,13 +185,28 @@ class Tour(models.Model):
         ('0', 'Si'),
         ('1', 'No'),
     )
+    descripcion_tour=models.CharField(max_length=100, default="")
     categoria=models.CharField(max_length=100, default="", choices=CATEGORIATOUR_CHOICES)
     comestible=models.CharField(max_length=100, default="", choices=COMESTIBLE_CHOICES)
-    fecha_termino_tour=models.DateField(default="")
-    servicioextrass=models.ForeignKey(ServicioExtra, on_delete=models.CASCADE)
+    valor_tour=models.IntegerField('Valor', default='0')
+    imagen_tour = models.ImageField( default="", blank=True, null=True)
 
     def __str__ (self):
         return self.categoria
+
+class ServicioExtra(models.Model):
+    descrip_servicio=models.CharField('Descripcion Servicios',max_length=20)
+    direccion_reunion=models.CharField('Reunion',max_length=50)
+    direccion_destino=models.CharField('Desatino',max_length=50)
+    fecha_encuentro=models.DateField('Fecha encuentro')
+    fecha_termino_servicio=models.DateField('Fecha Termino', default='')
+    valor_servicio=models.IntegerField('Valor')
+    transporte=models.ForeignKey(Transporte, on_delete=models.CASCADE, null=True, blank=True)
+    tour=models.ForeignKey(Tour, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__ (self):
+        return self.descrip_servicio      
+
 
 class Reserva(models.Model):
     Codigo_Reserva = models.CharField(max_length=5, default = random_string, unique=True)
@@ -213,9 +219,6 @@ class Reserva(models.Model):
 
     def __str__ (self):
         return self.Codigo_Reserva
-
-
- 
 
 class Contact(models.Model):
     asunto = models.CharField( max_length=50)
