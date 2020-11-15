@@ -103,3 +103,16 @@ margin: 1%;
         margin: 3%;
         border-radius: 5px;
     }
+
+    .escritura-contacto a{
+        width: 90%;
+        outline: none;
+        background: #ff851b;
+        font-size: 16px;
+        border: none;
+        color: #fff;
+        padding: 15px 0;
+        cursor: pointer;
+        transition: all .5s ease;
+        margin: 1%;
+        }
