@@ -477,6 +477,32 @@ class ServicioAdminDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView)
     success_url =  reverse_lazy('cliente_app:mantener_servicio')
     login_url = reverse_lazy('cliente_app:logeo')
 
+'''  Tour CRUD  ------------------------------------------------------'''
+
+class TourView(LoginRequiredMixin, SuperUsuarioMixin, View):
+    model = Tour
+    form_class = ServicioExtraForm
+    template_name = 'mantener_servicio.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['servicio'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:mantener_servicio')
+
 '''Pago ----------------------------------------------------------------------------------------------------------------------------------------------'''
 
 class PagosView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):

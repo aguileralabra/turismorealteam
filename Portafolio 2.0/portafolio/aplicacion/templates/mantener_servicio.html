@@ -51,7 +51,11 @@
     </div>
     
 {% else %}
-    <h1 align='center';>No existe registro de Servicio<h1>
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de Servicios, favor añadir</h2>
+  <br> <br> 
+  </div>
 {% endif %}
 
    <br>  
@@ -66,15 +70,29 @@
             <form class="form-contac" method="POST"  enctype="multipart/form-data">
              <fieldset>
               <label>Descripcion del Servicio</label><br>
-              {{ form.descrip_servicio }}<hr><br>
+              {{ form.descrip_servicio }}<br><br><br>
+
               <label>Direccion de Reunion</label><br>
-              {{ form.direccion_reunion }}<hr><br>
+              {{ form.direccion_reunion }}<br><br><br>
+
               <label>Direccion de Destino</label><br>
-              {{ form.direccion_destino }}<hr><br>
+              {{ form.direccion_destino }}<br><br><br>
+
               <label>Fecha de encuentro</label><br>
-              {{ form.fecha_encuentro }}<hr><br>  
+              {{ form.fecha_encuentro }}<br><br><br>
+
+              <label>Fecha de encuentro</label><br>
+              {{ form.fecha_termino_servicio }}<br><br><br>  
+
               <label>Valor del servicio</label><br>   
-              {{ form.valor_servicio }}<hr><br>       
+              {{ form.valor_servicio }}<br><br><br>    
+  
+              <label>Transporte</label><br>   
+              {{ form.transporte }}<br><br><br>   
+
+              <label>Tour</label><br>   
+              {{ form.tour }}<br><br><br>   
+
               {% csrf_token %}
               <input type="submit" class="submit" value="Añadir Servicio">
              </fieldset>
@@ -89,15 +107,9 @@
             <br>
             <br>
             <br>
-            <p>Mantener Transporte</p>
-            <br>
-            <a href="/mantener_transporte"> Transporte
-            <br>
-            <br>
-            <br>
             <p>Mantener Chofer</p>
             <br>
-            <a href="/mantener_chofer"> Chofer
+            <a href="/mantener_conductor"> Conductor
             <br>
             <br>
             <br>

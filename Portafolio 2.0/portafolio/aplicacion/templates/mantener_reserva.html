@@ -55,21 +55,25 @@
     </div>
     
     {% else %}
-    <h1 align='center';>No existe registro de Servicio<h1>
+    <div id="resultadolisto">
+      <br> <br> <br> 
+      <h2>No hay registros de Reservas, favor añadir</h2>
+      <br> <br> 
+      </div>
     {% endif %}
 
    <br>  
-   <div class="row">
-     <div class="col-sm-6 col-sm-offset-3">
-       <div class="panel panel-default">
-         <div class="panel-heading">
-           <h3 class="panel-title">
-               Registro Reserva
-             </h3>
-         </div>
-         <div class="panel-body">
-           <form method="POST" accept-charset="UTF-8" role="form" enctype="multipart/form-data">
-             <fieldset>
+   <div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title">Mantener<span> Reserva</span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Generar Reserva
+            </p>
+        </div>
+
               <label>Fecha de Ingreso</label><br>
               {{ form.Fecha_Reserva_Inicio }}<hr><br>
               <label>Fecha de Salida</label><br>
@@ -81,12 +85,13 @@
               <label>Usuario</label><br>   
               {{ form.user }}<hr><br>       
                  {% csrf_token %}
-               <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
-             </fieldset>
-           </form>
+                 <input type="checkbox" name="acepto"> Acepto los términos del contrato de suscripción
+                 <br><br>
+                 {% csrf_token %}
+                 <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
+                 <input type="reset" class="form-submit" value="Limpiar Formulario">
+                 </form>
+             </div>
          </div>
-       </div>
-     </div>
-   </div>
 
 {% endblock %}

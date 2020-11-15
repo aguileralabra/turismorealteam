@@ -105,14 +105,8 @@ margin: 1%;
     }
 
     .escritura-contacto a{
-        width: 90%;
-        outline: none;
-        background: #ff851b;
-        font-size: 16px;
-        border: none;
-        color: #fff;
-        padding: 3%;
-        cursor: pointer;
-        transition: all .5s ease;
-        margin: 1%;
+        padding: 10px;
+        border-bottom: 2px solid orange;
+        width: 100%;
+        text-align: center;
         }

@@ -170,8 +170,13 @@ class AdminUserForm(forms.ModelForm):
         model = User
         fields = ['cli_Rut','cli_Nombre','cli_Apellidos', 'cli_Edad','cli_Nacionalidad', 'email','cli_Telefono','username','funcionario','is_active']
 
+class TourForm(forms.ModelForm):
+    class Meta:
+        model = Tour
+        fields = ['descripcion_tour','categoria','comestible', 'valor_tour','imagen_tour']
+
 
 class ServicioExtraForm(forms.ModelForm):
     class Meta:
         model = ServicioExtra
-        fields = ['descrip_servicio','direccion_reunion','direccion_destino', 'fecha_encuentro','valor_servicio']
+        fields = ['descrip_servicio','direccion_reunion','direccion_destino', 'fecha_encuentro','fecha_termino_servicio','valor_servicio','transporte','tour']
