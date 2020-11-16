@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -540,7 +540,7 @@ class ConductorView(LoginRequiredMixin, SuperUsuarioMixin, View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('cliente_app:mantener_tour')
+        return redirect('cliente_app:mantener_conductor')
 
 class ConductorUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
     template_name = "actualizarconductor.html"
@@ -553,6 +553,45 @@ class ConductorDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     template_name = "deleteconductor.html"
     model = Conductor
     success_url =  reverse_lazy('cliente_app:mantener_conductor')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+'''  Vehiculo CRUD  ------------------------------------------------------'''
+
+class VehiculoView(LoginRequiredMixin, SuperUsuarioMixin, View):
+    model = Vehiculo
+    form_class = VehiculoForm
+    template_name = 'mantener_vehiculo.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['vehiculo'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:mantener_vehiculo')
+
+class VehiculoUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
+    template_name = "actualizarvehiculo.html"
+    model = Vehiculo
+    form_class = VehiculoForm
+    success_url =  reverse_lazy('cliente_app:mantener_vehiculo')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+class VehiculoDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
+    template_name = "deletevehiculo.html"
+    model = Vehiculo
+    success_url =  reverse_lazy('cliente_app:mantener_vehiculo')
     login_url = reverse_lazy('cliente_app:logeo')
 
 '''Pago ----------------------------------------------------------------------------------------------------------------------------------------------'''

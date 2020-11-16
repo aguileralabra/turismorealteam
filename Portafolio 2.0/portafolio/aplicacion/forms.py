@@ -184,3 +184,8 @@ class ServicioExtraForm(forms.ModelForm):
     class Meta:
         model = ServicioExtra
         fields = ['descrip_servicio','direccion_reunion','direccion_destino', 'fecha_encuentro','fecha_termino_servicio','valor_servicio','transporte','tour']
+
+class VehiculoForm(forms.ModelForm):
+    class Meta:
+        model = Vehiculo
+        fields = ['patente','color_vehiculo','cant_puerta', 'aire_acondicionado','cant_asiento','disponibilidad_vehi','imagen_vehiculo','modelo','marca']

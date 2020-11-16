@@ -92,8 +92,6 @@
 
               <label>Vehiculo a cargo</label><br>   
               {{ form.vehiculo }}<br><br><br>   
-
-              {% csrf_token %}
               <br><br>
               {% csrf_token %}
               <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
