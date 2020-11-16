@@ -157,6 +157,22 @@ urlpatterns = [
          views.TourDeleteView.as_view(),
          name='deletetour'
          ), 
+        #Mantener Conductor--------------------------------------------------------------------------------------------------------------------------------------------------
+    path(
+        'mantener_conductor/',
+         views.ConductorView.as_view(),
+         name='mantener_conductor'
+         ),
+    path(
+        'actualizarconductor/<pk>/',
+         views.ConductorUpdateView.as_view(),
+         name='actualizarconductor'
+         ),
+    path(
+        'deleteconductor/<pk>/',
+         views.ConductorDeleteView.as_view(),
+         name='deleteconductor'
+         ), 
         #Pago--------------------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'informepdf/',

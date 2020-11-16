@@ -121,24 +121,6 @@ class Departamento(models.Model):
     def __str__ (self):
         return self.Nombre_Departamento
 
-class Marca(models.Model):
-    descrip_marca=models.CharField(max_length=100, default="")
-
-    def __str__ (self):
-        return self.descrip_ciudad
-
-class Modelo(models.Model):
-    descrip_modelo=models.CharField(max_length=100, default="")
-    marca=models.ForeignKey(Marca, on_delete=models.CASCADE)
-
-    def __str__ (self):
-        return self.descrip_comuna
-
-
-
-    def __str__ (self):
-        return self.cond_rut
-    
 class Vehiculo(models.Model):
     AIRE_CHOICES = (
         ('Si', 'Si'),
@@ -155,6 +137,8 @@ class Vehiculo(models.Model):
     cant_asiento=models.IntegerField('Asiento',null=True)
     disponibilidad_vehi=models.CharField('Color Vehiculo',max_length=30, choices=DISPONIBILIDADVEHICULO_CHOICES)
     imagen_vehiculo = models.ImageField( default="", blank=True, null=True)
+    modelo=models.CharField(max_length=30, default="")
+    marca=models.CharField(max_length=30, default="")
 
     def __str__ (self):
         return self.patente  

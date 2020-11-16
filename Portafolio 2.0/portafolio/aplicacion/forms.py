@@ -175,6 +175,11 @@ class TourForm(forms.ModelForm):
         model = Tour
         fields = ['descripcion_tour','categoria','comestible', 'valor_tour','imagen_tour']
 
+class ConductorForm(forms.ModelForm):
+    class Meta:
+        model = Conductor
+        fields = ['cond_rut','cond_nombre','cond_apellidos', 'cond_edad','cond_nacionalidad','cond_email','cond_telefono','vehiculo']
+
 class ServicioExtraForm(forms.ModelForm):
     class Meta:
         model = ServicioExtra

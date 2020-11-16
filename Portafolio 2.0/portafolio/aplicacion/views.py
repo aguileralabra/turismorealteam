@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -514,6 +514,45 @@ class TourDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     template_name = "deletetour.html"
     model = Tour
     success_url =  reverse_lazy('cliente_app:mantener_tour')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+'''  Conductor CRUD  ------------------------------------------------------'''
+
+class ConductorView(LoginRequiredMixin, SuperUsuarioMixin, View):
+    model = Conductor
+    form_class = ConductorForm
+    template_name = 'mantener_conductor.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['conductor'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:mantener_tour')
+
+class ConductorUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
+    template_name = "actualizarconductor.html"
+    model = Conductor
+    form_class = ConductorForm
+    success_url =  reverse_lazy('cliente_app:mantener_conductor')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+class ConductorDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
+    template_name = "deleteconductor.html"
+    model = Conductor
+    success_url =  reverse_lazy('cliente_app:mantener_conductor')
     login_url = reverse_lazy('cliente_app:logeo')
 
 '''Pago ----------------------------------------------------------------------------------------------------------------------------------------------'''

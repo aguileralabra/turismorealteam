@@ -58,5 +58,36 @@
         }
     }
     </script>
-c
+
+<br>  
+<div class="reserva-arriendo">
+ <div class="contenedor">
+     <form action="" class="form" method="POST">
+     <div class="form-header">
+         <h1 class="form-title">Mantener<span> Reserva</span></h1>
+     </div> 
+     <div class="texto-reserva">
+         <p>Generar Reserva
+         </p>
+     </div>
+
+           <label>Fecha de Ingreso</label><br>
+           {{ form.Fecha_Reserva_Inicio }}<hr><br>
+           <label>Fecha de Salida</label><br>
+           {{ form.Fecha_Reserva_Termino }}<hr><br>
+           <label>Departamento a Elegir</label><br>
+           {{ form.departamento }}<hr><br>
+           <label>Servicios Extras</label><br>
+           {{ form.servicioextra }}<hr><br>  
+
+              {% csrf_token %}
+              <input type="checkbox" name="acepto"> Acepto los términos del contrato de suscripción
+              <br><br>
+              {% csrf_token %}
+              <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
+              <input type="reset" class="form-submit" value="Limpiar Formulario">
+              </form>
+          </div>
+      </div>
+
 {% endblock %}
