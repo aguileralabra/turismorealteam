@@ -178,12 +178,12 @@ class Transporte(models.Model):
 class Tour(models.Model):
     
     CATEGORIATOUR_CHOICES = (
-        ('0', 'Tour City'),
-        ('1', 'Turismo Aventura'),
+        ('Tour City', 'Tour City'),
+        ('Turismo Aventura', 'Turismo Aventura'),
     )
     COMESTIBLE_CHOICES = (
-        ('0', 'Si'),
-        ('1', 'No'),
+        ('Si', 'Si'),
+        ('No', 'No'),
     )
     descripcion_tour=models.CharField(max_length=100, default="")
     categoria=models.CharField(max_length=100, default="", choices=CATEGORIATOUR_CHOICES)
@@ -193,6 +193,7 @@ class Tour(models.Model):
 
     def __str__ (self):
         return self.categoria
+
 
 class ServicioExtra(models.Model):
     descrip_servicio=models.CharField('Descripcion Servicios',max_length=20)

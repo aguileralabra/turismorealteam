@@ -141,6 +141,22 @@ urlpatterns = [
          views.ServicioAdminDeleteView.as_view(),
          name='deleteservicio'
          ), 
+        #Mantener Tour--------------------------------------------------------------------------------------------------------------------------------------------------
+    path(
+        'mantener_tour/',
+         views.TourView.as_view(),
+         name='mantener_tour'
+         ),
+    path(
+        'actualizartour/<pk>/',
+         views.TourUpdateView.as_view(),
+         name='actualizartour'
+         ),
+    path(
+        'deletetour/<pk>/',
+         views.TourDeleteView.as_view(),
+         name='deletetour'
+         ), 
         #Pago--------------------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'informepdf/',

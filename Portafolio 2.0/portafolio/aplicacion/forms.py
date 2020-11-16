@@ -175,7 +175,6 @@ class TourForm(forms.ModelForm):
         model = Tour
         fields = ['descripcion_tour','categoria','comestible', 'valor_tour','imagen_tour']
 
-
 class ServicioExtraForm(forms.ModelForm):
     class Meta:
         model = ServicioExtra

@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -481,8 +481,8 @@ class ServicioAdminDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView)
 
 class TourView(LoginRequiredMixin, SuperUsuarioMixin, View):
     model = Tour
-    form_class = ServicioExtraForm
-    template_name = 'mantener_servicio.html'
+    form_class = TourForm
+    template_name = 'mantener_tour.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
     def get_queryset(self):
@@ -490,7 +490,7 @@ class TourView(LoginRequiredMixin, SuperUsuarioMixin, View):
 
     def get_context_data(self, **kwargs):
         contexto = {}
-        contexto['servicio'] = self.get_queryset()
+        contexto['tour'] = self.get_queryset()
         contexto['form'] = self.form_class
         return contexto
 
@@ -501,7 +501,20 @@ class TourView(LoginRequiredMixin, SuperUsuarioMixin, View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('cliente_app:mantener_servicio')
+        return redirect('cliente_app:mantener_tour')
+
+class TourUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
+    template_name = "actualizartour.html"
+    model = Tour
+    form_class = TourForm
+    success_url =  reverse_lazy('cliente_app:mantener_tour')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+class TourDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
+    template_name = "deletetour.html"
+    model = Tour
+    success_url =  reverse_lazy('cliente_app:mantener_tour')
+    login_url = reverse_lazy('cliente_app:logeo')
 
 '''Pago ----------------------------------------------------------------------------------------------------------------------------------------------'''
 
