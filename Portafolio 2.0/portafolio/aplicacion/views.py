@@ -171,6 +171,7 @@ class ListCliente(LoginRequiredMixin, ListView):
 
     def get_queryset(self, *args, **kwargs):
         return Reserva.objects.filter(user=self.request.user)
+
  #   def get_queryset(self):
   #      #identificar cliente
    #     id = self.kwargs['pk']
@@ -613,13 +614,21 @@ class InformeView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     login_url = reverse_lazy('cliente_app:logeo')
 
 
-
-
 '''Perfil Administrador ----------------------------------------------------------------------------------------------------------------------------------------------'''
 
 class PerfilAdminListView(LoginRequiredMixin, SuperUsuarioMixin,TemplateView):
     template_name = 'perfiladministrador.html'
     login_url = reverse_lazy('cliente_app:logeo')
+
+
+class PerfilUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
+    template_name = "actualizar_perfil.html"
+    model = User
+    form_class = UserRegisterForm
+    success_url =  reverse_lazy('cliente_app:inicio')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+
 
 '''
 

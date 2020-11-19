@@ -189,12 +189,17 @@ urlpatterns = [
          views.VehiculoDeleteView.as_view(),
          name='deletevehiculo'
          ), 
-        #Mantener Vehiculo--------------------------------------------------------------------------------------------------------------------------------------------------
+        #Perfil Administrador--------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'perfiladministrador/',
          views.PerfilAdminListView.as_view(),
          name='perfiladministrador'
-         ),      
+         ),
+    path(
+        'actualizar_perfil/<pk>/',
+         views.PerfilUpdateView.as_view(),
+         name='actualizar_perfil'
+         ),
         #Pago--------------------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'informepdf/',
