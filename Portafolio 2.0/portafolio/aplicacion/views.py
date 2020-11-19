@@ -612,6 +612,15 @@ class InformeView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'generar_informe.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
+
+
+
+'''Perfil Administrador ----------------------------------------------------------------------------------------------------------------------------------------------'''
+
+class PerfilAdminListView(LoginRequiredMixin, SuperUsuarioMixin,TemplateView):
+    template_name = 'perfiladministrador.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
 '''
 
 termina aqui Administrador------------------------------------------------------

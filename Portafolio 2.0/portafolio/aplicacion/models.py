@@ -153,6 +153,9 @@ class Conductor(models.Model):
     cond_telefono=models.CharField('Telefono',max_length=12)
     vehiculo=models.ManyToManyField(Vehiculo)
 
+    def __str__ (self):
+        return self.cond_nombre
+
 class Tour(models.Model):
     
     CATEGORIATOUR_CHOICES = (
