@@ -26,7 +26,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'username'
 
-    REQUIRED_FIELDS = ['cli_Rut']
+    REQUIRED_FIELDS = ['cli_Rut', 'cli_Nombre','cli_Apellidos','cli_Edad','cli_Nacionalidad','email','cli_Telefono']
 
     objects = UserManager()
 
