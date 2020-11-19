@@ -183,7 +183,7 @@ class ConductorForm(forms.ModelForm):
 class ServicioExtraForm(forms.ModelForm):
     class Meta:
         model = ServicioExtra
-        fields = ['descrip_servicio','direccion_reunion','direccion_destino', 'fecha_encuentro','fecha_termino_servicio','valor_servicio','transporte','tour']
+        fields = ['descrip_servicio','direccion_reunion','direccion_destino', 'fecha_encuentro','fecha_termino_servicio','valor_servicio','conductor','tour']
 
 class VehiculoForm(forms.ModelForm):
     class Meta:

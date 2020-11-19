@@ -26,6 +26,7 @@
               <th>Edad</th>
               <th>Email</th>
               <th>Telefono</th>
+              <th>Conductor</th>
               <th>Modificar</th>
               <th>Cancelar</th>
             </tr>
@@ -39,8 +40,8 @@
             <td>{{ conductor.cond_email}}</td>
             <td>{{ conductor.cond_telefono}}</td>
             <td>${{ conductor.vehiculo}}</td>
-            <td><a href="/actualizarservicio/{{ conductor.id }}">Modificar
-            <td><a href="/deleteservicio/{{ conductor.id }}">
+            <td><a href="/actualizarconductor/{{ conductor.id }}">Modificar
+            <td><a href="/deleteconductor/{{ conductor.id }}">
                 Cancerlar
             </a></td>
         </tr>
@@ -96,6 +97,7 @@
               {% csrf_token %}
               <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
               <input type="reset" class="form-submit" value="Limpiar Formulario">
+              <a href="/mantener_servicio">Volver a Mantencion Servicio</a>
     </form>
  </div>
 </div>

@@ -87,13 +87,14 @@
               <label>Valor del servicio</label><br>   
               {{ form.valor_servicio }}<br><br><br>    
   
-              <label>Transporte</label><br>   
-              {{ form.transporte }}<br><br><br>   
+              <label>Conductor</label><br>   
+              {{ form.conductor }}<br><br><br>   
 
               <label>Tour</label><br>   
               {{ form.tour }}<br><br><br>   
 
               {% csrf_token %}
+              <a href="/inicio">Volver al Menu</a>
               <input type="submit" class="submit" value="Añadir Servicio">
              </fieldset>
            </form>

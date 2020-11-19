@@ -153,12 +153,6 @@ class Conductor(models.Model):
     cond_telefono=models.CharField('Telefono',max_length=12)
     vehiculo=models.ManyToManyField(Vehiculo)
 
-class Transporte(models.Model):
-    conductor=models.ForeignKey(Conductor, on_delete=models.CASCADE, null=True, blank=True)
-
-    def __str__ (self):
-        return self.conductor
-
 class Tour(models.Model):
     
     CATEGORIATOUR_CHOICES = (
@@ -186,7 +180,7 @@ class ServicioExtra(models.Model):
     fecha_encuentro=models.DateField('Fecha encuentro')
     fecha_termino_servicio=models.DateField('Fecha Termino', default='')
     valor_servicio=models.IntegerField('Valor')
-    transporte=models.ForeignKey(Transporte, on_delete=models.CASCADE, null=True, blank=True)
+    conductor=models.ForeignKey(Conductor, on_delete=models.CASCADE, null=True, blank=True)
     tour=models.ForeignKey(Tour, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__ (self):
