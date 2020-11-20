@@ -199,7 +199,6 @@ class Reserva(models.Model):
     departamento=models.ForeignKey(Departamento, on_delete=models.CASCADE, default="")
     servicioextra=models.ManyToManyField(ServicioExtra, null=True, blank=True)
 
-
     def __str__ (self):
         return self.Codigo_Reserva
 

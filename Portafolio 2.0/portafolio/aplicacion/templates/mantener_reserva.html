@@ -25,10 +25,6 @@
               <th>Fecha Inicio</th>
               <th>Fecha Termino</th>
               <th>Cliente</th>
-              <th>Cantidad dias</th>
-              <th>Departamento</th>
-              <th>Costo</th>
-              <th>Servicio</th>
               <th>Modificar</th>
               <th>Cancelar</th>
               <th>Detalle</th>
@@ -41,10 +37,6 @@
             <td>{{ reserva.Fecha_Reserva_Inicio}}</td>
             <td>{{ reserva.Fecha_Reserva_Termino}}</td>
             <td>{{ reserva.user}}</td>
-            <td>{{ reserva.Cantidad_Dias}}</td>
-            <td>{{ reserva.departamento}}</td>
-            <td>{{ reserva.departamento.Valor_Diario}}</td>
-            <td>{{ reserva.servicioextra}}</td>
             <td><a href="/actualizarreserva/{{ reserva.id }}">Modificar</td>
             <td><a href="/deletereserva/{{ reserva.id }}">
                 Cancerlar
