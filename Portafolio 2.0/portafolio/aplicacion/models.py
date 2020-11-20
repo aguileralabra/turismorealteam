@@ -189,7 +189,6 @@ class ServicioExtra(models.Model):
     def __str__ (self):
         return self.descrip_servicio      
 
-
 class Reserva(models.Model):
     Codigo_Reserva = models.CharField(max_length=5, default = random_string, unique=True)
     Fecha_Reserva_Inicio = models.DateField(blank=True)   

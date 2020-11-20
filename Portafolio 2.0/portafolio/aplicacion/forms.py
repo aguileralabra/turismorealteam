@@ -99,7 +99,15 @@ class UpdatePasswordForm(forms.Form):
 class AcompañanteForm(ModelForm):
     class Meta:
         model = Acompañante
-        fields = ['acom_rut','acom_nombre','acom_apellidos', 'acom_edad','acom_nacionalidad', 'acom_email', 'acom_telefono']
+        fields = [
+            'acom_rut',
+            'acom_nombre',
+            'acom_apellidos', 
+            'acom_edad',
+            'acom_nacionalidad', 
+            'acom_email', 
+            'acom_telefono'
+            ]
 
     def clean_acomedad(self):
         acomedad = self.cleaned_data['acom_edad']
@@ -110,12 +118,54 @@ class AcompañanteForm(ModelForm):
 class ReservaForm(ModelForm):
     class Meta:
         model = Reserva
-        fields = ['Fecha_Reserva_Inicio','Fecha_Reserva_Termino','Estado_Reserva','departamento','servicioextra']
+        fields = [
+            'Fecha_Reserva_Inicio',
+            'Fecha_Reserva_Termino',
+            'Estado_Reserva',
+            'departamento',
+            'servicioextra'
+            ]
+        widgets = {
+            'Fecha_Reserva_Inicio': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs = {
+                    'type': 'date',
+                }
+            ),
+            'Fecha_Reserva_Termino': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs = {
+                    'type': 'date',
+                }
+            )
+        }
+
 
 class ReservaAdminForm(ModelForm):
     class Meta:
         model = Reserva
-        fields = ['Fecha_Reserva_Inicio','Fecha_Reserva_Termino','Estado_Reserva','departamento','servicioextra','user']
+        fields = [
+            'Fecha_Reserva_Inicio',
+            'Fecha_Reserva_Termino',
+            'Estado_Reserva',
+            'departamento',
+            'servicioextra',
+            'user'
+            ]
+        widgets = {
+            'Fecha_Reserva_Inicio': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs = {
+                    'type': 'date',
+                }
+            ),
+            'Fecha_Reserva_Termino': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs = {
+                    'type': 'date',
+                }
+            )
+        }
 
 class VerificationForm(forms.Form):
     codregistro = forms.CharField(required=True)
@@ -163,29 +213,89 @@ class DepartamentoForms(forms.ModelForm):
             'Disponible',
             'comuna',
             'inventario',
-            'gasto']
+            'gasto'
+            ]
 
 class AdminUserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['cli_Rut','cli_Nombre','cli_Apellidos', 'cli_Edad','cli_Nacionalidad', 'email','cli_Telefono','username','funcionario','is_active']
+        fields = [
+            'cli_Rut',
+            'cli_Nombre',
+            'cli_Apellidos', 
+            'cli_Edad',
+            'cli_Nacionalidad', 
+            'email',
+            'cli_Telefono',
+            'username',
+            'funcionario',
+            'is_active'
+            ]
 
 class TourForm(forms.ModelForm):
     class Meta:
         model = Tour
-        fields = ['descripcion_tour','categoria','comestible', 'valor_tour','imagen_tour']
+        fields = [
+            'descripcion_tour',
+            'categoria',
+            'comestible', 
+            'valor_tour',
+            'imagen_tour'
+            ]
 
 class ConductorForm(forms.ModelForm):
     class Meta:
         model = Conductor
-        fields = ['cond_rut','cond_nombre','cond_apellidos', 'cond_edad','cond_nacionalidad','cond_email','cond_telefono','vehiculo']
+        fields = [
+            'cond_rut',
+            'cond_nombre',
+            'cond_apellidos', 
+            'cond_edad',
+            'cond_nacionalidad',
+            'cond_email',
+            'cond_telefono',
+            'vehiculo'
+            ]
 
 class ServicioExtraForm(forms.ModelForm):
     class Meta:
         model = ServicioExtra
-        fields = ['descrip_servicio','direccion_reunion','direccion_destino', 'fecha_encuentro','fecha_termino_servicio','valor_servicio','conductor','tour']
+        fields = [
+            'descrip_servicio',
+            'direccion_reunion',
+            'direccion_destino', 
+            'fecha_encuentro',
+            'fecha_termino_servicio',
+            'valor_servicio',
+            'conductor',
+            'tour'
+            ]
+        widgets = {
+            'fecha_encuentro': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs = {
+                    'type': 'date',
+                }
+            ),
+            'fecha_termino_servicio': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs = {
+                    'type': 'date',
+                }
+            )
+        }
 
 class VehiculoForm(forms.ModelForm):
     class Meta:
         model = Vehiculo
-        fields = ['patente','color_vehiculo','cant_puerta', 'aire_acondicionado','cant_asiento','disponibilidad_vehi','imagen_vehiculo','modelo','marca']
+        fields = [
+            'patente',
+            'color_vehiculo',
+            'cant_puerta', 
+            'aire_acondicionado',
+            'cant_asiento',
+            'disponibilidad_vehi',
+            'imagen_vehiculo',
+            'modelo',
+            'marca'
+            ]
