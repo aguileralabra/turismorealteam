@@ -21,10 +21,9 @@
           <th>Codigo de Reserva</th>
           <th>Fecha Inicio</th>
           <th>Fecha Termino</th>
-          <th>Cliente</th>
-          <th>Departamento</th>
           <th>Servicio</th>
           <th>Cancelar</th>
+          <th>PDF</th>
         </tr>
       </thead>
     </div>
@@ -33,13 +32,11 @@
         <td>{{ reservita.Codigo_Reserva}}</td>
         <td>{{ reservita.Fecha_Reserva_Inicio}}</td>
         <td>{{ reservita.Fecha_Reserva_Termino}}</td>
-        <td>{{ reservita.user}}</td>
-        <td>{{ reservita.departamento}}</td>
         <td>{{ reservita.servicioextra}}</td>
         <td><a href="/cancelarreserva/{{ reservita.id }}">
             Cancerlar
         </a></td>
-        <td><a href="{% url 'cliente_app:reserva_all' reserva.id %} " target="_blank">Archivo PDF</a>
+        <td><a href="{% url 'cliente_app:reserva_all' reservita.id %} " target="_blank">Voucher</a>
         </td>
 
     </tr>
