@@ -439,6 +439,13 @@ class ReservaAdminDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     success_url =  reverse_lazy('cliente_app:mantener_reserva')
     login_url = reverse_lazy('cliente_app:logeo')
 
+class ReservaDetailView(LoginRequiredMixin, SuperUsuarioMixin, DetailView):
+    template_name = "detailreserva.html"
+    model = Reserva
+    login_url = reverse_lazy('cliente_app:logeo')
+
+
+
 ''' Mantenedor Servicio ------------------------------------------------------'''
 
 class MantenerServicioView(LoginRequiredMixin, SuperUsuarioMixin, View):

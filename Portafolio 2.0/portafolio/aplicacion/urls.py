@@ -125,6 +125,11 @@ urlpatterns = [
          views.ReservaAdminDeleteView.as_view(),
          name='deletereserva'
          ), 
+    path(
+        'detailreserva/<pk>/',
+         views.ReservaDetailView.as_view(),
+         name='detailreserva'
+         ), 
         #Mantener Servicios--------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'mantener_servicio/',

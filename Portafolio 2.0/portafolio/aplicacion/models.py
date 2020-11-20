@@ -192,11 +192,13 @@ class ServicioExtra(models.Model):
 class Reserva(models.Model):
     Codigo_Reserva = models.CharField(max_length=5, default = random_string, unique=True)
     Fecha_Reserva_Inicio = models.DateField(blank=True)   
-    Fecha_Reserva_Termino = models.DateField(blank=True)  
+    Fecha_Reserva_Termino = models.DateField(blank=True)
+    Cantidad_Dias=models.IntegerField('Valor', default="0")
     Estado_Reserva = models.BooleanField(default=False)
     user=models.ForeignKey(User, on_delete=models.CASCADE, default="")
     departamento=models.ForeignKey(Departamento, on_delete=models.CASCADE, default="")
     servicioextra=models.ManyToManyField(ServicioExtra, null=True, blank=True)
+
 
     def __str__ (self):
         return self.Codigo_Reserva

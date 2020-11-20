@@ -97,4 +97,23 @@ color: coral;
     align-items: center;
 }
 
+.detalle{
+    background: rgb(99, 99, 99);
+    padding: 2%;
+    border-radius: 5px;
+    margin: 3%
+}
 
+.detalle h4{
+    color: orange;
+    text-align: center;
+}
+
+.detalle span{
+    color: orange;
+}
+
+.detalle p{
+    color:wheat;
+    text-align: justify;
+}

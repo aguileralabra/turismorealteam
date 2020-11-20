@@ -123,7 +123,8 @@ class ReservaForm(ModelForm):
             'Fecha_Reserva_Termino',
             'Estado_Reserva',
             'departamento',
-            'servicioextra'
+            'servicioextra',
+            'Cantidad_Dias',
             ]
         widgets = {
             'Fecha_Reserva_Inicio': forms.DateInput(
@@ -148,6 +149,7 @@ class ReservaAdminForm(ModelForm):
             'Fecha_Reserva_Inicio',
             'Fecha_Reserva_Termino',
             'Estado_Reserva',
+            'Cantidad_Dias',
             'departamento',
             'servicioextra',
             'user'
@@ -263,7 +265,7 @@ class ServicioExtraForm(forms.ModelForm):
         fields = [
             'descrip_servicio',
             'direccion_reunion',
-            'direccion_destino', 
+            'direccion_destino',
             'fecha_encuentro',
             'fecha_termino_servicio',
             'valor_servicio',

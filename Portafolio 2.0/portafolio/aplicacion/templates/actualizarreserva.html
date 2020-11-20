@@ -23,9 +23,12 @@
             {{ form.Fecha_Reserva_Termino }}<hr><br>
             <label>Departamento a Elegir</label><br>
             {{ form.departamento }}<hr><br>
+            <label>Cantidad de Dias</label><br>
+            {{ form.Cantidad_Dias }}<hr><br>
             <label>Servicios Extras</label><br>
             {{ form.servicioextra }}<hr><br>
-    
+            <th>Cliente</th>
+
                 {% csrf_token %}
               </div>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Editar">
