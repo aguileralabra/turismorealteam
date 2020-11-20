@@ -39,6 +39,9 @@
         <td><a href="/cancelarreserva/{{ reservita.id }}">
             Cancerlar
         </a></td>
+        <td><a href="{% url 'cliente_app:reserva_all' reserva.id %} " target="_blank">Archivo PDF</a>
+        </td>
+
     </tr>
       </tr>
     {% endfor %}
