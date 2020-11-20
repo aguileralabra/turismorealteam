@@ -117,3 +117,14 @@ color: coral;
     color:wheat;
     text-align: justify;
 }
+
+.detalle a{
+    color:wheat;
+    background: orange;
+    text-align: left;
+    padding: 3%;
+    margin: 5%;
+    border-radius: 5px;
+
+}
+
