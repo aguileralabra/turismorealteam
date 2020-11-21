@@ -4,8 +4,8 @@
 <h1 align="center">Turismo Real te da la bienvenida y te damos aqui el PDF de tu reserva</h1>
 <hr>
 <br>
-<h1 align="center"> TURISMO REAL</h1>
-<img src="{{ reservitapdf.departamento.Imagen_Recinto.url }}">
+<h1 align="center"> TURISMO REAL, usted oficialmente ha hecho su reserva y check in correctamente</h1>
+<img src="{{ reservalista.departamento.Imagen_Recinto.url }}">
 
 <br>
 <h2>Nosotros somos una compañia sumamente responsable con los tiempos y el orden, por lo que, te sugerimos 
@@ -16,25 +16,25 @@
      somos un servicio catalogado a nivel mundial como uno de 7 extrellas, calidad y diversion entregamos.
 </h3>
 
-{% if reservitapdf %}
+{% if reservalista %}
 
 <br>
 <br>
-<h1>Señor {{ reservitapdf.user.cli_Nombre}} {{ reservitapdf.user.cli_Apellidos}}.</h1>
+<h1>Señor {{ reservalista.user.cli_Nombre}} {{ reservalista.user.cli_Apellidos}}.</h1>
 
-<h1 align="center">El codigo de su reserva es: "{{ reservitapdf.Codigo_Reserva}}" </h1>
+<h1 align="center">El codigo de su reserva es: "{{ reservalista.Codigo_Reserva}}" </h1>
 
-<p align="center">El inicio de su reserva es "{{ reservitapdf.Fecha_Reserva_Inicio}}" con el termino del 
-  "{{ reservitapdf.Fecha_Reserva_Termino}}"
+<p align="center">El inicio de su reserva es "{{ reservalista.Fecha_Reserva_Inicio}}" con el termino del 
+  "{{ reservalista.Fecha_Reserva_Termino}}"
 </p>
 <br>
 <br>
 
 <h2>¿Que posee el departamento? </h2>
-<p> -Calefaccion: "{{ reservitapdf.departamento.Calefaccion }}" </p>
-<p> -Internet: "{{ reservitapdf.departamento.Internet }}" </p>
-<p> -Amoblado: "{{ reservitapdf.departamento.Amoblado }}" </p>
-<p> -Television: "{{ reservitapdf.departamento.Televicion }}" </p>
+<p> -Calefaccion: "{{ reservalista.departamento.Calefaccion }}" </p>
+<p> -Internet: "{{ reservalista.departamento.Internet }}" </p>
+<p> -Amoblado: "{{ reservalista.departamento.Amoblado }}" </p>
+<p> -Television: "{{ reservalista.departamento.Televicion }}" </p>
 
   <table class="table table-bordered order-table " border="1"> 
     <thead>
@@ -45,15 +45,15 @@
     </thead>
   </div>
     <tr>
-      <td>{{ reservitapdf.departamento}}</td>
-      <td>{{ reservitapdf.servicioextra}}</td>
+      <td>{{ reservalista.departamento}}</td>
+      <td>{{ reservalista.servicioextra}}</td>
     </tr>
   </table>
 <br>
 <br>
-<h1 align="center"> El valor a pagar: ${{ reservitapdf.departamento.Valor_Diario}} del 
-  departamento "{{ reservitapdf.departamento.Nombre_Departamento }}" ubicado en la direccion 
-  "{{ reservitapdf.departamento.Direccion_departamento }}" en la comuna "{{ reservitapdf.departamento.comuna }}".
+<h1 align="center"> El valor a pagar: ${{ reservalista.departamento.Valor_Diario}} del 
+  departamento "{{ reservalista.departamento.Nombre_Departamento }}" ubicado en la direccion 
+  "{{ reservalista.departamento.Direccion_departamento }}" en la comuna "{{ reservalista.departamento.comuna }}".
 </h1>
 
 
@@ -73,7 +73,6 @@
 <br>
 <hr>
 <p align="center">Derechos Reservados de Turismo real</p>
-
 
 
 

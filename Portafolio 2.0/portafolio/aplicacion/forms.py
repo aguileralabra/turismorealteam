@@ -301,3 +301,26 @@ class VehiculoForm(forms.ModelForm):
             'modelo',
             'marca'
             ]
+
+class VentaForm(forms.Form):
+    Codigo_Reserva = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+            attrs = {
+                'placeholder':'Codigo Reserva',
+            }
+        )
+    )
+    Cantidad_Dias = forms.IntegerField(
+        min_value=1,
+        widget=forms.NumberInput(
+            attrs={
+                'value': '1',
+            }
+        )
+    )
+    def clean_Cantidad_Dias(self):
+        Cantidad_Dias = self.cleaned_data['Cantidad_Dias']
+        if Cantidad_Dias < 1:
+            raise forms.ValidationError('ingrese un numero mayor a 0')
+        return Cantidad_Dias

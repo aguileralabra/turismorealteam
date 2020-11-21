@@ -24,31 +24,26 @@
           <tr>
             <th>Codigo</th>
             <th>Nombre</th>
-            <th>Departamento</th>
             <th>Fecha</th>
-            <th>Servicios</th>
             <th>Pago pendiente</th>
             <th>Estado</th>
-            <th>Check in</th>
-            <th>Check out</th>
+            <th>Check In/Out</th>
+            <th>Voucher</th>
           </tr>
         </thead>
       </div>
       {% for reserva in reserva %}
         <tr>
-          <td>{{ reserva.id}}</td>
+          <td>{{ reserva.Codigo_Reserva}}</td>
           <td>{{ reserva.user.cli_Nombre}}</td>
-          <td>{{ reserva.departamento.Nombre_Departamento}}</td>
           <td>{{ reserva.Fecha_Reserva_Inicio}}</td>
-          <td>{{ reserva.servicioextra}}</td>
           <td>${{ reserva.departamento.Valor_Diario}}</td>
           <td>{{ reserva.Estado_Reserva}}</td>
-          <td><a href="/editacom/{{ acompañante.id }}">Check In</a></td>
-          <td><a href="/editacom/{{ acompañante.id }}">Check Out</a></td>
+          <td><a href="/editacom/{{ acompañante.id }}">Check</a></td>
+          <td><a href="{% url 'cliente_app:listareservafuncionario' reserva.id %} " target="_blank">Voucher</a></td>
         </tr>
       {% endfor %}
       </table>
-      <p>Si desea registrar un listado haga click en el siguiente link <a href="#"> Realizar un listado</a></p>
       </div>
   </div>
 

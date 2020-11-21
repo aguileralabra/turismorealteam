@@ -1,0 +1,45 @@
+{% extends "cliente_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+
+{% if Reserva %}
+{{ Reserva.Codigo_Reserva }}
+{{ Reserva.Cantidad_Dias }}
+{% endif %}
+
+<div class="listadoreserva">
+    <div class="container">
+    <h1>Listado de Reservas</h1>
+    <div style="height:50px"></div>
+    <p class="lead">
+    <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
+    <br>
+    <table class="table table-bordered order-table ">
+      <thead>
+      <div class="nombrestr">
+        <tr>
+          <th>Codigo</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Termino</th>
+          <th>Cliente</th>
+        </tr>
+      </thead>
+    </div>
+    {% for Reserva in Reserva %}
+      <tr>
+        <td>{{ Reserva.Codigo_Reserva}}</td>
+        <td>{{ Reserva.Fecha_Reserva_Inicio}}</td>
+        <td>{{ Reserva.Fecha_Reserva_Termino}}</td>
+        <td>{{ Reserva.user}}</td>
+    </tr>
+      </tr>
+    {% endfor %}
+    </table>
+    </div>
+</div>
+
+
+{{ total_cobrar }}
+{% endblock %}

@@ -28,5 +28,16 @@ class UserManager(BaseUserManager, models.Manager):
         else:
             return False
 
-            
+class AgregarReservaManager(models.Manager):
+    def total_cobrar(self):
+        consulta = self.aggregate(
+            total=Sum(
+                F('Cantidad_Dias')*F('Reserva_departamento_valor_servicio'),
+                output_field=FloatField()
+            ),
+        )
+        if consulta['total']:
+            return consulta['total']
+        else:
+            return 0
 

@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm, VentaForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -19,6 +19,7 @@ from .functions import code_generator, render_to_pdf
 from django.core.mail import send_mail
 from django.template import context
 from .mixins import SuperUsuarioMixin, FuncionarioUsuarioMixin
+from .managers import AgregarReservaManager
 
 
 class InicioView(TemplateView):
@@ -208,29 +209,12 @@ class ListReservaListView(LoginRequiredMixin, ListView):
 class ListReservaPdf(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
-        reservitapdf = Reserva.objects.last()
+        reservitapdf = Reserva.objects.get(id=self.kwargs['pk'])
         data = {
             'reservitapdf' : reservitapdf
         }
         pdf = render_to_pdf('listareserva.html', data)
         return HttpResponse(pdf, content_type='application/pdf')
-
-    def get_queryset(self):
-        #identificar cliente
-        id = self.kwargs['pk']
-        #filtrar tarjetas
-        reservitapdf = Reserva.objects.filter(
-            user=id
-        )
-        #devolver resultado
-        return reservitapdf
-
-''' ----------------------------DETAILVIEW-------------------'''
-
-#class TarjetaDetailView(LoginRequiredMixin, DetailView):
- #   model = TarjetaCredito
-  #  template_name = "detail_tarjeta.html"
-   # login_url = reverse_lazy('cliente_app:logeo')
 
 ''' -----------------------------CreateVIEW-------------------- '''
 
@@ -313,6 +297,16 @@ class PerfilFuncionarioView(LoginRequiredMixin, FuncionarioUsuarioMixin,Template
 class CrearlistadoView(LoginRequiredMixin,TemplateView):
     template_name = 'crear_listado.html'
     login_url = reverse_lazy('cliente_app:logeo')
+
+class ListReservaFuncionarioPdf(LoginRequiredMixin, FuncionarioUsuarioMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        reservalista = Reserva.objects.get(id=self.kwargs['pk'])
+        data = {
+            'reservalista' : reservalista
+        }
+        pdf = render_to_pdf('listareservafuncionario.html', data)
+        return HttpResponse(pdf, content_type='application/pdf')
 
 '''
 
@@ -635,8 +629,6 @@ class PerfilUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
     success_url =  reverse_lazy('cliente_app:inicio')
     login_url = reverse_lazy('cliente_app:logeo')
 
-
-
 '''
 
 termina aqui Administrador------------------------------------------------------
@@ -645,3 +637,35 @@ termina aqui Administrador------------------------------------------------------
 
 def resultado(request):
     return render (request, 'resultado.html')
+
+
+'''Probando cosas ----------------------------------------------------------------------------------------------------------------------------------------------'''
+
+class AgregarReservaView(LoginRequiredMixin, FormView):
+    template_name = "reservando.html"
+    form_class = VentaForm
+    success_url =  reverse_lazy('cliente_app:inicio')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["Reserva"] = Reserva.objects.all()
+        #context["total_cobrar"] = Reserva.objects.total_cobrar()
+        #context['form_voucher'] = VentaVoucherForm
+        return context
+    
+    def form_valid(self, form):
+        Codigo_Reserva = form.cleaned_data['Codigo_Reserva']
+        Cantidad_Dias = form.cleaned_data['Cantidad_Dias']
+        obj, created = Reserva.objects.get_or_create(
+            Codigo_Reserva=Codigo_Reserva,
+            defaults={
+                'reserv': Reserva.objects.get(Codigo_Reserva=Codigo_Reserva),
+                'Cantidad_Dias': Cantidad_Dias 
+            }
+        )
+        if not created:
+            obj.Cantidad_Dias = obj.Cantidad_Dias + Cantidad_Dias
+            obj.save()
+        return super(AgregarReservaView, self).form_valud(form)
+

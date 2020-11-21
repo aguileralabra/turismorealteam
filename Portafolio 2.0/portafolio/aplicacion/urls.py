@@ -74,6 +74,11 @@ urlpatterns = [
          name='perfil_funcionario'
          ), 
     path(
+        'listareservafuncionario/<pk>/',
+         views.ListReservaFuncionarioPdf.as_view(),
+         name='listareservafuncionario'
+         ), 
+    path(
         'crear_listado/',
          views.CrearlistadoView.as_view()
          ), 
@@ -204,6 +209,13 @@ urlpatterns = [
         'actualizar_perfil/<pk>/',
          views.PerfilUpdateView.as_view(),
          name='actualizar_perfil'
+         ),
+
+        #probando venta--------------------------------------------------------------------------------------------------------------------------------------------------------------
+    path(
+        'reservando/',
+         views.AgregarReservaView.as_view(),
+         name='reservando'
          ),
         #Pago--------------------------------------------------------------------------------------------------------------------------------------------------------------
     path(
