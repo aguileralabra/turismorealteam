@@ -39,8 +39,12 @@
           <td>{{ reserva.Fecha_Reserva_Inicio}}</td>
           <td>${{ reserva.departamento.Valor_Diario}}</td>
           <td>{{ reserva.Estado_Reserva}}</td>
-          <td><a href="/editacom/{{ acompañante.id }}">Check</a></td>
+          <td><a href="/editacom/{{ reserva.id }}">Check</a></td>
+          {% if reserva.Estado_Reserva is True %}
           <td><a href="{% url 'cliente_app:listareservafuncionario' reserva.id %} " target="_blank">Voucher</a></td>
+          {% else %}
+          <td>Falta Pagar</td>
+          {% endif %}
         </tr>
       {% endfor %}
       </table>
