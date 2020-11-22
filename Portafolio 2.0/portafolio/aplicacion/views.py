@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm, VentaForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm, VentaForm, ReservaFuncionarioForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -141,7 +141,6 @@ Aqui terminar login---------------------------------------------------------
 Cliente------------------------------------------------------
 
 '''
-#listando las tarjetas de credito
 ''' TEMPLATEVIEW-------------------------------------------- '''
 
 
@@ -149,7 +148,7 @@ class InicioclienteView(LoginRequiredMixin, View):
     template_name = "inicio.html"
     login_url = reverse_lazy('cliente_app:logeo')
     model = Reserva
-    form_class = ReservaForm
+    form_class = ReservaFuncionarioForm
 
     def get_queryset(self):
         return self.model.objects.all()
@@ -296,6 +295,13 @@ class PerfilFuncionarioView(LoginRequiredMixin, FuncionarioUsuarioMixin,Template
 
 class CrearlistadoView(LoginRequiredMixin,TemplateView):
     template_name = 'crear_listado.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
+class ReservaFuncionarioUpdateView(LoginRequiredMixin, FuncionarioUsuarioMixin, UpdateView):
+    template_name = "actualizarcheck.html"
+    model = Reserva
+    form_class = ReservaFuncionarioForm
+    success_url =  reverse_lazy('cliente_app:inicio')
     login_url = reverse_lazy('cliente_app:logeo')
 
 class ListReservaFuncionarioPdf(LoginRequiredMixin, FuncionarioUsuarioMixin, View):

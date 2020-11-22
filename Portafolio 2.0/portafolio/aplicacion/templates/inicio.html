@@ -27,6 +27,7 @@
             <th>Fecha</th>
             <th>Pago pendiente</th>
             <th>Estado</th>
+            <th>Check</th>
             <th>Check In/Out</th>
             <th>Voucher</th>
           </tr>
@@ -39,11 +40,13 @@
           <td>{{ reserva.Fecha_Reserva_Inicio}}</td>
           <td>${{ reserva.departamento.Valor_Diario}}</td>
           <td>{{ reserva.Estado_Reserva}}</td>
-          <td><a href="/editacom/{{ reserva.id }}">Check</a></td>
-          {% if reserva.Estado_Reserva is True %}
+          <td>{{ reserva.check}}</td>
+          <td><a href="/actualizarcheck/{{ reserva.id }}">Check</a></td>
+          {% if reserva.Estado_Reserva is True  %}
           <td><a href="{% url 'cliente_app:listareservafuncionario' reserva.id %} " target="_blank">Voucher</a></td>
-          {% else %}
-          <td>Falta Pagar</td>
+          {% endif %}
+          {% if reserva.Estado_Reserva is False %}
+          <td>No Check</td>
           {% endif %}
         </tr>
       {% endfor %}

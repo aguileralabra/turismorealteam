@@ -64,6 +64,7 @@ urlpatterns = [
         'contacto/',
          views.ContactCreateView.as_view(),
          name='addcontacto'), 
+          #Funcionario----------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'funcionario/',
          views.FuncionarioView.as_view()
@@ -77,6 +78,11 @@ urlpatterns = [
         'listareservafuncionario/<pk>/',
          views.ListReservaFuncionarioPdf.as_view(),
          name='listareservafuncionario'
+         ),
+    path(
+        'actualizarcheck/<pk>/',
+         views.ReservaFuncionarioUpdateView.as_view(),
+         name='actualizarcheck'
          ), 
     path(
         'crear_listado/',

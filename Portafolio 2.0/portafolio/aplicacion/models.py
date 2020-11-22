@@ -190,11 +190,18 @@ class ServicioExtra(models.Model):
         return self.descrip_servicio      
 
 class Reserva(models.Model):
+
+    CHECK_CHOICES = (
+        ('NoCheck', 'NoCheck'),
+        ('CheckIn', 'CheckIn'),
+        ('CheckOut', 'CheckOut'),
+    )
     Codigo_Reserva = models.CharField(max_length=5, default = random_string, unique=True)
     Fecha_Reserva_Inicio = models.DateField(blank=True)   
     Fecha_Reserva_Termino = models.DateField(blank=True)
     Cantidad_Dias=models.IntegerField('Valor', default="0")
     Estado_Reserva = models.BooleanField(default=False)
+    check=models.CharField(max_length=100, default="No Check", choices=CHECK_CHOICES)
     total_cobrar = models.FloatField(default="0")
     user=models.ForeignKey(User, on_delete=models.CASCADE, default="")
     departamento=models.ForeignKey(Departamento, on_delete=models.CASCADE, default="")

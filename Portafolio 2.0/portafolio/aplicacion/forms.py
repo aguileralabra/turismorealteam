@@ -141,6 +141,29 @@ class ReservaForm(ModelForm):
             )
         }
 
+class ReservaFuncionarioForm(ModelForm):
+    class Meta:
+        model = Reserva
+        fields = [
+            'Estado_Reserva',
+            'servicioextra',
+            'check',
+            ]
+        widgets = {
+            'Fecha_Reserva_Inicio': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs = {
+                    'type': 'date',
+                }
+            ),
+            'Fecha_Reserva_Termino': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs = {
+                    'type': 'date',
+                }
+            )
+        }
+
 
 class ReservaAdminForm(ModelForm):
     class Meta:
