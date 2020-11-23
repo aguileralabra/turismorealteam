@@ -11,7 +11,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-            Actualizar Cliente
+            Actualizar Reserva
           </h3>
       </div>
       <div class="panel-body">
@@ -28,6 +28,7 @@
             <label>Servicios Extras</label><br>
             {{ form.servicioextra }}<hr><br>
             <th>Cliente</th>
+            {{ form.user }}<hr><br>
 
                 {% csrf_token %}
               </div>

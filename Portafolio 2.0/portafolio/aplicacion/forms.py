@@ -2,6 +2,8 @@ from django.forms import ModelForm
 from django import forms
 from .models import *
 from django.contrib.auth import authenticate
+from datetime import datetime, date
+import datetime
 
 class UserRegisterForm(forms.ModelForm):
 
@@ -189,8 +191,28 @@ class ReservaAdminForm(ModelForm):
                 attrs = {
                     'type': 'date',
                 }
-            )
+            ),
         }
+
+    def clean_Cantidad_Dias(self):
+        Cantidad_Dias = self.cleaned_data['Cantidad_Dias']
+        if Cantidad_Dias < 1:
+            raise forms.ValidationError('ingrese un numero mayor a 0')
+        return Cantidad_Dias
+
+    def clean_Fecha_Reserva_Inicio(self):
+        Fecha_Reserva_Inicio = self.cleaned_data['Fecha_Reserva_Inicio']
+        if Fecha_Reserva_Inicio < datetime.date.today():
+            raise forms.ValidationError('elegir una fecha igual o superior a hoy')
+        return Fecha_Reserva_Inicio
+
+    def Fecha_Reserva_Termino(self):
+        Fecha_Reserva_Termino = self.cleaned_data['Fecha_Reserva_Termino']
+        if Fecha_Reserva_Termino < datetime.date.today():
+            raise forms.ValidationError('elegir una fecha igual o superior a hoy')
+        return Fecha_Reserva_Termino
+    
+
 
 class VerificationForm(forms.Form):
     codregistro = forms.CharField(required=True)
@@ -347,3 +369,4 @@ class VentaForm(forms.Form):
         if Cantidad_Dias < 1:
             raise forms.ValidationError('ingrese un numero mayor a 0')
         return Cantidad_Dias
+    

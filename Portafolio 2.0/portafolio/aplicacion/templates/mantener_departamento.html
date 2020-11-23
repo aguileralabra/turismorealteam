@@ -40,8 +40,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="contacto">
     <div class="contacto-contenido">
         <div class="titulo-contacto">
@@ -50,29 +48,28 @@
         <div class="formulario-contacto">
             <h4>Formulario Departamento </h4>
             <hr>
-            <form class="form-contac" method="POST"  enctype="multipart/form-data">
+            <form class="form-contac" method="POST" enctype="multipart/form-data">
                 <p>Nombre Departamento</p>
-                <input type="text" id="celular" class="form-input" name="Nombre_Departamento" required>
+                <input type="text" id="Nombre_Departamento" class="form-input" name="Nombre_Departamento" required>
                 
                 <p>Numero de Propiedad</p>
-                <input type="number" id="celular" class="form-input" name="Numero_propiedad" required>
+                <input type="number" id="Numero_propiedad" class="form-input" name="Numero_propiedad" required>
 
                 <p>Descripcion Departamento</p>
                 <textarea id="w3review" name="Descripcion_departamento" rows="2" cols="22,5" >
                 </textarea>
 
                 <p>Direccion del departamento</p>
-                <input type="text" id="celular" class="form-input" name="Direccion_departamento" required>
+                <input type="text" id="Direccion_departamento" class="form-input" name="Direccion_departamento" required>
 
                 <p>Numero de Habitaciones</p>
-                <input type="number" id="celular" class="form-input" name="habitaciones" required>
+                <input type="number" id="habitaciones" class="form-input" name="habitaciones" required>
 
                 <p>Numero de Baños</p>
-                <input type="number" id="celular" class="form-input" name="Baños" required>
+                <input type="number" id="Baños" class="form-input" name="Baños" required>
 
                 <p>Valor departamento diariamente</p>
-                <input type="number" id="celular" class="form-input" name="Valor_Diario" required>
-
+                <input type="number" id="Valor_Diario" class="form-input" name="Valor_Diario" required>
 
                 <p>Calefacción</p>
                 {{ form.Calefaccion }}
@@ -80,24 +77,21 @@
                 <p>Internet</p>
                 {{ form.Internet }}
 
-
                 <p>Amoblado</p>
                 {{ form.Amoblado }}
 
-
                 <p>Televisión</p>
                 {{ form.Televicion }}
-
 
                 <p>Disponibilidad</p>
                 {{ form.Disponible }}
 
                 <hr>
                 <p>Imagenes del Recinto</p>
-                <input type="file" id="celular" class="form-input" name="Imagen_Recinto" required>
+                {{ form.Imagen_Recinto }}
 
                 <p>Imagenes del Entorno</p>
-                <input type="file" id="celular" class="form-input" name="Imagen_Entorno" required>
+                {{ form.Imagen_Entorno }}
 
                 <hr>
                 <p>Comuna del Departamento</p>
@@ -114,7 +108,6 @@
                 <a href="/inicio">Volver al Menu</a>
                 <input type="submit" class="submit" value="Añadir Departamento">
             </form> 
-            
         </div>
         <div class="escritura-contacto">
           <h4>Ante problemas tecnico {{ request.user }}, envies un correo o llamar. </h4>
@@ -147,7 +140,9 @@
         {% for departamento in departamento %}
           <div class="item">
             <a href="#" class="overlay-wrapper">
+              {% if departamento.Imagen_Recinto %}
               <img src="{{ departamento.Imagen_Recinto.url }}" alt="Villaricon" class="img-responsive underlay">
+              {% endif %}
                 <span class="overlay">
                   <span class="overlay-content"> <span class="h4">Descripcion: {{ departamento.Descripcion_departamento}}</span> </span>
                   <span class="overlay-content"> <span class="h4">Cantidad Baños: {{ departamento.Baños}}</span> </span>

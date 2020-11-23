@@ -21,14 +21,12 @@ from django.template import context
 from .mixins import SuperUsuarioMixin, FuncionarioUsuarioMixin
 from .managers import AgregarReservaManager
 
-
 class InicioView(TemplateView):
     template_name = "index.html"
 
-
 '''
 
-Login---------------------------------------------------------
+Login---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 '''
 class UserRegisterView(FormView):
@@ -134,15 +132,11 @@ class CodeVerificationView(FormView):
 '''
 
 Aqui terminar login---------------------------------------------------------
-
 '''
 '''
-
-Cliente------------------------------------------------------
-
+Cliente------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 '''
 ''' TEMPLATEVIEW-------------------------------------------- '''
-
 
 class InicioclienteView(LoginRequiredMixin, View):
     template_name = "inicio.html"
@@ -161,7 +155,7 @@ class InicioclienteView(LoginRequiredMixin, View):
     def get(self,request,*args,**kwargs):
         return render(request,self.template_name, self.get_context_data())
 
-''' ----------------------------LISTVIEW--------------------- '''
+''' ----------------------------LISTVIEW------------------------ '''
 
 class ListCliente(LoginRequiredMixin, ListView):
     template_name = 'cliente.html'
@@ -223,7 +217,6 @@ class ContactCreateView(LoginRequiredMixin, CreateView):
     success_url = '.'
     login_url = reverse_lazy('cliente_app:logeo')
 
-
 class CrearAcompañanteView(LoginRequiredMixin, CreateView):
     template_name = "registroacom.html"
     model = Acompañante
@@ -275,15 +268,14 @@ class ReservaDelete(LoginRequiredMixin, DeleteView):
 
 '''
 
-termina aqui Cliente------------------------------------------------------
+termina aqui Cliente----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 '''
 '''
 
-Empieza Funcionario------------------------------------------------------
+Empieza Funcionario------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 '''
-
 
 class FuncionarioView(LoginRequiredMixin,TemplateView):
     template_name = 'funcionario.html'
@@ -315,15 +307,16 @@ class ListReservaFuncionarioPdf(LoginRequiredMixin, FuncionarioUsuarioMixin, Vie
         return HttpResponse(pdf, content_type='application/pdf')
 
 '''
-
-termina aqui Funcionario------------------------------------------------------
-
-'''
-'''
-
-Empieza Administrador------------------------------------------------------
+termina aqui Funcionario-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 '''
+'''
+
+Empieza Administrador----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+'''
+
+''' mantenedor cliente ------------------------------------------------------'''
 
 class MantenerClienteView(LoginRequiredMixin, SuperUsuarioMixin, View):
     model = User
@@ -362,7 +355,7 @@ class UsuarioDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     success_url =  reverse_lazy('cliente_app:mantener_cliente')
     login_url = reverse_lazy('cliente_app:logeo')
 
-''' mantenedor cliente ------------------------------------------------------'''
+''' mantenedor Departamento ------------------------------------------------------'''
 
 class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, View):
     model = Departamento
@@ -443,8 +436,6 @@ class ReservaDetailView(LoginRequiredMixin, SuperUsuarioMixin, DetailView):
     template_name = "detailreserva.html"
     model = Reserva
     login_url = reverse_lazy('cliente_app:logeo')
-
-
 
 ''' Mantenedor Servicio ------------------------------------------------------'''
 
@@ -602,7 +593,7 @@ class VehiculoDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     success_url =  reverse_lazy('cliente_app:mantener_vehiculo')
     login_url = reverse_lazy('cliente_app:logeo')
 
-'''Pago ----------------------------------------------------------------------------------------------------------------------------------------------'''
+'''Pago -----------------------------------------------------------------'''
 
 class PagosView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'pagos_adm.html'
@@ -620,13 +611,11 @@ class InformeView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'generar_informe.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-
-'''Perfil Administrador ----------------------------------------------------------------------------------------------------------------------------------------------'''
+'''Perfil Administrador -------------------------------------------------'''
 
 class PerfilAdminListView(LoginRequiredMixin, SuperUsuarioMixin,TemplateView):
     template_name = 'perfiladministrador.html'
     login_url = reverse_lazy('cliente_app:logeo')
-
 
 class PerfilUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
     template_name = "actualizar_perfil.html"
@@ -635,18 +624,14 @@ class PerfilUpdateView(LoginRequiredMixin, SuperUsuarioMixin, UpdateView):
     success_url =  reverse_lazy('cliente_app:inicio')
     login_url = reverse_lazy('cliente_app:logeo')
 
+'''                           
+termina aqui Administrador-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 '''
-
-termina aqui Administrador------------------------------------------------------
-
-'''
-
 def resultado(request):
     return render (request, 'resultado.html')
 
-
 '''Probando cosas ----------------------------------------------------------------------------------------------------------------------------------------------'''
-
 class AgregarReservaView(LoginRequiredMixin, FormView):
     template_name = "reservando.html"
     form_class = VentaForm
