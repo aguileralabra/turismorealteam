@@ -150,6 +150,7 @@ class ReservaFuncionarioForm(ModelForm):
             'Estado_Reserva',
             'servicioextra',
             'check',
+            'multa',
             ]
         widgets = {
             'Fecha_Reserva_Inicio': forms.DateInput(

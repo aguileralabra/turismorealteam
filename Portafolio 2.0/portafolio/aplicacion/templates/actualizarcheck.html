@@ -21,6 +21,8 @@
         {{ form.check }}<hr><br>  
         <label>Servicios Extras</label><br>
         {{ form.servicioextra }}<hr><br>  
+        <label>Multa</label><br>
+        {{ form.multa }}<hr><br>  
         <br><br>
         {% csrf_token %}
         <input type="submit" class="form-submit" value="Modificar" onClick="verificarCasilla(this.form)">
