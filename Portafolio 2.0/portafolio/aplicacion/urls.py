@@ -120,6 +120,16 @@ urlpatterns = [
          views.DepartamentoUpdateView.as_view(),
          name='actualizardepartamento'
          ), 
+    path(
+        'ciudad/',
+         views.CiudadView.as_view(),
+         name='ciudad'
+         ),
+    path(
+        'comuna/',
+         views.ComunaView.as_view(),
+         name='comuna'
+         ),
         #Mantener Reservas-------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'mantener_reserva/',

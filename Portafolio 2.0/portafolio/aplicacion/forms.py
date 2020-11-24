@@ -370,4 +370,18 @@ class VentaForm(forms.Form):
         if Cantidad_Dias < 1:
             raise forms.ValidationError('ingrese un numero mayor a 0')
         return Cantidad_Dias
-    
+
+class CiudadForm(forms.ModelForm):
+    class Meta:
+        model = Ciudad
+        fields = [
+            'descrip_ciudad'
+            ]
+
+class ComunaForm(forms.ModelForm):
+    class Meta:
+        model = Comuna
+        fields = [
+            'descrip_comuna',
+            'ciudad'
+            ]

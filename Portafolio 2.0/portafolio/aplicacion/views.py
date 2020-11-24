@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm, VentaForm, ReservaFuncionarioForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm, VentaForm, ReservaFuncionarioForm, CiudadForm, ComunaForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -394,7 +394,61 @@ class DepartamentoDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     success_url =  reverse_lazy('cliente_app:mantener_departamento')
     login_url = reverse_lazy('cliente_app:logeo')
 
+'''  Ciudad Crear------------------------------------------------------'''
+
+class CiudadView(LoginRequiredMixin, SuperUsuarioMixin, View):
+    model = Ciudad
+    form_class = CiudadForm
+    template_name = 'ciudad.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['ciudad'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:ciudad')
+
+'''  Comuna Crear------------------------------------------------------'''
+
+class ComunaView(LoginRequiredMixin, SuperUsuarioMixin, View):
+    model = Comuna
+    form_class = ComunaForm
+    template_name = 'comuna.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['comuna'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:comuna')
+
+
 '''  Mantenedor Reserva ------------------------------------------------------'''
+
 class MantenerReservaView(LoginRequiredMixin, SuperUsuarioMixin, View):
     model = Reserva
     form_class = ReservaAdminForm
