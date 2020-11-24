@@ -385,3 +385,13 @@ class ComunaForm(forms.ModelForm):
             'descrip_comuna',
             'ciudad'
             ]
+
+class InventarioForm(forms.ModelForm):
+    class Meta:
+        model = Inventario
+        fields = [
+            'reparacion',
+            'mejoramiento'
+            ]
+
+

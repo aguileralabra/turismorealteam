@@ -130,6 +130,16 @@ urlpatterns = [
          views.ComunaView.as_view(),
          name='comuna'
          ),
+    path(
+        'inventario/',
+         views.InventarioView.as_view(),
+         name='inventario'
+         ),
+    path(
+        'deleteinventario/<pk>/',
+         views.InventarioDeleteView.as_view(),
+         name='deleteinventario'
+         ),
         #Mantener Reservas-------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'mantener_reserva/',
