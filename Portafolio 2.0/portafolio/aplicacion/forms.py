@@ -260,7 +260,8 @@ class DepartamentoForms(forms.ModelForm):
             'Disponible',
             'comuna',
             'inventario',
-            'gasto'
+            'dividendo',
+            'contribucion'
             ]
 
 class AdminUserForm(forms.ModelForm):

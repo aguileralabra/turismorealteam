@@ -53,7 +53,7 @@
                 <input type="text" id="Nombre_Departamento" class="form-input" name="Nombre_Departamento" required>
                 
                 <p>Numero de Propiedad</p>
-                <input type="number" id="Numero_propiedad" class="form-input" name="Numero_propiedad" required>
+                {{ form.Numero_propiedad }}
 
                 <p>Descripcion Departamento</p>
                 <textarea id="w3review" name="Descripcion_departamento" rows="2" cols="22,5" >
@@ -63,13 +63,19 @@
                 <input type="text" id="Direccion_departamento" class="form-input" name="Direccion_departamento" required>
 
                 <p>Numero de Habitaciones</p>
-                <input type="number" id="habitaciones" class="form-input" name="habitaciones" required>
+                {{ form.habitaciones }}
 
                 <p>Numero de Baños</p>
-                <input type="number" id="Baños" class="form-input" name="Baños" required>
+                {{ form.Baños }}
 
                 <p>Valor departamento diariamente</p>
-                <input type="number" id="Valor_Diario" class="form-input" name="Valor_Diario" required>
+                {{ form.Valor_Diario }}
+
+                <p>Dividendo</p>
+                {{ form.dividendo }}
+
+                <p>Contribucion</p>
+                {{ form.contribucion }}
 
                 <p>Calefacción</p>
                 {{ form.Calefaccion }}
@@ -100,9 +106,6 @@
                 <p>Inventario adjudicado</p>
                 {{ form.inventario }}
 
-                <p>Gasto del Departamento</p>
-                {{ form.gasto }}
-
                 {% csrf_token %}
                 <br><br>
                 <a href="/inicio">Volver al Menu</a>
@@ -111,7 +114,17 @@
         </div>
         <div class="escritura-contacto">
           <h4>Ante problemas tecnico {{ request.user }}, envies un correo o llamar. </h4>
+          <br>
+          <p>Jonathan cabrera</p>
+          <i class="fa fa-phone fa-fw text-primary"></i> +569 4353 1445
+          <br>
+          <br>
+          <p>Ezequiel Riquelme</p>
+          <i class="fa fa-phone fa-fw text-primary"></i> +569 5776 2043
+          <br>
           <hr>
+          <h4>Gestiones de los departamentos </h4>
+          <br>
           <p>Jonathan cabrera</p>
           <i class="fa fa-phone fa-fw text-primary"></i> +569 4353 1445
           <br>

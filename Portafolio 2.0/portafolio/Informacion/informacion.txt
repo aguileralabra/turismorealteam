@@ -29,26 +29,9 @@ https://www.youtube.com/c/Developerpe/videos
 
 
 -------------------
-<nav>
-    {% if is_paginated %}
-        <ul class="pagination">
-            {% if page_obj.has_previous %}
-                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
-            {% endif %}
 
-            {% for i in paginator.page_range %}
-                <li {% if page_obj.number == i %} class="active" {% endif %}>
-                    <a href="?page={{i}}">{{ i }}</a>
-                </li>
-            {% endfor %}
+IMAGENES:
+https://djangocentral.com/uploading-images-with-django/
 
-            {% if page_obj.has_next %}
-                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
-            {% endif %}
-        </ul>
-    {% endif %}
-</nav>
-
-
-
+OTRAS COSAS:
 https://algorisoft.com/courses/41aa1066-20d7-42b6-8533-5470caf76b4b/

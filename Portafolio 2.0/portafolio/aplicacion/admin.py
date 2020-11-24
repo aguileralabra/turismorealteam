@@ -20,7 +20,6 @@ class ContactoAdmin(admin.ModelAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Acompañante)
 admin.site.register(Inventario)
-admin.site.register(Gasto)
 admin.site.register(Ciudad)
 admin.site.register(Comuna)
 admin.site.register(Departamento, DepartamentoAdmin)

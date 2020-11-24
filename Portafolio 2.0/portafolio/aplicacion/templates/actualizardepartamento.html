@@ -63,8 +63,12 @@
                 <label>Inventario</label>
                 <div class="escrituraline">{{ form.inventario}}</div><br>
 
-                <label>Gasto del Departamento</label>
-                <div class="escrituraline">{{ form.gasto}}</div><br>
+                <p>Dividendo</p>
+                {{ form.dividendo }}
+
+                <p>Contribucion</p>
+                {{ form.contribucion }}
+                
                 {% csrf_token %}
               </div>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Modificar">

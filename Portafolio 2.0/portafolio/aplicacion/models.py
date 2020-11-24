@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import  AbstractBaseUser, PermissionsMixin
 from .managers import UserManager
 from django.conf import settings
-from datetime import datetime
+from datetime import datetime, date
+import datetime
 from django.db.models.signals import post_save
 import random
 
@@ -13,7 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     cli_Rut=models.CharField('Rut',max_length=30, unique=True)
     cli_Nombre=models.CharField('Nombre',max_length=30, blank=True)
     cli_Apellidos=models.CharField('Apellidos',max_length=30, blank=True)
-    cli_Edad= models.IntegerField('Edad', blank=True, null=True)
+    cli_Edad= models.IntegerField('Edad', blank=True, null=True, default="0")
     cli_Nacionalidad=models.CharField('Nacionalidad',max_length=30, blank=True)
     email= models.EmailField('Correo', blank=True)
     cli_Telefono=models.CharField('Telefono',max_length=15, blank=True)
@@ -37,7 +38,7 @@ class Acompañante(models.Model):
     acom_rut=models.CharField('Rut',max_length=14, unique=True)
     acom_nombre=models.CharField('Nombre',max_length=30)
     acom_apellidos=models.CharField('Apellidos',max_length=30)
-    acom_edad= models.IntegerField('Edad',null=True)
+    acom_edad= models.IntegerField('Edad',null=True, default="0")
     acom_nacionalidad=models.CharField('Nacionalidad',max_length=30)
     acom_email= models.EmailField('Correo', unique=True)
     acom_telefono=models.CharField('Telefono',max_length=12)
@@ -60,10 +61,6 @@ class Inventario(models.Model):
 
     def __str__ (self):
         return self.reparacion
-
-class Gasto(models.Model):
-    dividendo = models.IntegerField()
-    contribucion = models.IntegerField()
 
 class Ciudad(models.Model):
     descrip_ciudad=models.CharField(max_length=100, default="")
@@ -101,22 +98,23 @@ class Departamento(models.Model):
         ('No', 'No'),
     )
     Nombre_Departamento = models.CharField(max_length=30)
-    Numero_propiedad = models.IntegerField(null=True)
+    Numero_propiedad = models.IntegerField(null=True, default="0")
     Descripcion_departamento= models.CharField(max_length=200, default="")
     Direccion_departamento= models.CharField(max_length=200, default="")
-    habitaciones = models.IntegerField(null=True)
-    Baños = models.IntegerField(null=True)    
-    Calefaccion = models.CharField(max_length=2, choices=CALE_CHOICES)
-    Internet = models.CharField(max_length=2, choices=INTERNET_CHOICES)
-    Amoblado = models.CharField(max_length=2, choices=AMOBLADO_CHOICES)
-    Televicion = models.CharField(max_length=2, choices=TELEVICION_CHOICES)
+    habitaciones = models.IntegerField(null=True, default="0")
+    Baños = models.IntegerField(null=True, default="0")    
+    Calefaccion = models.CharField(max_length=2, choices=CALE_CHOICES, default="Si")
+    Internet = models.CharField(max_length=2, choices=INTERNET_CHOICES, default="Si")
+    Amoblado = models.CharField(max_length=2, choices=AMOBLADO_CHOICES, default="Si")
+    Televicion = models.CharField(max_length=2, choices=TELEVICION_CHOICES, default="Si")
     Imagen_Recinto = models.ImageField( upload_to="departamento/", null=True, blank=True, default="/static/img/logo.PNG")
     Imagen_Entorno = models.ImageField( upload_to="", null=True, blank=True)
-    Valor_Diario = models.IntegerField()
-    Disponible = models.CharField(max_length=2, choices=DISPONIBILIDADDEPART_CHOICES)
+    Valor_Diario = models.IntegerField(default="0")
+    Disponible = models.CharField(max_length=2, choices=DISPONIBILIDADDEPART_CHOICES, default="Si")
     comuna=models.ForeignKey(Comuna, on_delete=models.CASCADE, default="")
     inventario = models.OneToOneField(Inventario, unique=True, on_delete=models.CASCADE, default="")
-    gasto = models.OneToOneField(Gasto, unique=True, on_delete=models.CASCADE, default="")
+    dividendo = models.IntegerField(default="0")
+    contribucion = models.IntegerField(default="0")
 
     def __str__ (self):
         return self.Nombre_Departamento
@@ -132,10 +130,10 @@ class Vehiculo(models.Model):
     )
     patente=models.CharField('Patente',max_length=14, unique=True)
     color_vehiculo=models.CharField('Color Vehiculo',max_length=30)
-    cant_puerta=models.IntegerField('Puertas',null=True)
-    aire_acondicionado=models.CharField('Color Vehiculo',max_length=30, choices=AIRE_CHOICES)
-    cant_asiento=models.IntegerField('Asiento',null=True)
-    disponibilidad_vehi=models.CharField('Color Vehiculo',max_length=30, choices=DISPONIBILIDADVEHICULO_CHOICES)
+    cant_puerta=models.IntegerField('Puertas',null=True, default="0")
+    aire_acondicionado=models.CharField('Color Vehiculo',max_length=30, choices=AIRE_CHOICES, default="Si")
+    cant_asiento=models.IntegerField('Asiento',null=True, default="0")
+    disponibilidad_vehi=models.CharField('Color Vehiculo',max_length=30, choices=DISPONIBILIDADVEHICULO_CHOICES, default="Si")
     imagen_vehiculo = models.ImageField( default="", blank=True, null=True)
     modelo=models.CharField(max_length=30, default="")
     marca=models.CharField(max_length=30, default="")
@@ -147,7 +145,7 @@ class Conductor(models.Model):
     cond_rut=models.CharField('Rut',max_length=14, unique=True)
     cond_nombre=models.CharField('Nombre',max_length=30)
     cond_apellidos=models.CharField('Apellidos',max_length=30)
-    cond_edad= models.IntegerField('Edad')
+    cond_edad= models.IntegerField('Edad', default="0")
     cond_nacionalidad=models.CharField('Nacionalidad',max_length=30)
     cond_email= models.EmailField('Correo',blank=True)
     cond_telefono=models.CharField('Telefono',max_length=12)
@@ -167,8 +165,8 @@ class Tour(models.Model):
         ('No', 'No'),
     )
     descripcion_tour=models.CharField(max_length=100, default="")
-    categoria=models.CharField(max_length=100, default="", choices=CATEGORIATOUR_CHOICES)
-    comestible=models.CharField(max_length=100, default="", choices=COMESTIBLE_CHOICES)
+    categoria=models.CharField(max_length=100, choices=CATEGORIATOUR_CHOICES, default="Tour City")
+    comestible=models.CharField(max_length=100, choices=COMESTIBLE_CHOICES, default="Si")
     valor_tour=models.IntegerField('Valor', default='0')
     imagen_tour = models.ImageField( default="", blank=True, null=True)
 
@@ -180,9 +178,9 @@ class ServicioExtra(models.Model):
     descrip_servicio=models.CharField('Descripcion Servicios',max_length=20)
     direccion_reunion=models.CharField('Reunion',max_length=50)
     direccion_destino=models.CharField('Desatino',max_length=50)
-    fecha_encuentro=models.DateField('Fecha encuentro')
-    fecha_termino_servicio=models.DateField('Fecha Termino', default='')
-    valor_servicio=models.IntegerField('Valor')
+    fecha_encuentro=models.DateField('Fecha encuentro', default=datetime.date.today)
+    fecha_termino_servicio=models.DateField('Fecha Termino', default=datetime.date.today)
+    valor_servicio=models.IntegerField('Valor', default="0")
     conductor=models.ForeignKey(Conductor, on_delete=models.CASCADE, null=True, blank=True)
     tour=models.ForeignKey(Tour, on_delete=models.CASCADE, null=True, blank=True)
 
@@ -197,8 +195,8 @@ class Reserva(models.Model):
         ('CheckOut', 'CheckOut'),
     )
     Codigo_Reserva = models.CharField(max_length=5, default = random_string, unique=True)
-    Fecha_Reserva_Inicio = models.DateField(blank=True)   
-    Fecha_Reserva_Termino = models.DateField(blank=True)
+    Fecha_Reserva_Inicio = models.DateField(blank=True, default=datetime.date.today)   
+    Fecha_Reserva_Termino = models.DateField(blank=True, default=datetime.date.today)
     Cantidad_Dias=models.IntegerField('Valor', default="0")
     Estado_Reserva = models.BooleanField(default=False)
     check=models.CharField(max_length=100, default="No Check", choices=CHECK_CHOICES)
@@ -211,7 +209,7 @@ class Reserva(models.Model):
         return self.Codigo_Reserva
 
 class Contact(models.Model):
-    asunto = models.CharField( max_length=50)
+    asunto = models.CharField(max_length=50)
     descripcioncontacto = models.TextField()
     correoaenviar = models.EmailField(default="")
 
