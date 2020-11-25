@@ -331,6 +331,7 @@ class MantenerClienteView(LoginRequiredMixin, SuperUsuarioMixin, View):
         contexto = {}
         contexto['usuario'] = self.get_queryset()
         contexto['form'] = self.form_class
+        contexto['usercount'] = User.objects.count()
         return contexto
 
     def get(self,request,*args,**kwargs):
@@ -370,6 +371,7 @@ class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, View):
         contexto = {}
         contexto['departamento'] = self.get_queryset()
         contexto['form'] = self.form_class
+        contexto['departamentocount'] = Departamento.objects.count()
         return contexto
 
     def get(self,request,*args,**kwargs):
@@ -493,13 +495,11 @@ class MantenerReservaView(LoginRequiredMixin, SuperUsuarioMixin, View):
     template_name = 'mantener_reserva.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-    def get_queryset(self):
-        return self.model.objects.all()
-
     def get_context_data(self, **kwargs):
         contexto = {}
-        contexto['reserva'] = self.get_queryset()
+        contexto['reserva'] = self.model.objects.all()
         contexto['form'] = self.form_class
+        contexto['reservacoun'] = Reserva.objects.count()
         return contexto
 
     def get(self,request,*args,**kwargs):
@@ -545,6 +545,7 @@ class MantenerServicioView(LoginRequiredMixin, SuperUsuarioMixin, View):
         contexto = {}
         contexto['servicio'] = self.get_queryset()
         contexto['form'] = self.form_class
+        contexto['serviciosextras'] = ServicioExtra.objects.count()
         return contexto
 
     def get(self,request,*args,**kwargs):
@@ -590,7 +591,7 @@ class TourView(LoginRequiredMixin, SuperUsuarioMixin, View):
         return render(request,self.template_name, self.get_context_data())
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             form.save()
         return redirect('cliente_app:mantener_tour')
