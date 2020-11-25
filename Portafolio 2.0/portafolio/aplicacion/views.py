@@ -500,6 +500,7 @@ class MantenerReservaView(LoginRequiredMixin, SuperUsuarioMixin, View):
         contexto['reserva'] = self.model.objects.all()
         contexto['form'] = self.form_class
         contexto['reservacoun'] = Reserva.objects.count()
+        contexto['reservaultima'] = Reserva.objects.last()
         return contexto
 
     def get(self,request,*args,**kwargs):

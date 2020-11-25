@@ -9,7 +9,7 @@
 {% if reserva %}
     <div class="listadoreserva">
         <div class="container">
-        <h1>Listado de Reservas</h1>
+        <h1><i class="fas fa-stream"></i>Listado de Reservas </h1>
         <div style="height:50px"></div>
         <p class="lead">
         <p>Aqui podra encontrar a todas tus reservas hechas a lo largo del tiempo</p>
@@ -58,12 +58,19 @@
       <br> <br> 
       </div>
     {% endif %}
+    <!-- Filtrado de ultimo registro-->
+    <div class="ultimo-post">
+    <h1>La ulitma reserva añadida</h1>
+    <p> <i class="fas fa-plus-circle"></i>
+      El codigo de Reserva es "{{ reservaultima.Codigo_Reserva }}", cliente que lo ha solicitado "{{ reservaultima.user }}"</p>
+    </div>
+    <!-- Formulario para registrar-->
    <br>  
    <div class="reserva-arriendo">
     <div class="contenedor">
         <form action="" class="form" method="POST">
         <div class="form-header">
-            <h1 class="form-title">Mantener<span> Reserva</span></h1>
+            <h1 class="form-title"><i class="fas fa-plus-circle"></i>Mantener<span> Reserva </span></h1>
         </div> 
         <div class="texto-reserva">
             <p>Generar Reserva

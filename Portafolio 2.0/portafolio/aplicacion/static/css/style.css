@@ -1162,8 +1162,24 @@ padding: 10%;
 
 #resultadolisto{
 text-align: center;
-background: rgb(226, 200, 147) ;
+background: rgb(255, 255, 255) ;
 padding: 2%;
 margin: 3%;
 border-radius: 5px;
 }
+
+.ultimo-post{
+  margin: 2%;
+  padding: 2%;
+  background: rgb(99, 99, 99);
+  border-radius: 5px;
+}
+
+.ultimo-post h1{
+color: rgb(255, 255, 255);
+text-align: center;
+}
+
+.ultimo-post p{
+  color:wheat;
+  }

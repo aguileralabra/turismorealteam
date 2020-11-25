@@ -1,7 +1,7 @@
 .inicio-adm {
     margin: 0;
     padding: 5%;
-    background: rgb(250, 91, 17);
+    background: rgb(30, 30, 30);
     display: flex;
     flex-wrap: wrap;
 }
@@ -14,7 +14,7 @@
 }
 
 .inicio-adm-opciones{
-    background: rgb(241, 129, 0);
+    background: rgba(95, 95, 95, 0.666);
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -133,40 +133,32 @@
 
 .inicio-adm-opciones-botones1:hover{
     background: rgb(71, 71, 71);
-    padding: 4px;
 }
 
 .inicio-adm-opciones-botones2:hover{
     background: rgb(71, 71, 71);
-    padding: 4px;
 }
 
 .inicio-adm-opciones-botones3:hover{
     background: rgb(71, 71, 71);
-    padding: 4px;
 }
 
 .inicio-adm-opciones-botones4:hover{
     background: rgb(71, 71, 71);
-    padding: 4px;
 }
 
 .inicio-adm-opciones-botones5:hover{
     background: rgb(71, 71, 71);
-    padding: 4px;
 }
 
 .inicio-adm-opciones-botones6:hover{
     background: rgb(71, 71, 71);
-    padding: 4px;
 }
 
 .inicio-adm-opciones-botones7:hover{
     background: rgb(71, 71, 71);
-    padding: 4px;
 }
 
 .inicio-adm-opciones-botones8:hover{
     background: rgb(71, 71, 71);
-    padding: 4px;
 }
