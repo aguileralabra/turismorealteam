@@ -5,7 +5,7 @@
 
 <div class="listadoreserva">
     <div class="container">
-        <h1>Departamento de Turismo Real</h1>
+        <h1><i class="fas fa-stream"></i>Departamento de Turismo Real</h1>
         <p>Cantidad de Departamentos: "{{ departamentocount }}"</p>
         <br>
         <table class="table table-bordered order-table ">
@@ -41,6 +41,13 @@
         </div>
     </div>
 </div>
+  <!-- Filtrado de ultimo registro-->
+  <div class="ultimo-post">
+  <h1>Ultimo Departamento añadido</h1>
+  <p> <i class="fas fa-plus-circle"></i>
+  El nombre del departamento es"{{ departamentoultimo.Nombre_Departamento }}" y su costo por dia del departamento es "${{ departamentoultimo.Valor_Diario }}"</p>
+  </div>
+  <!-- Formulario para registrar-->
 <div class="contacto">
     <div class="contacto-contenido">
         <div class="titulo-contacto">

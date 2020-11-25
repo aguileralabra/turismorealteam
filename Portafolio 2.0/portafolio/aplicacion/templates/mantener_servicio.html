@@ -9,10 +9,10 @@
 {% if servicio %}
     <div class="listadoreserva">
         <div class="container">
-        <h1>Listado de Servicios añadidos</h1>
+        <h1><i class="fas fa-stream"></i>Listado de Servicios añadidos</h1>
         <div style="height:50px"></div>
         <p class="lead">
-        <p>Aqui podra encontrar a todas tus reservas hechas a lo largo del tiempo</p>
+        <p>Aqui podra encontrar todos los servicios hechos a lo largo del tiempo</p>
         <p>Cantidad de Servicios Contratados: "{{ serviciosextras }}"</p>
         <hr>
         <input class="form-control col-md-3 light-table-filter" data-table="order-table" type="text" placeholder="Buscador..">
@@ -47,10 +47,8 @@
           </tr>
         {% endfor %}
         </table>
-        <p>Si desea registrar una Reserva haga click en el siguiente link <a href="">Haga click aqui para Reserva</a></p>
         </div>
     </div>
-    
 {% else %}
 <div id="resultadolisto">
   <br> <br> <br> 
@@ -58,6 +56,13 @@
   <br> <br> 
   </div>
 {% endif %}
+  <!-- Filtrado de ultimo registro-->
+  <div class="ultimo-post">
+      <h1>El ultimo servicio añadida</h1>
+      <p> <i class="fas fa-plus-circle"></i>
+        La descripcion del servicio "{{ servicioultimo.descrip_servicio }}"</p>
+  </div>
+      <!-- Formulario para registrar-->
    <br>  
    <div class="contacto">
     <div class="contacto-contenido">

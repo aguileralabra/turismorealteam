@@ -373,6 +373,7 @@ class MantenerDepartamentoView(LoginRequiredMixin, SuperUsuarioMixin, View):
         contexto['departamento'] = self.get_queryset()
         contexto['form'] = self.form_class
         contexto['departamentocount'] = Departamento.objects.count()
+        contexto['departamentoultimo'] = Departamento.objects.last()
         return contexto
 
     def get(self,request,*args,**kwargs):
@@ -548,6 +549,7 @@ class MantenerServicioView(LoginRequiredMixin, SuperUsuarioMixin, View):
         contexto['servicio'] = self.get_queryset()
         contexto['form'] = self.form_class
         contexto['serviciosextras'] = ServicioExtra.objects.count()
+        contexto['servicioultimo'] = ServicioExtra.objects.last()
         return contexto
 
     def get(self,request,*args,**kwargs):
