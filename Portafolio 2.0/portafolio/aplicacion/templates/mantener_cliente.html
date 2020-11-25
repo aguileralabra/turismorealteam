@@ -9,7 +9,7 @@
 {% if usuario %}
     <div class="listadoreserva">
         <div class="container">
-            <h1>Listado de Usuarios</h1>
+            <h1><i class="fas fa-stream"></i>Listado de Usuarios</h1>
             <div style="height:50px"></div>
             <p class="lead">
             <p>Todos los Clientes registrado en el sistema</p>
@@ -59,6 +59,13 @@
       <br> <br> 
       </div>    
     {% endif %}
+    <!-- Filtrado de ultimo registro-->
+    <div class="ultimo-post">
+      <h1>El ultimo cliente añadido</h1>
+      <p> <i class="fas fa-plus-circle"></i>
+        El rut del cliente "{{ userultimo.cli_Rut }}", su nombre de usuario "{{ userultimo.username }}"</p>
+      </div>
+      <!-- Formulario para registrar-->
    <br>  
    <div class="row">
      <div class="col-sm-6 col-sm-offset-3">

@@ -26,8 +26,8 @@ https://www.youtube.com/watch?v=zTrWdVFNX8k&ab_channel=CursosDesarrolloWeb
 
 https://www.youtube.com/c/Developerpe/videos
 
-
-
+--iconos
+https://fontawesome.com/icons/house-user?style=solid
 -------------------
 
 IMAGENES:

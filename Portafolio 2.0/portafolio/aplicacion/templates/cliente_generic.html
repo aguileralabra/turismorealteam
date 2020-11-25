@@ -93,7 +93,7 @@
             </div>
             <div class="col-md-4">
               <ul class="list-inline user-menu pull-right">
-                <li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="{% url 'cliente_app:logout' %}" class="text-uppercase" onClick="return confirm('¿Desea {{ user }} cerrar session?, si es un si, presione Aceptar. ');">Cerrar Session</a></li>
+                <li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="{% url 'cliente_app:logout' %}" class="text-uppercase" onClick="return confirm('¿Desea {{ user }} cerrar session?, si es un si, presione Aceptar. ');"><i class="fas fa-sign-out-alt"></i> Cerrar Session</a></li>
               </ul>
             </div>
           </div>
@@ -109,17 +109,17 @@
                 <div class="col-md-6 col-md-push-6 item-caption">
                   {% if request.user.is_staff %}
                   <h2 class="h1 text-weight-light">
-                    Administrador <span class="text-primary">{{ user }}</span> 
+                    <i class="fas fa-user-check"></i> Administrador <span class="text-primary">{{ user }} </span> 
                   </h2>
                   {% endif %}
                   {% if not request.user.is_staff and not request.user.funcionario %}
                   <h2 class="h1 text-weight-light">
-                    Bienvenido  <span class="text-primary">{{ user }}</span> 
+                    <i class="fas fa-user-check"></i> Bienvenido  <span class="text-primary">{{ user }}</span> 
                   </h2>
                   {% endif %}
                   {% if request.user.funcionario %}
                   <h2 class="h1 text-weight-light">
-                    Bienvenido Funcionario  <span class="text-primary">{{ user }}</span> 
+                    <i class="fas fa-user-check"></i> Bienvenido Funcionario  <span class="text-primary">{{ user }}</span> 
                   </h2>
                   {% endif %}
                 </div>
@@ -148,10 +148,10 @@
   <nav class="nav-main">
       <ul class="botones">
           <li> 
-              <a  href="/inicio"> <strong> Menu Principal </strong> </a>
+              <a  href="/inicio"> <strong><i class="fas fa-bars"></i> Menu Principal </strong> </a>
           </li>
           <li> 
-              <a  href="/perfiladministrador"> <strong> Mi Perfil </strong> </a>
+              <a  href="/perfiladministrador"> <strong><i class="fas fa-user-circle"></i> Mi Perfil </strong> </a>
           </li>
       </ul>
   </nav>
@@ -165,19 +165,19 @@
     <nav class="nav-main">
         <ul class="botones">
             <li> 
-                <a  href="/inicio"> <strong> Inicio </strong> </a>
+                <a  href="/inicio"> <strong><i class="fas fa-bars"></i> Inicio </strong> </a>
             </li>
             <li> 
-                <a  href="/perfil"> <strong> Perfil </strong> </a>
+                <a  href="/perfil"> <strong><i class="fas fa-user-circle"></i> Perfil </strong> </a>
             </li>
             <li>
-                <a href="/reserva"><strong> Reservar </strong></a>
+                <a href="/reserva"><strong><i class="fas fa-calendar-plus"></i> Reservar </strong></a>
             </li>
             <li> 
-              <a  href="/cliente"> <strong> Tus Reservas </strong> </a>
+              <a  href="/cliente"> <strong><i class="fas fa-calendar-alt"></i> Tus Reservas </strong> </a>
           </li>
             <li>
-                <a href="/contacto"><strong> Contacto  </strong></a>
+                <a href="/contacto"><strong><i class="fas fa-question-circle"></i> Contacto  </strong></a>
             </li>
         </ul>
     </nav>
@@ -191,10 +191,10 @@
   <nav class="nav-main">
       <ul class="botones">
           <li> 
-              <a  href="/inicio"> <strong> Menu Principal </strong> </a>
+              <a  href="/inicio"> <strong><i class="fas fa-bars"></i> Menu Principal </strong> </a>
           </li>
           <li> 
-              <a  href="/perfil_funcionario"> <strong> perfil </strong> </a>
+              <a  href="/perfil_funcionario"> <strong><i class="fas fa-user-circle"></i> perfil </strong> </a>
           </li>
       </ul>
   </nav>

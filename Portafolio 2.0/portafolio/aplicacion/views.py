@@ -332,6 +332,7 @@ class MantenerClienteView(LoginRequiredMixin, SuperUsuarioMixin, View):
         contexto['usuario'] = self.get_queryset()
         contexto['form'] = self.form_class
         contexto['usercount'] = User.objects.count()
+        contexto['userultimo'] = User.objects.last()
         return contexto
 
     def get(self,request,*args,**kwargs):
