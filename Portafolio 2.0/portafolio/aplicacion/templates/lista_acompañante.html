@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% if acompañante %}
+
 <div class="listadoreserva">
     <div class="container">
         <h1>Tus Acompañantes</h1>
@@ -41,5 +43,12 @@
         </div>
     </div>
 </div>
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de acompañantes, favor añadir</h2>
+  <br> <br> 
+  </div>
+{% endif %}
 
 {% endblock %}
