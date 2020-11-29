@@ -63,71 +63,57 @@
         La descripcion del servicio "{{ servicioultimo.descrip_servicio }}"</p>
   </div>
       <!-- Formulario para registrar-->
-   <br>  
-   <div class="contacto">
-    <div class="contacto-contenido">
-        <div class="titulo-contacto">
-            <h2>Agregar Servicio</h2>
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title"><i class="fas fa-plus-circle"></i>Mantener <span> Servicios </span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Registrar Servicios
+            </p>
         </div>
-        <div class="formulario-contacto">
-            <h4>Formulario Servicio </h4>
-            <hr>
-            <form class="form-contac" method="POST"  enctype="multipart/form-data">
-             <fieldset>
-              <label>Descripcion del Servicio</label><br>
-              {{ form.descrip_servicio }}<br><br><br>
+        <label>Descripcion del Servicio</label><br>
+        {{ form.descrip_servicio }}<br><br><br>
 
-              <label>Direccion de Reunion</label><br>
-              {{ form.direccion_reunion }}<br><br><br>
+        <label>Direccion de Reunion</label><br>
+        {{ form.direccion_reunion }}<br><br><br>
 
-              <label>Direccion de Destino</label><br>
-              {{ form.direccion_destino }}<br><br><br>
+        <label>Direccion de Destino</label><br>
+        {{ form.direccion_destino }}<br><br><br>
 
-              <label>Fecha de encuentro</label><br>
-              {{ form.fecha_encuentro }}<br><br><br>
+        <label>Fecha de encuentro</label><br>
+        {{ form.fecha_encuentro }}<br><br><br>
 
-              <label>Fecha de termino</label><br>
-              {{ form.fecha_termino_servicio }}<br><br><br>  
+        <label>Fecha de termino</label><br>
+        {{ form.fecha_termino_servicio }}<br><br><br>  
 
-              <label>Valor del servicio</label><br>   
-              {{ form.valor_servicio }}<br><br><br>    
-  
-              <label>Conductor</label><br>   
-              {{ form.conductor }}<br><br><br>   
+        <label>Valor del servicio</label><br>   
+        {{ form.valor_servicio }}<br><br><br>    
 
-              <label>Tour</label><br>   
-              {{ form.tour }}<br><br><br>   
+        <label>Conductor</label><br>   
+        {{ form.conductor }}<br><br><br>   
 
-              {% csrf_token %}
-              <a href="/inicio">Volver al Menu</a>
-              <input type="submit" class="submit" value="Añadir Servicio">
-             </fieldset>
-           </form>
-          </div>
-          <div class="escritura-contacto">
-            <h4>Administracion para {{ request.user }}, pueda gestionar los servicios de TurismoReal. </h4>
-            <hr>
-            <p>Mantener Tour</p>
-            <br>
-            <a href="/mantener_tour"> Tour
-            <br>
-            <br>
-            <br>
-            <p>Mantener Chofer</p>
-            <br>
-            <a href="/mantener_conductor"> Conductor
-            <br>
-            <br>
-            <br>
-            <p>Mantener Vehiculo</p>
-            <br>
-            <a href="/mantener_vehiculo"> Vehiculo
-              <br>
-              <br>
-              <br>
-        </div>
-      </div>
+        <label>Tour</label><br>   
+        {{ form.tour }}<br><br><br>   
+        <br><br>
+        {% csrf_token %}
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
+        <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+        <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+      </form>
   </div>
+</div>
+    <div class="gestiones"> 
+      <h4><i class="fas fa-users-cog"></i>Gestiones de los Servicios </h4>
+      <br>
+      <p>Mantener Tour</p>
+      <a href="/mantener_tour"> Tour
+      <br>
+      <br>
+      <p>Mantener Chofer</p>
+      <a href="/mantener_vehiculo"> Vehiculo
+      <br>
     </div>
 
 {% endblock %}

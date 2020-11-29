@@ -5,78 +5,78 @@
 
 
 {% block content %}
-<br>  
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-            Actualizar Departamento
-          </h3>
+<div class="reserva-arriendo">
+  <div class="contenedor">
+      <form action="" class="form" method="POST">
+      <div class="form-header">
+          <h1 class="form-title"><i class="fas fa-plus-circle"></i>Actualizar <span> Departamento </span></h1>
+      </div> 
+      <div class="texto-reserva">
+          <p>Actualizar Departamento
+          </p>
       </div>
-      <div class="panel-body">
-        <form method="POST"´ role="form" enctype="multipart/form-data">
-            <fieldset>
-            <div class="escritura">
-                <label>Nombre Departamento</label>
-                <div class="escrituraline">{{ form.Nombre_Departamento }}</div><br>
+              <label>Nombre Departamento</label><br>
+              <input type="text" id="Nombre_Departamento" class="" name="Nombre_Departamento" required>
+              
+              <label>Numero de Propiedad</label><br>
+              {{ form.Numero_propiedad }}
 
-                <label>Numero de Propiedad</label>
-                <div class="escrituraline">{{ form.Numero_propiedad}}</div><br>
+              <label>Descripcion Departamento</label><br>
+              <textarea id="w3review" name="Descripcion_departamento" rows="2" cols="22,5" >
+              </textarea>
 
-                <label>Descripcion del Departamento</label>
-                <div class="escrituraline">{{ form.Descripcion_departamento}}</div><br>
+              <label>Direccion del departamento</label><br>
+              <input type="text" id="Direccion_departamento" class="" name="Direccion_departamento" required>
 
-                <label>Comuna</label>
-                <div class="escrituraline">{{ form.comuna}}</div><br>
+              <label>Numero de Habitaciones</label><br>
+              {{ form.habitaciones }}
 
-                <label>Direccion </label>
-                <div class="escrituraline">{{ form.Direccion_departamento}}</div><br>
+              <label>Numero de Baños</label><br>
+              {{ form.Baños }}
 
-                <label>Cantidad de Habitaciones</label>
-                <div class="escrituraline">{{ form.habitaciones}}</div><br>
+              <label>Valor departamento diariamente</label><br>
+              {{ form.Valor_Diario }}
 
-                <label>Cantidad de Baños</label>
-                <div class="escrituraline">{{ form.Baños}}</div><br>
+              <label>Dividendo</label><br>
+              {{ form.dividendo }}
 
-                <label>Calefacción</label>
-                <div class="escrituraline">{{ form.Calefaccion}}</div><br>
+              <label>Contribucion</label><br>
+              {{ form.contribucion }}
 
-                <label>Internet</label>
-                <div class="escrituraline">{{ form.Internet}}</div><br>
+              <label>Calefacción</label><br>
+              {{ form.Calefaccion }}
 
-                <label>Amoblado</label>
-                <div class="escrituraline">{{ form.Amoblado}}</div><br>
+              <label>Internet</label><br>
+              {{ form.Internet }}
 
-                <label>Imagen del Recinto</label>
-                <div class="escrituraline">{{ form.Imagen_Recinto}}</div><br>
+              <label>Amoblado</label><br>
+              {{ form.Amoblado }}
 
-                <label>Imagen del Entorno</label>
-                <div class="escrituraline">{{ form.Imagen_Entorno}}</div><br>
+              <label>Televisión</label><br>
+              {{ form.Televicion }}
 
-                <label>Valor por dia</label>
-                <div class="escrituraline">{{ form.Valor_Diario}}</div><br>
+              <label>Disponibilidad</label><br>
+              {{ form.Disponible }}
 
-                <label>Disponibilidad</label>
-                <div class="escrituraline">{{ form.Disponible}}</div><br>
+              <hr>
+              <label>Imagenes del Recinto</label><br>
+              {{ form.Imagen_Recinto }}
 
-                <label>Inventario</label>
-                <div class="escrituraline">{{ form.inventario}}</div><br>
+              <label>Imagenes del Entorno</label><br>
+              {{ form.Imagen_Entorno }}
 
-                <p>Dividendo</p>
-                {{ form.dividendo }}
+              <hr>
+              <label>Comuna del Departamento</label><br>
+              {{ form.comuna }}
 
-                <p>Contribucion</p>
-                {{ form.contribucion }}
-                
-                {% csrf_token %}
-              </div>
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Modificar">
-          </fieldset>
-        </form>
-      </div>
-    </div>
+              <label>Inventario adjudicado</label><br>
+              {{ form.inventario }}
+
+              <br><br>
+              {% csrf_token %}
+              <input class="btn btn-lg btn-primary btn-block" type="submit" value="Actualizar">
+              <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+      </form>
   </div>
 </div>
-
 {% endblock %}
