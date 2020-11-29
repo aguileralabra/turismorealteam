@@ -125,6 +125,31 @@ color: coral;
     padding: 3%;
     margin: 5%;
     border-radius: 5px;
-
 }
 
+
+.gestiones{
+    padding: 3%;
+    margin: 3%;
+    background: rgb(101, 101, 101);
+    border-radius: 5px;
+}
+
+.gestiones h4{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+}
+
+.gestiones p{
+    text-align: center;
+    color: wheat;
+}
+
+.gestiones a{
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 3%;
+    border-bottom: 2px solid orange;
+}

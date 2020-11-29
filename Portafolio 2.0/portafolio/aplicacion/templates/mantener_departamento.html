@@ -3,6 +3,7 @@
 
 {% block content %}
 
+{% if departamento %}
 <div class="listadoreserva">
     <div class="container">
         <h1><i class="fas fa-stream"></i>Departamento de Turismo Real</h1>
@@ -41,6 +42,13 @@
         </div>
     </div>
 </div>
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de Departamentos, favor añadir</h2>
+  <br> <br> 
+  </div>    
+{% endif %}
   <!-- Filtrado de ultimo registro-->
   <div class="ultimo-post">
   <h1>Ultimo Departamento añadido</h1>
@@ -48,109 +56,96 @@
   El nombre del departamento es"{{ departamentoultimo.Nombre_Departamento }}" y su costo por dia del departamento es "${{ departamentoultimo.Valor_Diario }}"</p>
   </div>
   <!-- Formulario para registrar-->
-<div class="contacto">
-    <div class="contacto-contenido">
-        <div class="titulo-contacto">
-            <h2>Agregar Departamento</h2>
+  <div class="reserva-arriendo">
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+        <div class="form-header">
+            <h1 class="form-title"><i class="fas fa-plus-circle"></i>Mantener <span> Departamento </span></h1>
+        </div> 
+        <div class="texto-reserva">
+            <p>Registrar Departamento
+            </p>
         </div>
-        <div class="formulario-contacto">
-            <h4>Formulario Departamento </h4>
-            <hr>
-            <form class="form-contac" method="POST" enctype="multipart/form-data">
-                <p>Nombre Departamento</p>
-                <input type="text" id="Nombre_Departamento" class="form-input" name="Nombre_Departamento" required>
+                <label>Nombre Departamento</label><br>
+                <input type="text" id="Nombre_Departamento" class="" name="Nombre_Departamento" required>
                 
-                <p>Numero de Propiedad</p>
+                <label>Numero de Propiedad</label><br>
                 {{ form.Numero_propiedad }}
 
-                <p>Descripcion Departamento</p>
+                <label>Descripcion Departamento</label><br>
                 <textarea id="w3review" name="Descripcion_departamento" rows="2" cols="22,5" >
                 </textarea>
 
-                <p>Direccion del departamento</p>
-                <input type="text" id="Direccion_departamento" class="form-input" name="Direccion_departamento" required>
+                <label>Direccion del departamento</label><br>
+                <input type="text" id="Direccion_departamento" class="" name="Direccion_departamento" required>
 
-                <p>Numero de Habitaciones</p>
+                <label>Numero de Habitaciones</label><br>
                 {{ form.habitaciones }}
 
-                <p>Numero de Baños</p>
+                <label>Numero de Baños</label><br>
                 {{ form.Baños }}
 
-                <p>Valor departamento diariamente</p>
+                <label>Valor departamento diariamente</label><br>
                 {{ form.Valor_Diario }}
 
-                <p>Dividendo</p>
+                <label>Dividendo</label><br>
                 {{ form.dividendo }}
 
-                <p>Contribucion</p>
+                <label>Contribucion</label><br>
                 {{ form.contribucion }}
 
-                <p>Calefacción</p>
+                <label>Calefacción</label><br>
                 {{ form.Calefaccion }}
 
-                <p>Internet</p>
+                <label>Internet</label><br>
                 {{ form.Internet }}
 
-                <p>Amoblado</p>
+                <label>Amoblado</label><br>
                 {{ form.Amoblado }}
 
-                <p>Televisión</p>
+                <label>Televisión</label><br>
                 {{ form.Televicion }}
 
-                <p>Disponibilidad</p>
+                <label>Disponibilidad</label><br>
                 {{ form.Disponible }}
 
                 <hr>
-                <p>Imagenes del Recinto</p>
+                <label>Imagenes del Recinto</label><br>
                 {{ form.Imagen_Recinto }}
 
-                <p>Imagenes del Entorno</p>
+                <label>Imagenes del Entorno</label><br>
                 {{ form.Imagen_Entorno }}
 
                 <hr>
-                <p>Comuna del Departamento</p>
+                <label>Comuna del Departamento</label><br>
                 {{ form.comuna }}
 
-                <p>Inventario adjudicado</p>
+                <label>Inventario adjudicado</label><br>
                 {{ form.inventario }}
 
-                {% csrf_token %}
                 <br><br>
-                <a href="/inicio">Volver al Menu</a>
-                <input type="submit" class="submit" value="Añadir Departamento">
-            </form> 
-        </div>
-        <div class="escritura-contacto">
-          <h4>Ante problemas tecnico {{ request.user }}, envies un correo o llamar. </h4>
-          <br>
-          <p>Jonathan cabrera</p>
-          <i class="fa fa-phone fa-fw text-primary"></i> +569 4353 1445
-          <br>
-          <br>
-          <p>Ezequiel Riquelme</p>
-          <i class="fa fa-phone fa-fw text-primary"></i> +569 5776 2043
-          <br>
-          <hr>
-          <h4>Gestiones de los departamentos </h4>
-          <br>
-          <p>Crear Ciudad</p>
-          <a href="/ciudad">Ciudad</a>
-          <br>
-          <br>
-          <p>Crear Comuna</p>
-          <a href="/comuna">Comuna</a>
-          <br>
-          <br>
-          <p>Inventarios</p>
-          <a href="/inventario">Inventario</a>
-          <br>
-      </div>
+                {% csrf_token %}
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
+                <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+                <p class="m-b-0 m-t">¿Deseas volver al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+        </form>
     </div>
+  </div>
+<div class="gestiones"> 
+  <h4><i class="fas fa-users-cog"></i>Gestiones de los departamentos </h4>
+  <br>
+  <p>Crear Ciudad</p>
+  <a href="/ciudad">Ciudad</a>
+  <br>
+  <br>
+  <p>Crear Comuna</p>
+  <a href="/comuna">Comuna</a>
+  <br>
+  <br>
+  <p>Inventarios</p>
+  <a href="/inventario">Inventario</a>
+  <br>
 </div>
-
-
-
-
 {% if departamento %}
 <div id="content">
     <div class="showcase block block-border-bottom-grey">
