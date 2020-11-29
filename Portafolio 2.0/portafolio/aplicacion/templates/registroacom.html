@@ -3,41 +3,36 @@
 
 
 {% block content %}
-    <br>  
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                  Registro Acompañante
-                </h3>
+      <div class="reserva-arriendo">
+       <div class="contenedor">
+           <form action="" class="form" method="POST">
+           <div class="form-header">
+               <h1 class="form-title"><i class="fas fa-plus-circle"></i>Registro <span> Acompañante </span></h1>
+           </div> 
+           <div class="texto-reserva">
+               <p>Registro de sus acompañante a la reserva
+               </p>
+           </div>
+                 <label>Rut</label><br>
+                 {{ form.acom_rut }}<br><br>
+                 <label>Nombre/s</label><br>
+                 {{ form.acom_nombre }}<br><br> 
+                 <label>Apellido/s</label><br>
+                 {{ form.acom_apellidos }}<br><br> 
+                 <label>Edad</label><br>
+                 {{ form.acom_edad }}<br><br> 
+                 <label>Nacionalidad</label><br>
+                 {{ form.acom_nacionalidad }}<br><br> 
+                 <label>Correo Electronico</label><br>   
+                 {{ form.acom_email }}<br><br> 
+                 <label>Telefono</label><br>
+                 {{ form.acom_telefono }}<br><br> 
+                    {% csrf_token %}
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
+                    <input class="btn btn-lg btn-primary btn-block" type="reset" value="Limpiar Formulario"><br> 
+                    <p class="m-b-0 m-t">¿Ir al menu? <a href="/inicio">Haga Click Aqui</a>.</p>
+                  </form>
+                </div>
             </div>
-            <div class="panel-body">
-              <form method="POST" accept-charset="UTF-8" role="form" >
-                {% csrf_token %}
-                <fieldset>
-                  <div class="escritura">
-                      <label>Rut</label>
-                      <div class="escrituraline">{{ form.acom_rut}}</div><br>
-                      <label>Nombre</label>
-                      <div class="escrituraline">{{ form.acom_nombre}}</div><br>
-                      <label>Apellidos</label>
-                      <div class="escrituraline">{{ form.acom_apellidos}}</div><br>
-                      <label>Edad</label>
-                      <div class="escrituraline">{{ form.acom_edad}}</div><br>
-                      <label>Nacionalidad</label>
-                      <div class="escrituraline">{{ form.acom_nacionalidad}}</div><br>
-                      <label>Email</label>
-                      <div class="escrituraline">{{ form.acom_email}}</div><br>
-                      <label>Telefono</label>
-                      <div class="escrituraline">{{ form.acom_telefono}}</div><br>
-                    </div>
-                  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Registrar">
-                </fieldset>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
 {% endblock %}
       

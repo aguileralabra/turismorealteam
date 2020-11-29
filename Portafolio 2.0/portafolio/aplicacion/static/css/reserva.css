@@ -80,14 +80,14 @@ padding: 5px;
     border-radius: 3px;
 }
 
-.contenedor .form .form-label{
+.contenedor .form label{
     display: block;
-    color: #ff851b;
+    color: #ffffff;
     font-size: 16px;
     position: relative;
 }
 
-.contenedor .form .form-input{
+.contenedor .form input{
     background: rgba(0,0,0,.7);
     border: none;
     outline: none;

@@ -202,6 +202,62 @@
 {% endif %}
 
 
+<script languaje="javascript">
+  function habilita(form)
+  {
+  form.intereses[0].disabled = false;
+  form.intereses[1].disabled = false;
+  form.intereses[2].disabled = false;
+  }  
+  function deshabilita(form)
+  {
+  form.intereses[0].disabled = true;
+  form.intereses[1].disabled = true;
+  form.intereses[2].disabled = true;
+  }
+</script>
+<script languaje="javascript">
+  function verificarCasilla(form)
+  {
+      if (form.acepto.checked == false)
+      {
+      alert("Debes aceptar los términos del contrato antes de continuar");
+      form.acepto.focus(); return true;
+      }
+  form.submit()
+  }
+</script>
+<script language="javascript">
+  function agregarOpciones(form)
+  {
+  var selec = form.tipos.options;
+  var combo = form.estilo.options;
+  combo.length = null;
+      if (selec[0].selected == true)
+      {
+      var seleccionar = new Option("<-- esperando selección","","","");
+      combo[0] = seleccionar;
+      }
+      if (selec[1].selected == true)
+      {
+      var popular1 = new Option("Banco Estado","","","");
+      combo[0] = popular1;
+      }
+      if (selec[2].selected == true)
+      {
+      var academica1 = new Option("Banco Estado","","");
+      var academica2 = new Option("Banco Falabella","","","");
+      var academica3 = new Option("Banco Ripley","","","");
+      var academica4 = new Option("Banco Santander","","","");
+      var academica5 = new Option("Banco Chile","","","");
+      combo[0] = academica1;
+      combo[1] = academica2;
+      combo[2] = academica3;
+      combo[3] = academica4;
+      combo[4] = academica5;
+      }
+  }
+  </script>
 
 
   {% block content %}

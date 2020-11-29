@@ -87,8 +87,6 @@
               {{ form.servicioextra }}<hr><br>  
               <label>Usuario</label><br>   
               {{ form.user }}<hr><br>       
-                 {% csrf_token %}
-                 <input type="checkbox" name="acepto"> Acepto los términos del contrato de suscripción
                  <br><br>
                  {% csrf_token %}
                  <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">

@@ -3,6 +3,7 @@
 
 {% block content %}
 
+{% if reservita %}
 
 <div class="listadoreserva">
 <div class="container">
@@ -45,7 +46,13 @@
     <p>Si desea registrar una Reserva haga click en el siguiente link <a href="">Haga click aqui para Reserva</a></p>
     </div>
 </div>
-
+{% else %}
+<div id="resultadolisto">
+  <br> <br> <br> 
+  <h2>No hay registros de Reservas, favor añadir</h2>
+  <br> <br> 
+  </div>
+{% endif %}
 
 
 {% endblock %}
