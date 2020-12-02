@@ -38,7 +38,7 @@
           <td>{{ reserva.Codigo_Reserva}}</td>
           <td>{{ reserva.user.cli_Nombre}}</td>
           <td>{{ reserva.Fecha_Reserva_Inicio}}</td>
-          <td>${{ reserva.departamento.Valor_Diario}}</td>
+          <td>${{ reserva.departamento.Valor_Diario|floatformat:2}}</td>
           <td>{{ reserva.Estado_Reserva}}</td>
           <td>{{ reserva.check}}</td>
           <td><a href="/actualizarcheck/{{ reserva.id }}">Check</a></td>
@@ -53,7 +53,66 @@
       </table>
       </div>
   </div>
+  <hr>
+  <div class="listadoreserva">
+    <div class="container">
+        <div style="height:50px"></div>
+        <p class="lead">
+        <p>Pagados</p>
+        <br>
+        <table class="table table-bordered order-table ">
+          <thead>
+          <div class="nombrestr">
+            <tr>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Estado</th>
+              <th>Check</th>
 
+            </tr>
+          </thead>
+        </div>
+        {% for reservatrue in reservatrue %}
+          <tr>
+            <td>{{ reservatrue.Codigo_Reserva}}</td>
+            <td>{{ reservatrue.user.cli_Nombre}}</td>
+            <td>{{ reservatrue.Estado_Reserva}}</td>
+            <td>{{ reservatrue.check}}</td>
+          </tr>
+        {% endfor %}
+        </table>
+        </div>
+    </div>
+
+    <div class="listadoreserva">
+      <div class="container">
+          <div style="height:50px"></div>
+          <p class="lead">
+          <p>No Pagados</p>
+          <br>
+          <table class="table table-bordered order-table ">
+            <thead>
+            <div class="nombrestr">
+              <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Check</th>
+  
+              </tr>
+            </thead>
+          </div>
+          {% for reservafalse in reservafalse %}
+            <tr>
+              <td>{{ reservafalse.Codigo_Reserva}}</td>
+              <td>{{ reservafalse.user.cli_Nombre}}</td>
+              <td>{{ reservafalse.Estado_Reserva}}</td>
+              <td>{{ reservafalse.check}}</td>
+            </tr>
+          {% endfor %}
+          </table>
+          </div>
+      </div>
 {% endif %}
 
 
@@ -129,77 +188,149 @@
   </div>
 </div>
 
-
-
-  <div id="content">
-    <div class="showcase block block-border-bottom-grey">
-      <div class="container">
-        <h2 class="block-title">
-            Transporte 
-          </h2>
-          <p style="color:rgb(255, 255, 255); text-align: center;">
-            Tenemos la flota de trasnporte mas grande de Chile, consigo la mayor calidad para nuestros clientes puedan
-           disfrutar comodamente el viaje, sin interrupciones ni incomodidas, sin decirles, que tambien los choferes 
-           son los mas capacitados y certificados para llevarlos sanos y salvos.
-        </p>
-        <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="{% static 'img/van3.jpg' %}" alt="Villaricon" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Disponible: Si</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Cayuca</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="{% static 'img/van1.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Disponible: Si</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Nehuen</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="{% static 'img/van6.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Disponible: Si</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Partin</a>
-                </h4>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="{% static 'img/van7.jpg' %}" alt="Project 3 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">Disponible: Si</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h4 class="item-title">
-                  <a href="#">Rodriguen</a>
-                </h4>
-            </div>
+{% if departamentoscliente %}
+<div id="content">
+  <div class="showcase block block-border-bottom-grey">
+    <div class="container">
+      <h2 class="block-title">
+        Departamentos 
+        </h2>
+      <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+        {% for departamentoscliente in departamentoscliente %}
+        <div class="item">
+          <a href="#" class="overlay-wrapper">
+            {% if departamentoscliente.Imagen_Recinto %}
+            <img src="{{ departamentoscliente.Imagen_Recinto.url }}" alt="Villaricon" class="img-responsive underlay">
+            {% endif %}
+              <span class="overlay">
+                <span class="overlay-content"> <span class="h4">Descripcion: {{ departamentoscliente.Descripcion_departamento}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Cantidad Baños: {{ departamentoscliente.Baños}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Calefacción: {{ departamentoscliente.Calefaccion}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Internet: {{ departamentoscliente.Internet}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Amoblado: {{ departamentoscliente.Amoblado}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Televisión: {{ departamentoscliente.Televicion}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Disponible: {{ departamentoscliente.Disponible}}</span> </span>     
+               </span>
+            </a>
+          <div class="item-details bg-noise">
+            <h4 class="item-title">
+              <a href="#">Nombre departamento: {{ departamentoscliente.Nombre_Departamento}}</a>
+            </h4>
+            <h4 class="item-title">
+                <a href="#">Numero de Propiedad: {{ departamentoscliente.Numero_propiedad}}</a>
+              </h4>
+            <h4 class="item-title">
+                <a href="#">Direccion: {{ departamentoscliente.Direccion_departamento}}</a>
+              </h4>
+            <h4 class="item-title">
+                <a href="#">Internet: {{ departamentoscliente.Internet}}</a>
+              </h4>
+            <h4 class="item-title">
+                <a href="#">Valor: ${{ departamentoscliente.Valor_Diario|floatformat:2}}</a>
+              </h4>
           </div>
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>
-  
+</div>
+{% else %}
+<div id="resultadolisto">
+<br> <br> <br> 
+<h2>No hay registros de departamento</h2>
+<br> <br> 
+</div>
+{% endif %}
+{% if vehiculo %}
+<div id="content">
+  <div class="showcase block block-border-bottom-grey">
+    <div class="container">
+      <h2 class="block-title">
+        Vehiculo 
+        </h2>
+      <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+        {% for vehiculo in vehiculo %}
+        <div class="item">
+          <a href="#" class="overlay-wrapper">
+            {% if vehiculo.imagen_vehiculo %}
+            <img src="{{ vehiculo.imagen_vehiculo.url }}" alt="Villaricon" class="img-responsive underlay">
+            {% endif %}
+              <span class="overlay">
+                <span class="overlay-content"> <span class="h4">Color Vehiculo: {{ vehiculo.color_vehiculo}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Cantidad de Puertas: {{ vehiculo.cant_puerta}}</span> </span>
+                <span class="overlay-content"> <span class="h4">Aire Acondicionado: {{ vehiculo.aire_acondicionado}}</span> </span>
+               </span>
+            </a>
+          <div class="item-details bg-noise">
+            <h4 class="item-title">
+              <a href="#">Patente: {{ vehiculo.patente}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Disponibilidad: {{ vehiculo.disponibilidad_vehi}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Modelo: {{ vehiculo.modelo}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Marca: {{ vehiculo.marca}}</a>
+            </h4>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="resultadolisto">
+<br> <br> <br> 
+<h2>No hay registros de vehiculos</h2>
+<br> <br> 
+</div>
+{% endif %}
+{% if tours %}
+<div id="content">
+  <div class="showcase block block-border-bottom-grey">
+    <div class="container">
+      <h2 class="block-title">
+        Tour 
+        </h2>
+      <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+        {% for tours in tours %}
+        <div class="item">
+          <a href="#" class="overlay-wrapper">
+            {% if tours.imagen_tour %}
+            <img src="{{ tours.imagen_tour.url }}" alt="Villaricon" class="img-responsive underlay">
+            {% endif %}
+              <span class="overlay">
+                <span class="overlay-content"> <span class="h4">Descripcion: {{ tours.descripcion_tour}}</span> </span>
+               </span>
+            </a>
+          <div class="item-details bg-noise">
+            <h4 class="item-title">
+              <a href="#">Categoria: {{ tours.categoria}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Comestible: {{ tours.comestible}}</a>
+            </h4>
+            <h4 class="item-title">
+              <a href="#">Valor: {{ tours.valor_tour|floatformat:2}}</a>
+            </h4>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div id="resultadolisto">
+<br> <br> <br> 
+<h2>No hay registros de tour</h2>
+<br> <br> 
+</div>
+{% endif %}
   <div class="testimonios"> 
       <div class="constainer">
         <div class="boxi">

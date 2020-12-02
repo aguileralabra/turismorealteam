@@ -2,10 +2,15 @@ from django.urls import path, include
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic import TemplateView
 
 app_name = "cliente_app"
 
 urlpatterns = [
+
+    path('pago/',
+         views.pago,
+         name='pago'),
     #incio index--------------------------------------------------
     path(
         '',
@@ -296,6 +301,8 @@ urlpatterns = [
          views.InformeView.as_view(),
           name='generar_informe'
           ), 
+     path('sw.js',
+         TemplateView.as_view(template_name='sw.js', content_type='application/javascript'), name='sw.js'),
 ]
 
 

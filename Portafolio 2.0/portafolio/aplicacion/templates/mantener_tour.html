@@ -35,7 +35,7 @@
             <td>{{ tour.descripcion_tour}}</td>
             <td>{{ tour.categoria}}</td>
             <td>{{ tour.comestible}}</td>
-            <td>${{ tour.valor_tour}}</td>
+            <td>${{ tour.valor_tour|floatformat:2}}</td>
             <td><a href="/actualizartour/{{ tour.id }}">Modificar
             <td><a href="/deletetour/{{ tour.id }}">
                 Cancerlar
@@ -57,7 +57,7 @@
 
 <div class="reserva-arriendo">
     <div class="contenedor">
-        <form action="" class="form" method="POST">
+        <form action="" class="form" method="POST" enctype="multipart/form-data">
         <div class="form-header">
             <h1 class="form-title">T<span>our</span></h1>
         </div> 

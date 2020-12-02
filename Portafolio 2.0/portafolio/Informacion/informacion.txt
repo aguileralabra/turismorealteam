@@ -35,3 +35,15 @@ https://djangocentral.com/uploading-images-with-django/
 
 OTRAS COSAS:
 https://algorisoft.com/courses/41aa1066-20d7-42b6-8533-5470caf76b4b/
+
+
+
+
+Paypal page
+https://developer.paypal.com/developer/applications/edit/SB:QVEweTN2SFJkYXZlWTBNUVAyM1ZOelF4N2cwdGE0ZDFaYU5ZZGdGcDNaZHBzMkRVb181T2plSlloSkFYT2FzWXdoWEM1c1pfZGtIVERYY00=?appname=django-pruebas
+
+https://developer.paypal.com/docs/checkout/integrate/
+
+manifest y service worker
+
+https://www.youtube.com/watch?v=0Kq4oeRfRW4&ab_channel=PatricioYa%C3%B1ez

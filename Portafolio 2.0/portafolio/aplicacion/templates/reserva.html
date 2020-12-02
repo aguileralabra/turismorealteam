@@ -14,7 +14,6 @@
          <p>Hacer Reserva
          </p>
      </div>
-
            <label>Fecha de Ingreso</label><br>
            {{ form.Fecha_Reserva_Inicio }}<hr><br>
            <label>Fecha de Salida</label><br>
@@ -25,15 +24,47 @@
            {{ form.departamento }}<hr><br>
            <label>Servicios Extras</label><br>
            {{ form.servicioextra }}<<br>  
-
-              {% csrf_token %}
               <input type="checkbox" name="acepto"> Acepto los términos del contrato de suscripción
               <br><br>
               {% csrf_token %}
+              <div id="paypal-button-container"></div>
               <input type="submit" class="form-submit" value="Reservar" onClick="verificarCasilla(this.form)">
               <input type="reset" class="form-submit" value="Limpiar Formulario">
-              </form>
-          </div>
-      </div>
-
+        </form>
+ </div>
+</div>
+      <script
+      src="https://www.paypal.com/sdk/js?client-id=AQ0y3vHRdaveY0MQP23VNzQx7g0ta4d1ZaNYdgFp3Zdps2DUo_5OjeJYhJAXOasYwhXC5sZ_dkHTDXcM"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+      </script>
+      <script>
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            // This function sets up the details of the transaction, including the amount and line item details.
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: '0.01'
+                }
+              }]
+            });
+          },
+          onApprove: function(data) {
+            return fetch('/pago/', {
+              method:'POST',
+              headers: {
+                'content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
+              },
+              body: JSON.stringify({
+                orderID: data.orderID
+              })
+            }).then(function(res) {
+              return res.json();
+            }).then(function(details) {
+              alert(' ' + details.mensaje);
+            })
+           }
+        }).render('#paypal-button-container');
+        //This function displays Smart Payment Buttons on your web page.
+      </script>
 {% endblock %}

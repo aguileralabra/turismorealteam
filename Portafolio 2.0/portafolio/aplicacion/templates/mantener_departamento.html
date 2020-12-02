@@ -29,7 +29,7 @@
             <td>{{ departamento.comuna}}</td>
             <td>{{ departamento.Direccion_departamento}}</td>
             <td>{{ departamento.Disponible}}</td>
-            <td>${{ departamento.Valor_Diario}}</td>
+            <td>${{ departamento.Valor_Diario|floatformat:2}}</td>
             <td><a href="/actualizardepartamento/{{ departamento.id }}">Editar</a>
             </td>
             <td><a href="/deletedepartamento/{{ departamento.id }}" 
@@ -53,12 +53,12 @@
   <div class="ultimo-post">
   <h1>Ultimo Departamento añadido</h1>
   <p> <i class="fas fa-plus-circle"></i>
-  El nombre del departamento es"{{ departamentoultimo.Nombre_Departamento }}" y su costo por dia del departamento es "${{ departamentoultimo.Valor_Diario }}"</p>
+  El nombre del departamento es "{{ departamentoultimo.Nombre_Departamento }}" y su costo por dia del departamento es "${{ departamentoultimo.Valor_Diario|floatformat:2 }}"</p>
   </div>
   <!-- Formulario para registrar-->
   <div class="reserva-arriendo">
     <div class="contenedor">
-        <form action="" class="form" method="POST">
+        <form action="" class="form" method="POST" enctype="multipart/form-data">
         <div class="form-header">
             <h1 class="form-title"><i class="fas fa-plus-circle"></i>Mantener <span> Departamento </span></h1>
         </div> 
@@ -146,18 +146,17 @@
   <a href="/inventario">Inventario</a>
   <br>
 </div>
-{% if departamento %}
-<div id="content">
+  {% if departamento %}
+  <div id="content">
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2 class="block-title">
-            Departamentos 
+          Departamentos 
           </h2>
-          <p style="color:rgb(12, 12, 12); text-align: center;">
-            Como se visualiza los departamento para los clientes.
+        <p>Como se visualiza los departamento para los clientes.
         </p>
         <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-        {% for departamento in departamento %}
+          {% for departamento in departamento %}
           <div class="item">
             <a href="#" class="overlay-wrapper">
               {% if departamento.Imagen_Recinto %}
@@ -170,29 +169,29 @@
                   <span class="overlay-content"> <span class="h4">Internet: {{ departamento.Internet}}</span> </span>
                   <span class="overlay-content"> <span class="h4">Amoblado: {{ departamento.Amoblado}}</span> </span>
                   <span class="overlay-content"> <span class="h4">Televisión: {{ departamento.Televicion}}</span> </span>
-                  <span class="overlay-content"> <span class="h4">Disponible: {{ departamento.Disponible}}</span> </span>
-                </span>
+                  <span class="overlay-content"> <span class="h4">Disponible: {{ departamento.Disponible}}</span> </span>     
+                 </span>
               </a>
             <div class="item-details bg-noise">
               <h4 class="item-title">
-                  <a href="#">Nombre departamento: {{ departamento.Nombre_Departamento}}</a>
+                <a href="#">Nombre departamento: {{ departamento.Nombre_Departamento}}</a>
+              </h4>
+              <h4 class="item-title">
+                  <a href="#">Numero de Propiedad: {{ departamento.Numero_propiedad}}</a>
                 </h4>
-                <h4 class="item-title">
-                    <a href="#">Numero de Propiedad: {{ departamento.Numero_propiedad}}</a>
-                  </h4>
-                <h4 class="item-title">
-                    <a href="#">Direccion: {{ departamento.Direccion_departamento}}</a>
-                  </h4>
-                <h4 class="item-title">
-                    <a href="#">Internet: {{ departamento.Internet}}</a>
-                  </h4>
-                <h4 class="item-title">
-                    <a href="#">Valor: ${{ departamento.Valor_Diario}}</a>
-                  </h4>
+              <h4 class="item-title">
+                  <a href="#">Direccion: {{ departamento.Direccion_departamento}}</a>
+                </h4>
+              <h4 class="item-title">
+                  <a href="#">Internet: {{ departamento.Internet}}</a>
+                </h4>
+              <h4 class="item-title">
+                  <a href="#">Valor: ${{ departamento.Valor_Diario|floatformat:2}}</a>
+                </h4>
             </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
   </div>

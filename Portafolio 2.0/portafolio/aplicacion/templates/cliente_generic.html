@@ -21,7 +21,7 @@
   <link href="{% static 'css/galeria-cliente.css' %}" rel="stylesheet">
   <link href="{% static 'css/carrusel.css' %}" rel="stylesheet">
   <link href="{% static 'css/administrador.css' %}" rel="stylesheet">
-  <link rel="manifest" href="{% static '/manifest.json' %}">
+  <link rel="manifest" href="{% static 'manifest.json' %}">
 
   <link rel="stylesheet" href="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css" integrity="sha512-QAY8RpaU+5mx/feUcMx9GlZda/DWr2b7MFnFAPuLKSsVOnBOSGMHZDv4e1HbeLrjGFlhaFYIC29vKGCpOjQryw==" crossorigin="anonymous" />
@@ -68,10 +68,29 @@
   
     })(document);
     </script>
-      <link href="{% static 'css/cliente.css' %}" rel="stylesheet">
-      <link href="{% static 'css/Nav.css' %}" rel="stylesheet">
-          <link rel="stylesheet" href="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css" integrity="sha512-QAY8RpaU+5mx/feUcMx9GlZda/DWr2b7MFnFAPuLKSsVOnBOSGMHZDv4e1HbeLrjGFlhaFYIC29vKGCpOjQryw==" crossorigin="anonymous" />
+
+      <script>
+      function token(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+      }
+      const csrftoken = token('csrftoken');
+      </script>
+
+<link href="{% static 'css/cliente.css' %}" rel="stylesheet">
+<link href="{% static 'css/Nav.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css" integrity="sha512-QAY8RpaU+5mx/feUcMx9GlZda/DWr2b7MFnFAPuLKSsVOnBOSGMHZDv4e1HbeLrjGFlhaFYIC29vKGCpOjQryw==" crossorigin="anonymous" />
 </head>
 <body class="page-index has-hero">
   <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
@@ -132,7 +151,7 @@
                       <span class="text-primary">Turismo Real</span> te ofrece calidad
                   </h2>
                   <p>Registrate y usa nuestros servicios, te garantizamos, que sera tu mejor experiencia
-                    , debio a que nuestra empresa, va 100% enfocado en tu necesidad, nuestro es lema "Disfurtar y disfrutar", te esperamos.
+                    , debido a que nuestra empresa, va 100% enfocado en tu necesidad, nuestro es lema "Disfrutar y disfrutar", te esperamos.
                   </p>
                 </div>
               </div>
@@ -315,7 +334,7 @@
   <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
   <script src="{% static 'js/custom.js' %}"></script>
   <script src="{% static 'js/color-switcher.js' %}"></script>
-  <script src="{% static 'script/app.js' %}"></script>
+  <script src="{% static 'swInstall.js' %}"></script>
 
 </body>
 </html>
