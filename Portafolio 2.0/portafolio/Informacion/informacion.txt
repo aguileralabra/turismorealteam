@@ -47,3 +47,7 @@ https://developer.paypal.com/docs/checkout/integrate/
 manifest y service worker
 
 https://www.youtube.com/watch?v=0Kq4oeRfRW4&ab_channel=PatricioYa%C3%B1ez
+
+Listar Responsive
+
+https://aukera.es/blog/tabla-html-responsive/

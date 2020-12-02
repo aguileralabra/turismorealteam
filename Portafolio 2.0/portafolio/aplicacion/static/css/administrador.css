@@ -162,3 +162,30 @@
 .inicio-adm-opciones-botones8:hover{
     background: rgb(71, 71, 71);
 }
+
+@media screen and (max-width: 700px) {
+    .inicio-adm-opciones-botones1 {
+      width: 100%;
+    }
+    .inicio-adm-opciones-botones2 {
+        width: 100%;
+      }
+      .inicio-adm-opciones-botones3 {
+        width: 100%;
+      }
+      .inicio-adm-opciones-botones4 {
+        width: 100%;
+      }
+      .inicio-adm-opciones-botones5 {
+        width: 100%;
+      }
+      .inicio-adm-opciones-botones6 {
+          width: 100%;
+        }
+        .inicio-adm-opciones-botones7 {
+          width: 100%;
+        }
+        .inicio-adm-opciones-botones8 {
+          width: 100%;
+        }
+}

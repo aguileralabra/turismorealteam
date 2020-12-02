@@ -38,17 +38,12 @@ padding: 5px;
 }
 
 
-@media screen and (max-width: 800px) {
-    .container{
-        width: 100%;
-        padding: 2px;
-    }
-    .container thead tr th{
-        margin: 0;
-    }
 
-    .container thead tr th a{
-        margin: 2%;
+@media screen and (max-width: 800px) {
+    .container {
+      display: block;
+      overflow-x: auto;
+      width: 100%;
     }
 }
 
