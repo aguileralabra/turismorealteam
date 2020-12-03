@@ -901,3 +901,7 @@ class AgregarReservaView(LoginRequiredMixin, FormView):
             obj.Cantidad_Dias = obj.Cantidad_Dias + Cantidad_Dias
             obj.save()
         return super(AgregarReservaView, self).form_valud(form)
+'''Notificacion ----------------------------------------------------------------------------------------------------------------------------------------------'''
+
+def notificacion(request):
+    return render(request, 'notificacion.html',{})

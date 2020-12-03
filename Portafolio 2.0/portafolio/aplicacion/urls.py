@@ -300,7 +300,14 @@ urlpatterns = [
         'generar_informe/',
          views.InformeView.as_view(),
           name='generar_informe'
-          ), 
+          ),
+        #Service Worker( funcionar offline)--------------------------------------------------------------------------------------------------------------------------------------------------------------
+     path(
+         'notificacion',
+          views.notificacion,
+          name='notificacion'
+          ),
+        #Service Worker( funcionar offline)--------------------------------------------------------------------------------------------------------------------------------------------------------------
      path('sw.js',
          TemplateView.as_view(template_name='sw.js', content_type='application/javascript'), name='sw.js'),
 ]
