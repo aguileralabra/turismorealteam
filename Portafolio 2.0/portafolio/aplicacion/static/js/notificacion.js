@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', function()
 
 function notificar(titulo, mensaje, url)
 {
-    var notificacion = new Notification(
+    var notificacion = new Notification (
         titulo,
         {
-            icon:'static/img/logo-xd.png',
-            body:mensaje,
-            requireInteraction:false
+            icon                     : 'static/img/logo-xd.png',
+            body                     : mensaje,
+            requireInteraction       : false
         });
     notificacion.onclick = function()
     {
@@ -25,6 +25,6 @@ setTimeout(function()
 {
     var titulo = "Turismo Real";
     var mensaje = "Bienvenido";
-    var url = "https://www.google.cl"
+    var url = "https://www.google.cl";
     notificar(titulo, mensaje, url);
 }, 2000)
