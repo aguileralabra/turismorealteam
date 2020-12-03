@@ -230,6 +230,22 @@ urlpatterns = [
          views.VehiculoDeleteView.as_view(),
          name='deletevehiculo'
          ), 
+        #Mantener Multa--------------------------------------------------------------------------------------------------------------------------------------------------
+    path(
+        'multa/',
+         views.MultaView.as_view(),
+         name='multa'
+         ),
+    path(
+        'actualizarmulta/<pk>/',
+         views.MultaUpdateView.as_view(),
+         name='actualizarmulta'
+         ),
+    path(
+        'deletemulta/<pk>/',
+         views.MultaDeleteView.as_view(),
+         name='deletemulta'
+         ), 
         #Perfil Administrador--------------------------------------------------------------------------------------------------------------------------------------------------
     path(
         'perfiladministrador/',
@@ -300,12 +316,6 @@ urlpatterns = [
         'generar_informe/',
          views.InformeView.as_view(),
           name='generar_informe'
-          ),
-        #Service Worker( funcionar offline)--------------------------------------------------------------------------------------------------------------------------------------------------------------
-     path(
-         'notificacion',
-          views.notificacion,
-          name='notificacion'
           ),
         #Service Worker( funcionar offline)--------------------------------------------------------------------------------------------------------------------------------------------------------------
      path('sw.js',

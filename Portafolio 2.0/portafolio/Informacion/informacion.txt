@@ -55,3 +55,26 @@ https://aukera.es/blog/tabla-html-responsive/
 notificacion
 
 https://www.youtube.com/watch?v=qoar0veVJY4&t=321s&ab_channel=PatricioYa%C3%B1ez
+
+cuenta adm:
+jordancho
+afes123456
+
+
+filtro 
+
+obj = Model.objects.all().filter(user=request.user)
+
+Te recomiendo que revises la documentación. Lo que quieres hacer se obtiene con la suguiente consulta:
+
+from django.db.models import Sum
+Model.objects.all().aggregate(Sum('number'))
+El resultado es un diccionario que se ve mas o menos así:
+
+{'number__sum': 10}
+Si lo asignas a una variable, lo usarías de esta manera:
+
+obj = Model.objects.all().aggregate(Sum('number'))
+obj['number__sum'] += 1
+print (obj)
+>>> {'number__sum': 11}

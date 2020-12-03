@@ -150,7 +150,6 @@ class ReservaFuncionarioForm(ModelForm):
             'Estado_Reserva',
             'servicioextra',
             'check',
-            'multa',
             ]
         widgets = {
             'Fecha_Reserva_Inicio': forms.DateInput(
@@ -394,5 +393,16 @@ class InventarioForm(forms.ModelForm):
             'reparacion',
             'mejoramiento'
             ]
+
+class MultaForm(forms.ModelForm):
+    class Meta:
+        model = Multa
+        fields = [
+            'descrip_multa',
+            'monto_multa',
+            'estado_multa',
+            'reserva'
+            ]
+
 
 

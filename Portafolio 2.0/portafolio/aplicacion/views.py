@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import View, TemplateView, ListView, CreateView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import (CreateView)
-from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm, VentaForm, ReservaFuncionarioForm, CiudadForm, ComunaForm, InventarioForm
+from .forms import AcompañanteForm, UserRegisterForm, LoginForm, UpdatePasswordForm, VerificationForm, ContactForm, ReservaForm, DepartamentoForms, AdminUserForm, ReservaAdminForm, ServicioExtraForm, TourForm, ConductorForm, VehiculoForm, VentaForm, ReservaFuncionarioForm, CiudadForm, ComunaForm, InventarioForm, MultaForm
 from django.views.generic.edit import (FormView)
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -835,6 +835,47 @@ class VehiculoDeleteView(LoginRequiredMixin, SuperUsuarioMixin, DeleteView):
     success_url =  reverse_lazy('cliente_app:mantener_vehiculo')
     login_url = reverse_lazy('cliente_app:logeo')
 
+'''  multa CRUD  ------------------------------------------------------'''
+
+class MultaView(LoginRequiredMixin, FuncionarioUsuarioMixin, View):
+    model = Multa
+    form_class = MultaForm
+    template_name = 'multa.html'
+    login_url = reverse_lazy('cliente_app:logeo')
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['multa'] = self.get_queryset()
+        contexto['form'] = self.form_class
+        contexto['multascount'] = Multa.objects.count()
+        contexto['multalast'] = Multa.objects.last()
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('cliente_app:multa')
+
+class MultaUpdateView(LoginRequiredMixin, FuncionarioUsuarioMixin, UpdateView):
+    template_name = "actualizarmulta.html"
+    model = Multa
+    form_class = MultaForm
+    success_url =  reverse_lazy('cliente_app:multa')
+    login_url = reverse_lazy('cliente_app:logeo')
+
+class MultaDeleteView(LoginRequiredMixin, FuncionarioUsuarioMixin, DeleteView):
+    template_name = "deletemulta.html"
+    model = Multa
+    success_url =  reverse_lazy('cliente_app:multa')
+    login_url = reverse_lazy('cliente_app:logeo')
+
 '''Pago -----------------------------------------------------------------'''
 
 class PagosView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
@@ -901,7 +942,3 @@ class AgregarReservaView(LoginRequiredMixin, FormView):
             obj.Cantidad_Dias = obj.Cantidad_Dias + Cantidad_Dias
             obj.save()
         return super(AgregarReservaView, self).form_valud(form)
-'''Notificacion ----------------------------------------------------------------------------------------------------------------------------------------------'''
-
-def notificacion(request):
-    return render(request, 'notificacion.html',{})

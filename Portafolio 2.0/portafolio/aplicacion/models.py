@@ -187,11 +187,6 @@ class ServicioExtra(models.Model):
     def __str__ (self):
         return self.descrip_servicio     
 
-class Multa(models.Model):
-    descrip_multa=models.CharField(max_length=100, default="")
-    monto_multa=models.IntegerField('Valor', default="0")
- 
-
 class Reserva(models.Model):
 
     CHECK_CHOICES = (
@@ -207,12 +202,17 @@ class Reserva(models.Model):
     check=models.CharField(max_length=100, default="No Check", choices=CHECK_CHOICES)
     total_cobrar = models.FloatField(default="0")
     user=models.ForeignKey(User, on_delete=models.CASCADE, default="")
-    multa=models.ForeignKey(Multa, on_delete=models.CASCADE, null=True, blank=True)
     departamento=models.ForeignKey(Departamento, on_delete=models.CASCADE, default="")
     servicioextra=models.ManyToManyField(ServicioExtra, null=True, blank=True)
 
     def __str__ (self):
         return self.Codigo_Reserva
+
+class Multa(models.Model):
+    descrip_multa=models.CharField(max_length=100, default="")
+    monto_multa=models.IntegerField('Valor', default="0")
+    estado_multa=models.BooleanField(default=False)
+    reserva=models.ForeignKey(Reserva, on_delete=models.CASCADE, null=True, blank=True)
 
 class Contact(models.Model):
     asunto = models.CharField(max_length=50)

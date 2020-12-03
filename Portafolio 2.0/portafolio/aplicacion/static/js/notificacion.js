@@ -24,7 +24,7 @@ function notificar(titulo, mensaje, url)
 setTimeout(function()
 {
     var titulo = "Turismo Real";
-    var mensaje = "Bienvenido";
-    var url = "https://www.google.cl";
+    var mensaje = "Bienvenido, te recordar el paso a paso por covid-19";
+    var url = "https://www.gob.cl/pasoapaso/";
     notificar(titulo, mensaje, url);
 }, 2000)
