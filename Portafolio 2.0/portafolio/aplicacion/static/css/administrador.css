@@ -14,7 +14,7 @@
 }
 
 .inicio-adm-opciones{
-    background: rgba(95, 95, 95, 0.666);
+    background: rgba(223, 223, 223, 0.666);
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -129,7 +129,33 @@
     padding-top: 3%;
     margin-bottom: 5%;
 }
+.inicio-adm-opciones-botones9{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 49%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
 
+.inicio-adm-opciones-botones10{
+    background: rgb(43, 43, 43);
+    color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 49%;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.589);
+    text-align: center;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-bottom: 5%;
+}
 
 .inicio-adm-opciones-botones1:hover{
     background: rgb(71, 71, 71);

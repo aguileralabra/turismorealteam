@@ -22,6 +22,7 @@ from .mixins import SuperUsuarioMixin, FuncionarioUsuarioMixin
 from .managers import AgregarReservaManager
 from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest, OrdersCaptureRequest
+from django.db.models import Sum
 
 import sys, json
 
@@ -886,9 +887,30 @@ class ServiciosView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'mantener_servicios.html'
     login_url = reverse_lazy('cliente_app:logeo')
 
-class EstadisticaView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
+'''Estadisticas -----------------------------------------------------------------'''
+class EstadisticaView(LoginRequiredMixin, SuperUsuarioMixin, View):
     template_name = 'generar_estadistica.html'
     login_url = reverse_lazy('cliente_app:logeo')
+    model = User
+
+    def get_queryset(self):
+        return self.model.objects.all()
+
+    def get_context_data(self, **kwargs):
+        contexto = {}
+        contexto['multa'] = self.get_queryset()
+        contexto['clientes'] = User.objects.count()
+        contexto['reservas'] = Reserva.objects.count()
+        contexto['departamentos'] = Departamento.objects.count()
+        contexto['servicios'] = ServicioExtra.objects.count()
+        contexto['gananciamulta'] = Multa.objects.aggregate(Sum('monto_multa'))
+        contexto['ganaciareserva'] = Reserva.objects.aggregate(Sum('total_cobrar'))
+
+        return contexto
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name, self.get_context_data())
+
 
 class InformeView(LoginRequiredMixin, SuperUsuarioMixin, TemplateView):
     template_name = 'generar_informe.html'
